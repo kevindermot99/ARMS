@@ -29,11 +29,12 @@
             padding: 0;
             box-sizing: border-box;
         }
-        .middle{
+
+        .middle {
             align-items: center;
             display: flex;
         }
-        
+
         header {
             background-color: #001C4B;
             color: white;
@@ -152,17 +153,17 @@
 
 <body>
     <header>
-        <div class="middle">
-        <div class="coatimg">
-        <img src="images/coat.png" alt="Logo" class="logo">
-        </div>
-        <div class=" text">
-        <h1>RWANDA NATIONAL POLICE</h1>
-        <p>Service - Protection - Integrity.</p>
-        </div>
-        <div class="popoimg">
-            <img src="images/RNP_LOGO.png" alt="">
-        </div>
+        <div class="flex items-center justify-between px-10 max-md:px-4">
+            <div class="coatimg">
+                <img src="images/coat.png" alt="Logo" class="h-auto w-20 ">
+            </div>
+            <div class=" text">
+                <h1>RWANDA NATIONAL POLICE</h1>
+                <p>Service - Protection - Integrity.</p>
+            </div>
+            <div class="popoimg">
+                <img src="images/RNP_LOGO.png" class="h-auto w-20 ">
+            </div>
 
         </div>
     </header>
