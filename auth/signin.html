@@ -93,20 +93,11 @@ body {
 }
 .featurezz{
     font-size: 12px;
-    gap: 20px;
 }  
 .feature{
     margin-top: 15px;
 }
 
-h1 {
-	font-weight: bold;
-	margin: 0;
-}
-
-h2 {
-	text-align: center;
-}
 
 p {
 	font-size: 14px;
@@ -161,8 +152,7 @@ input {
 .container {
 	background-color: #fff;
 	border-radius: 10px;
-  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			0 10px 10px rgba(0,0,0,0.22);
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
 	overflow: hidden;
 	width: 768px;
@@ -174,7 +164,6 @@ input {
 	position: absolute;
 	top: 0;
 	height: 100%;
-	transition: all 0.6s ease-in-out;
 }
 
 .sign-in-container {
@@ -183,25 +172,7 @@ input {
 	z-index: 2;
 }
 
-.container.right-panel-active .sign-in-container {
-	transform: translateX(100%);
-}
-
-.sign-up-container {
-	left: 0;
-	width: 50%;
-	opacity: 0;
-	z-index: 1;
-}
-
-.container.right-panel-active .sign-up-container {
-	transform: translateX(100%);
-	opacity: 1;
-	z-index: 5;
-	animation: show 0.6s;
-}
-
-
+ 
 .overlay-container {
 	position: absolute;
 	top: 0;
@@ -212,13 +183,8 @@ input {
 	transition: transform 0.6s ease-in-out;
 	z-index: 100;
 }
-
-.container.right-panel-active .overlay-container{
-	transform: translateX(-100%);
-}
-
-.overlay {
-	background: #1F3365;
+ 
+.overlay { 
 	background: linear-gradient(to top, #1F3365, #0134b6);
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -232,10 +198,7 @@ input {
 	transition: transform 0.6s ease-in-out;
 }
 
-.container.right-panel-active .overlay {
-  	transform: translateX(50%);
-}
-
+ 
 .overlay-panel {
 	position: absolute;
 	display: flex;
@@ -251,18 +214,12 @@ input {
 }
 
 
-.container.right-panel-active .overlay-left {
-	transform: translateX(0);
-}
 
 .overlay-right {
 	right: 0;
 	transform: translateX(0);
 }
-
-.container.right-panel-active .overlay-right {
-	transform: translateX(20%);
-}
+ 
 
 .social-container {
 	margin: 20px 0;
