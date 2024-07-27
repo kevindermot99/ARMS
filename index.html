@@ -29,14 +29,8 @@
 <body class="text-black">
     <!-- header -->
     <div id="Header-Container"></div>
-    <nav>
-        <a href="#" class="active">Home</a>
-        <a href="#">Explore</a>
-        <a href="#">Accident</a>
-        <a href="#">About</a>
-        <a href="#">Contact Us</a>
-        <a href="#">Officer John</a>
-    </nav>
+    <!-- Nav -->
+    <div id="Nav"></div>
     <div class="slider">
         <img src="slider.png" alt="Slider Image">
     </div>
@@ -83,8 +77,14 @@
     </div>
     <div id="Footer"></div>
 
+    <!-- reseting scroll position on load -->
+    <script>
+        window.addEventListener('load', function () {
+            window.scrollTo(0, 0);
+        });
+    </script>
 
-    <!-- Scripts -->
+    <!-- Component Scripts -->
     <!-- calling header -->
     <script>
         // Function to load the header
@@ -98,6 +98,20 @@
 
         // Call the function to load the header
         loadHeader();
+    </script>
+    <!-- calling Navbar -->
+    <script>
+        // Function to load the header
+        function loadNav() {
+            fetch('./components/Nav.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('Nav').innerHTML = data;
+                });
+        }
+
+        // Call the function to load the header
+        loadNav();
     </script>
     <!-- calling Footer -->
     <script>
