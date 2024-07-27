@@ -16,116 +16,93 @@
             theme: {
                 extend: {
                     colors: {
-                        "Primary-color": '#1F3365',
-                        "Primary-color-dark": '#17264a',
-                        "body-color": '#f7f8fa'
+                        "primary-color": '#1F3365',
+                        "primary-color-dark": '#17264a',
+                        "body-color": '#f7f8fa',
+                        "text-color": "#2f3a52",
                     }
                 }
             }
         }
     </script>
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 </head>
 
-<body class="text-black">
+<body class="text-text-color">
     <!-- header -->
     <div id="Header-Container"></div>
     <!-- Nav -->
     <div id="Nav"></div>
-    <div class="slider">
-        <img src="slider.png" alt="Slider Image">
-    </div>
-    <div class="content">
-        <h2>Recent Accidents</h2>
-        <div class="recent-accidents">
-            <div class="accident">
-                <img class="accident-imgz" src="challenge 6]/AI Image Generator JavaScript/images/bg.jpg"
-                    alt="Accident Image">
-                <div>
-                    <b>
-                        <p>Case Closed</p>
-                    </b>
-                    <p>Gisozi event-accident between 2 cars</p>
-                    <p>
-                        <icon>
-                            <div class="icon">
-                                <img src="calendar-icon-free-vector.jpg" alt="">
-                        </icon>Saturday, February 20 | 08:00 PM
-                    </p>
+
+    <!-- Slider -->
+    <div class="w-full flex items-center justify-center py-5 px-10 h-[400px]">
+        <!-- prev -->
+        
+        <div class="swiper mySwiper w-full h-full">
+            <div class="swiper-wrapper mx-auto">
+                <div class="swiper-slide h-full bg-stone-50 rounded-md flex items-center justify-center">
+                    <i class='bx bxs-image text-[50px] text-text-color/10'></i>
                 </div>
-                <p>Gisozi</p>
-
+                <div class="swiper-slide h-full bg-stone-50 rounded-md flex items-center justify-center">
+                    <i class='bx bxs-image text-[50px] text-text-color/10'></i>
+                </div>
             </div>
+            <div class="swiper-button-next top-[46%] right-[30px] cursor-pointer bg-white/90 w-14 h-14 rounded-full aspect-square"></div>
+        <div class="swiper-button-prev top-[46%] left-[30px] cursor-pointer bg-white/90 w-14 h-14 rounded-full aspect-square"></div>
         </div>
+        <!-- next -->
     </div>
-    <h2>Recent Accidents</h2>
-    <div class="recent-accidents">
-        <div class="accident">
-            <img src="accident5.png" alt="Accident Image">
-            <p>Rainy Season Accident</p>
-            <p>Tuesday, August 18 | 06:00 PM</p>
-            <p>New York, NY</p>
-            <p>From $100</p>
-        </div>
-        <div class="accident">
-            <img src="accident6.png" alt="Accident Image">
-            <p>Lorem Ipsum</p>
-            <p>Monday, June 06 | 06:00 PM</p>
-            <p>New York, NY</p>
-            <p>From $90</p>
-        </div>
-    </div>
-    </div>
-    <div id="Footer"></div>
 
-    <!-- reseting scroll position on load -->
+
+    <!-- footer -->
+    <!-- <div id="Footer"></div> -->
+
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
     <script>
-        window.addEventListener('load', function () {
-            window.scrollTo(0, 0);
+        var swiper = new Swiper(".mySwiper", {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 4500,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
         });
     </script>
 
-    <!-- Component Scripts -->
-    <!-- calling header -->
+    <!-- Combine fetch calls and scroll to top -->
     <script>
-        // Function to load the header
-        function loadHeader() {
-            fetch('./components/Header.html')
+        function loadComponent(url, containerId) {
+            return fetch(url)
                 .then(response => response.text())
                 .then(data => {
-                    document.getElementById('Header-Container').innerHTML = data;
+                    document.getElementById(containerId).innerHTML = data;
                 });
         }
 
-        // Call the function to load the header
-        loadHeader();
-    </script>
-    <!-- calling Navbar -->
-    <script>
-        // Function to load the header
-        function loadNav() {
-            fetch('./components/Nav.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('Nav').innerHTML = data;
-                });
-        }
-
-        // Call the function to load the header
-        loadNav();
-    </script>
-    <!-- calling Footer -->
-    <script>
-        // Function to load the header
-        function loadFooter() {
-            fetch('./components/Footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('Footer').innerHTML = data;
-                });
-        }
-
-        // Call the function to load the header
-        loadFooter();
+        window.addEventListener('load', function () {
+            Promise.all([
+                loadComponent('./components/Header.html', 'Header-Container'),
+                loadComponent('./components/Nav.html', 'Nav'),
+                loadComponent('./components/Footer.html', 'Footer')
+            ]).then(() => {
+                window.scrollTo(0, 0);
+            });
+        });
     </script>
 </body>
 
