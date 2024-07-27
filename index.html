@@ -1,9 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rwanda National Police</title>
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- tailwind Css -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        PrimaryColor: '#1F3365',
+                        PrimaryColorDark: '#17264a',
+                        bodyColor: '#f7f8fa'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,45 +29,54 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         header {
             background-color: #001C4B;
             color: white;
             padding: 10px 0;
             text-align: center;
         }
+
         header img {
             width: 50px;
             height: auto;
             vertical-align: middle;
         }
+
         header .logo {
             display: inline-block;
             vertical-align: middle;
         }
+
         header h1 {
             display: inline-block;
             margin: 0;
             vertical-align: middle;
             font-size: 1.5rem;
         }
+
         header p {
             margin: 5px 0 0;
             font-size: 0.9rem;
         }
+
         nav {
             background-color: #eee;
             display: flex;
             justify-content: space-around;
             padding: 10px 0;
         }
+
         nav a {
             color: #333;
             text-decoration: none;
             padding: 10px 15px;
         }
+
         nav a.active {
             border-bottom: 2px solid #001C4B;
         }
+
         .slider {
             background-color: #ccc;
             height: 300px;
@@ -58,26 +85,31 @@
             align-items: center;
             margin: 20px 0;
         }
+
         .slider img {
             max-width: 100%;
             max-height: 100%;
         }
+
         .content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
+
         .recent-accidents {
             display: flex;
             justify-content: space-between;
             margin-bottom: 20px;
         }
+
         .accident {
             border: 1px solid #ccc;
             padding: 10px;
             display: flex;
             width: 45%;
         }
+
         .accident-imgz {
             width: 250px;
             height: 150px;
@@ -85,28 +117,34 @@
             border-radius: 8px;
             margin-right: 10px;
         }
+
         .accident p {
             margin: 10px 0;
         }
-        .icon img{
+
+        .icon img {
             width: 28px;
             margin-bottom: -8px;
         }
+
         .footer {
             background-color: #333;
             color: white;
             padding: 20px 0;
             text-align: center;
         }
+
         .footer a {
             color: #ccc;
             text-decoration: none;
         }
+
         .footer a:hover {
             color: white;
         }
     </style>
 </head>
+
 <body>
     <header>
         <img src="logo.png" alt="Logo" class="logo">
@@ -114,7 +152,7 @@
         <p>Service - Protection - Integrity.</p>
     </header>
     <nav>
-        <a href="#" class="active">Home</a>
+        <a href="#" class="active text-3xl">Home</a>
         <a href="#">Explore</a>
         <a href="#">Accident</a>
         <a href="#">About</a>
@@ -128,38 +166,42 @@
         <h2>Recent Accidents</h2>
         <div class="recent-accidents">
             <div class="accident">
-                <img class="accident-imgz" src="challenge 6]/AI Image Generator JavaScript/images/bg.jpg" alt="Accident Image">
+                <img class="accident-imgz" src="challenge 6]/AI Image Generator JavaScript/images/bg.jpg"
+                    alt="Accident Image">
                 <div>
                     <b>
                         <p>Case Closed</p>
                     </b>
-                <p>Gisozi event-accident between 2 cars</p>
-                <p><icon>
-                    <div class="icon">
-                        <img src="calendar-icon-free-vector.jpg" alt="" ></icon>Saturday, February 20 | 08:00 PM</p>
-                    </div>
+                    <p>Gisozi event-accident between 2 cars</p>
+                    <p>
+                        <icon>
+                            <div class="icon">
+                                <img src="calendar-icon-free-vector.jpg" alt="">
+                        </icon>Saturday, February 20 | 08:00 PM
+                    </p>
+                </div>
                 <p>Gisozi</p>
 
-                </div>
             </div>
         </div>
-        <h2>Recent Accidents</h2>
-        <div class="recent-accidents">
-            <div class="accident">
-                <img src="accident5.png" alt="Accident Image">
-                <p>Rainy Season Accident</p>
-                <p>Tuesday, August 18 | 06:00 PM</p>
-                <p>New York, NY</p>
-                <p>From $100</p>
-            </div>
-            <div class="accident">
-                <img src="accident6.png" alt="Accident Image">
-                <p>Lorem Ipsum</p>
-                <p>Monday, June 06 | 06:00 PM</p>
-                <p>New York, NY</p>
-                <p>From $90</p>
-            </div>
+    </div>
+    <h2>Recent Accidents</h2>
+    <div class="recent-accidents">
+        <div class="accident">
+            <img src="accident5.png" alt="Accident Image">
+            <p>Rainy Season Accident</p>
+            <p>Tuesday, August 18 | 06:00 PM</p>
+            <p>New York, NY</p>
+            <p>From $100</p>
         </div>
+        <div class="accident">
+            <img src="accident6.png" alt="Accident Image">
+            <p>Lorem Ipsum</p>
+            <p>Monday, June 06 | 06:00 PM</p>
+            <p>New York, NY</p>
+            <p>From $90</p>
+        </div>
+    </div>
     </div>
     <footer class="footer">
         <p>© 2024 Tech Innovation Labs. | <a href="#">Privacy</a> - <a href="#">Terms</a> - <a href="#">Sitemap</a></p>
@@ -175,4 +217,5 @@
         // Add JavaScript functionality if needed
     </script>
 </body>
+
 </html>
