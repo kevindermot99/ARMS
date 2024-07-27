@@ -92,15 +92,15 @@ nav a.active {
     margin-bottom: -8px;
 }
 .footer {
-    background-color: #333;
+    background-color: #151616;
+    padding: 10px 0px 10px 0px;
+    border-top: solid rgb(0, 21, 255);
+}
+.footelements{
+    width: 70%;
+    margin: auto;
+    gap: 50px; 
     color: white;
-    padding: 20px 0;
     text-align: center;
-}
-.footer a {
-    color: #ccc;
-    text-decoration: none;
-}
-.footer a:hover {
-    color: white;
+    display: flex;
 }
