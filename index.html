@@ -81,14 +81,7 @@
         </div>
     </div>
     </div>
-    <footer class="footer">
-        <div class="footelements">
-        <p>© Copyright A.R.M.S 2024 All rights reserved</p>
-        <P>Support center</P>
-        <p>Terms of Use</p>
-        <p>System Status</p>
-        </div>
-    </footer>
+    <div id="Footer"></div>
 
 
     <!-- Scripts -->
@@ -105,6 +98,20 @@
 
         // Call the function to load the header
         loadHeader();
+    </script>
+    <!-- calling Footer -->
+    <script>
+        // Function to load the header
+        function loadFooter() {
+            fetch('./components/Footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('Footer').innerHTML = data;
+                });
+        }
+
+        // Call the function to load the header
+        loadFooter();
     </script>
 </body>
 

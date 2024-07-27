@@ -96,11 +96,3 @@ nav a.active {
     padding: 10px 0px 10px 0px;
     border-top: solid rgb(0, 21, 255);
 }
-.footelements{
-    width: 70%;
-    margin: auto;
-    gap: 50px; 
-    color: white;
-    text-align: center;
-    display: flex;
-}
