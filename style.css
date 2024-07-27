@@ -21,3 +21,15 @@
 .swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled {
     opacity: 0.2 !important;
 }
+
+.navBar{
+    display: none;
+}
+
+.navBar.showDropDown{
+    display: flex;
+}
+
+.navBar.showDropDown ~ .navBarOverlay{
+    display: flex;
+}
