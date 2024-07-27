@@ -1,5 +1,5 @@
 <nav
-    class="h-[60px] flex px-10 max-md:px-4 bg-white border-b-[1px] border-text-color/10 ">
+    class="h-[60px] flex px-10 max-md:px-4 bg-white/80 backdrop-blur-md border-b-[1px] border-text-color/10 ">
     <!-- logo -->
     <div class=" h-full w-full flex flex-col justify-center items-start text-primary-color">
         <span class="text-3xl font-extrabold leading-7 tracking-tight">A.R.M.S</span>
@@ -26,18 +26,22 @@
         </a>
     </div>
     <!-- notification and Profile -->
-    <div class="h-full w-full flex items-center justify-end gap-3">
-        <button
-            class="h-[40px] w-fit px-4 gap-1 rounded-full hover:opacity-85 transition flex items-center justify-center">
+    <div class="h-full w-full flex items-center justify-end gap-0">
+        <!-- <button
+            class="h-[40px] w-fit gap-1 rounded-full hover:opacity-85 transition flex items-center justify-center">
             <i class='bx bx-plus text-[22px]'></i>
             <p class="text-sm whitespace-nowrap">Record</p>
+        </button> -->
+        <button
+            class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
+            <i class='bx bx-image-add' ></i>
         </button>
         <button
             class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
             <i class='bx bx-bell'></i>
         </button>
         <button
-            class="flex items-center justify-start hover:bg-text-color/10 rounded-full pr-2 transition active:bg-text-color/20">
+            class="flex items-center justify-start hover:bg-text-color/10 rounded-full ml-3 pr-2 transition active:bg-text-color/20">
             <div
                 class="h-[35px] w-auto aspect-square text-lg rounded-full bg-primary-color ring-4 ring-white text-white/90 flex items-center justify-center">
                 <i class='bx bx-user'></i>
@@ -45,5 +49,6 @@
             <p class="pl-2 capitalize text-sm whitespace-nowrap truncate text-ellipsis max-w-[120px]">Officer John</p>
             <i class='ml-[2px] bx bx-chevron-down text-base'></i>
         </button>
+        
     </div>
 </nav>

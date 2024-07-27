@@ -34,12 +34,12 @@
     <!-- header -->
     <div id="Header-Container"></div>
     <!-- Nav -->
-    <div id="Nav"></div>
+    <div id="Nav" class="sticky top-0 z-20"></div>
 
     <!-- Slider -->
-    <div class="w-full flex items-center justify-center py-5 px-10 h-[400px]">
+    <section class="w-full flex items-center justify-center py-5 px-10 h-[400px]">
         <!-- prev -->
-        
+
         <div class="swiper mySwiper w-full h-full">
             <div class="swiper-wrapper mx-auto">
                 <div class="swiper-slide h-full bg-stone-50 rounded-md flex items-center justify-center">
@@ -49,15 +49,202 @@
                     <i class='bx bxs-image text-[50px] text-text-color/10'></i>
                 </div>
             </div>
-            <div class="swiper-button-next top-[46%] right-[30px] cursor-pointer bg-white/90 w-14 h-14 rounded-full aspect-square"></div>
-        <div class="swiper-button-prev top-[46%] left-[30px] cursor-pointer bg-white/90 w-14 h-14 rounded-full aspect-square"></div>
+            <div
+                class="swiper-button-next top-[46%] right-[30px] cursor-pointer bg-white/90 w-14 h-14 rounded-full aspect-square">
+            </div>
+            <div
+                class="swiper-button-prev top-[46%] left-[30px] cursor-pointer bg-white/90 w-14 h-14 rounded-full aspect-square">
+            </div>
         </div>
         <!-- next -->
-    </div>
+    </section>
+
+    <!-- quick filters -->
+    <section class="flex flex-col px-10 pt-5">
+        <!-- filter by vehicle type -->
+        <div class="flex items-center justify-center gap-4 mb-4 overflow-x-auto">
+            <button
+                class="text-text-color text-sm capitalize py-2 px-4 border-b-[3px] border-text-color whitespace-nowrap">Cars</button>
+            <button
+                class="text-text-color text-sm capitalize py-2 px-4 border-b-[3px] border-transparent whitespace-nowrap">Bicycles</button>
+            <button
+                class="text-text-color text-sm capitalize py-2 px-4 border-b-[3px] border-transparent whitespace-nowrap">Truck</button>
+            <button
+                class="text-text-color text-sm capitalize py-2 px-4 border-b-[3px] border-transparent whitespace-nowrap">Motor
+                Bikes</button>
+            <button
+                class="text-text-color text-sm capitalize py-2 px-4 border-b-[3px] border-transparent whitespace-nowrap">Buses</button>
+            <button
+                class="text-text-color text-sm capitalize py-2 px-4 border-b-[3px] border-transparent whitespace-nowrap">Vans</button>
+            <button
+                class="text-text-color text-sm capitalize py-2 px-4 border-b-[3px] border-transparent whitespace-nowrap">Tractors</button>
+        </div>
+        <!-- results -->
+        <div class="py-2 grid grid-cols-2 gap-5">
+            <!-- 1 result -->
+            <div class="flex flex-1 h-[220px] items-center justify-start">
+                <div class="h-full w-full bg-stone-50 rounded-md flex items-center justify-center">
+                    <i class='bx bxs-image text-[50px] text-text-color/10'></i>
+                </div>
+                <div class="p-5 w-fit">
+                    <p class="text-xs font-medium text-text-color/70">case closed</p>
+                    <h1 class="text-base leading-6 font-medium py-2">gisozi impanuka yabanyonzi babiri nigikamyo cya
+                        HOHO</h1>
+                    <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                            class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                    <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                            class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                </div>
+            </div>
+            <!-- 1 result -->
+            <div class="flex flex-1 h-[220px] items-center justify-start">
+                <div class="h-full w-full bg-stone-50 rounded-md flex items-center justify-center">
+                    <i class='bx bxs-image text-[50px] text-text-color/10'></i>
+                </div>
+                <div class="p-5 w-fit">
+                    <p class="text-xs font-medium text-text-color/70">case closed</p>
+                    <h1 class="text-base leading-6 font-medium py-2">gisozi impanuka yabanyonzi babiri nigikamyo cya
+                        HOHO</h1>
+                    <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                            class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                    <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                            class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                </div>
+            </div>
+            <!-- 1 result -->
+            <div class="flex flex-1 h-[220px] items-center justify-start">
+                <div class="h-full w-full bg-stone-50 rounded-md flex items-center justify-center">
+                    <i class='bx bxs-image text-[50px] text-text-color/10'></i>
+                </div>
+                <div class="p-5 w-fit">
+                    <p class="text-xs font-medium text-text-color/70">case closed</p>
+                    <h1 class="text-base leading-6 font-medium py-2">gisozi impanuka yabanyonzi babiri nigikamyo cya
+                        HOHO</h1>
+                    <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                            class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                    <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                            class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                </div>
+            </div>
+            <!-- 1 result -->
+            <div class="flex flex-1 h-[220px] items-center justify-start">
+                <div class="h-full w-full bg-stone-50 rounded-md flex items-center justify-center">
+                    <i class='bx bxs-image text-[50px] text-text-color/10'></i>
+                </div>
+                <div class="p-5 w-fit">
+                    <p class="text-xs font-medium text-text-color/70">case closed</p>
+                    <h1 class="text-base leading-6 font-medium py-2">gisozi impanuka yabanyonzi babiri nigikamyo cya
+                        HOHO</h1>
+                    <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                            class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                    <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                            class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Recent Accidents -->
+    <section class="w-full flex flex-col items-start py-5 px-10 h-fit">
+        <div class="flex items-center justify-between w-full">
+            <p class="font-bold text-2xl pt-10 pb-3">Recent Accident</p>
+            <a href="#" class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize">view more</a>
+        </div>
+        <div class="swiper mySwiper2 w-full h-full">
+            <div class="swiper-wrapper mx-auto">
+                <!-- 1 item -->
+                <div class="swiper-slide">
+                    <div class=" h-[250px] bg-stone-50 rounded-md flex items-center justify-center">
+                        <i class='bx bxs-image text-[50px] text-text-color/10'></i>
+                    </div>
+                    <div class="py-5 w-fit">
+                        <p class="text-xs font-medium text-text-color/70">case closed</p>
+                        <h1 class="text-base leading-6 font-medium py-2">gisozi impanuka yabanyonzi babiri nigikamyo cya
+                            HOHO</h1>
+                        <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                        <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                    </div>
+                </div>
+                <!-- 1 item -->
+                <div class="swiper-slide">
+                    <div class=" h-[250px] bg-stone-50 rounded-md flex items-center justify-center">
+                        <i class='bx bxs-image text-[50px] text-text-color/10'></i>
+                    </div>
+                    <div class="py-5 w-fit">
+                        <p class="text-xs font-medium text-text-color/70">case closed</p>
+                        <h1 class="text-base leading-6 font-medium py-2">gisozi impanuka yabanyonzi babiri nigikamyo cya
+                            HOHO</h1>
+                        <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                        <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                    </div>
+                </div>
+                <!-- 1 item -->
+                <div class="swiper-slide">
+                    <div class=" h-[250px] bg-stone-50 rounded-md flex items-center justify-center">
+                        <i class='bx bxs-image text-[50px] text-text-color/10'></i>
+                    </div>
+                    <div class="py-5 w-fit">
+                        <p class="text-xs font-medium text-text-color/70">case closed</p>
+                        <h1 class="text-base leading-6 font-medium py-2">gisozi impanuka yabanyonzi babiri nigikamyo cya
+                            HOHO</h1>
+                        <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                        <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                    </div>
+                </div>
+                <!-- 1 item -->
+                <div class="swiper-slide">
+                    <div class=" h-[250px] bg-stone-50 rounded-md flex items-center justify-center">
+                        <i class='bx bxs-image text-[50px] text-text-color/10'></i>
+                    </div>
+                    <div class="py-5 w-fit">
+                        <p class="text-xs font-medium text-text-color/70">case closed</p>
+                        <h1 class="text-base leading-6 font-medium py-2">gisozi impanuka yabanyonzi babiri nigikamyo cya
+                            HOHO</h1>
+                        <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                        <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                    </div>
+                </div>
+                <!-- 1 item -->
+                <div class="swiper-slide">
+                    <div class=" h-[250px] bg-stone-50 rounded-md flex items-center justify-center">
+                        <i class='bx bxs-image text-[50px] text-text-color/10'></i>
+                    </div>
+                    <div class="py-5 w-fit">
+                        <p class="text-xs font-medium text-text-color/70">case closed</p>
+                        <h1 class="text-base leading-6 font-medium py-2">gisozi impanuka yabanyonzi babiri nigikamyo cya
+                            HOHO</h1>
+                        <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                        <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div
+                class="swiper-button-next top-[46%] right-[30px] cursor-pointer bg-white/90 w-14 h-14 rounded-full aspect-square">
+            </div>
+            <div
+                class="swiper-button-prev top-[46%] left-[30px] cursor-pointer bg-white/90 w-14 h-14 rounded-full aspect-square">
+            </div>
+        </div>
+    </section>
 
 
     <!-- footer -->
-    <!-- <div id="Footer"></div> -->
+    <div id="Footer"></div>
 
 
     <!-- Swiper JS -->
@@ -73,6 +260,23 @@
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
             },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+
+    <!-- Initialize Swiper 2 -->
+    <script>
+        var swiper = new Swiper(".mySwiper2", {
+            spaceBetween: 30,
+            slidesPerView: "2",
+            centeredSlides: false,
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
@@ -100,9 +304,14 @@
                 loadComponent('./components/Nav.html', 'Nav'),
                 loadComponent('./components/Footer.html', 'Footer')
             ]).then(() => {
-                window.scrollTo(0, 0);
+                // window.scrollTo(0, 0);
             });
         });
+    </script>
+
+    <!-- sample -->
+    <script>
+        let numberofresults = 4;
     </script>
 </body>
 
