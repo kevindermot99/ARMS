@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.middle{
+    align-items: center;
+    display: flex;
+}
+header {
+    background-color: #001C4B;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+header img {
+    width: 80px;
+    height: auto;
+}
+header .logo {
+    display: inline-block;
+    vertical-align: middle;
+}
+header h1 {
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+    font-size: 1.5rem;
+}
+header p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+}
+nav {
+    background-color: #eee;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+nav a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+nav a.active {
+    border-bottom: 2px solid #001C4B;
+}
+.slider {
+    background-color: #ccc;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+.slider img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.recent-accidents {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.accident {
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    width: 45%;
+}
+.accident-imgz {
+    width: 250px;
+    height: 150px;
+    background-color: #eee;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+.accident p {
+    margin: 10px 0;
+}
+.icon img{
+    width: 28px;
+    margin-bottom: -8px;
+}
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+.footer a {
+    color: #ccc;
+    text-decoration: none;
+}
+.footer a:hover {
+    color: white;
+}
