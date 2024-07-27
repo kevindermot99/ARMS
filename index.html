@@ -26,21 +26,9 @@
     </script>
 </head>
 
-<body class="text-white">
-    <header class="bg-Primary-color">
-        <div class="flex items-center justify-between px-10 max-md:px-4 py-4">
-            <div>
-                <img src="images/coat.png" alt="Logo" class="h-auto w-[65px] ">
-            </div>
-            <div class="flex flex-col items-center justify-center gap-1">
-                <h1 class="font-extrabold text-2xl tracking-tight leading-4">RWANDA NATIONAL POLICE</h1>
-                <p>Service - Protection - Integrity</p>
-            </div>
-            <div>
-                <img src="images/RNP_LOGO.png" class="h-auto w-[65px] ">
-            </div>
-        </div>
-    </header>
+<body class="text-black">
+    <!-- header -->
+    <div id="Header-Container"></div>
     <nav>
         <a href="#" class="active">Home</a>
         <a href="#">Explore</a>
@@ -96,6 +84,23 @@
     <footer class="footer">
         <p>© 2024 Tech Innovation Labs. | <a href="#">Privacy</a> - <a href="#">Terms</a> - <a href="#">Sitemap</a></p>
     </footer>
+
+
+    <!-- Scripts -->
+    <!-- calling header -->
+    <script>
+        // Function to load the header
+        function loadHeader() {
+            fetch('./components/Header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('Header-Container').innerHTML = data;
+                });
+        }
+
+        // Call the function to load the header
+        loadHeader();
+    </script>
 </body>
 
 </html>
