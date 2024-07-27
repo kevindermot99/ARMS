@@ -16,9 +16,9 @@
             theme: {
                 extend: {
                     colors: {
-                        PrimaryColor: '#1F3365',
-                        PrimaryColorDark: '#17264a',
-                        bodyColor: '#f7f8fa'
+                        "Primary-color": '#1F3365',
+                        "Primary-color-dark": '#17264a',
+                        "body-color": '#f7f8fa'
                     }
                 }
             }
@@ -26,18 +26,18 @@
     </script>
 </head>
 
-<body>
-    <header>
-        <div class="flex items-center justify-between px-10 max-md:px-4">
-            <div class="coatimg">
-                <img src="images/coat.png" alt="Logo" class="h-auto w-20 ">
+<body class="text-white">
+    <header class="bg-Primary-color">
+        <div class="flex items-center justify-between px-10 max-md:px-4 py-4">
+            <div>
+                <img src="images/coat.png" alt="Logo" class="h-auto w-[65px] ">
             </div>
-            <div class=" text">
-                <h1>RWANDA NATIONAL POLICE</h1>
-                <p>Service - Protection - Integrity.</p>
+            <div class="flex flex-col items-center justify-center gap-1">
+                <h1 class="font-extrabold text-2xl tracking-tight leading-4">RWANDA NATIONAL POLICE</h1>
+                <p>Service - Protection - Integrity</p>
             </div>
-            <div class="popoimg">
-                <img src="images/RNP_LOGO.png" class="h-auto w-20 ">
+            <div>
+                <img src="images/RNP_LOGO.png" class="h-auto w-[65px] ">
             </div>
         </div>
     </header>
