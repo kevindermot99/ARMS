@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.R.M.S Login</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-box {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-box form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-box input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 250px;
+        }
+
+        .login-box button {
+            padding: 10px;
+            background-color: #003366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .login-box button:hover {
+            background-color: #002244;
+        }
+
+        .info-box {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            background-color: #f9f9ff;
+            border-radius: 10px;
+            margin-left: 20px;
+        }
+
+        .info-box h3 {
+            margin-bottom: 20px;
+        }
+
+        .info-box .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .info-box .feature img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .info-box .feature span {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h2>A.R.M.S</h2>
+            <form>
+                <input type="text" placeholder="Badge ID" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <!-- <p>First time user? <a href="#">Register here</a></p> -->
+            </form>
+        </div>
+        <div class="info-box">
+            <img src="images/RNP_LOGO.png" alt="" width="100px">
+            <h3>Service - Protection - Integrity</h3>
+            <div class="feature">
+                <img src="https://via.placeholder.com/24" alt="Icon">
+                <span>Accurate incident reports</span>
+            </div>
+            <div class="feature">
+                <img src="https://via.placeholder.com/24" alt="Icon">
+                <span>Time saving retrieval of data</span>
+            </div>
+            <div class="feature">
+                <img src="https://via.placeholder.com/24" alt="Icon">
+                <span>Easy to use</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
