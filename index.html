@@ -34,10 +34,67 @@
 <body class="text-text-color">
     <!-- header -->
     <div id="Header-Container"></div>
-    <!-- Nav -->
-    <!-- <div id="Nav" class="sticky top-0 z-20"></div> -->
+    <!-- Navs -->
+
+    <!-- Mobile nav -->
+    <div class="w-full sticky top-0 z-20 hidden max-md:flex flex-col">
+        <!--Logo & toggle  -->
+        <div class="h-fit w-full bg-white flex items-center justify-between px-5 pt-1 sticky top-0 z-20 ">
+            <!-- logo -->
+            <div class=" h-full w-full flex flex-col justify-center items-start text-primary-color">
+                <span class="text-2xl font-extrabold leading-7 tracking-tight">A.R.M.S</span>
+                <!-- <span class="text-[6px] pr-1">Accident Report Managment System</span> -->
+            </div>
+            <button onclick="handleMobileNav()" class="text-4xl cursor-pointer transition active:scale-75"><i
+                    class='bx bx-menu'></i></button>
+        </div>
+        <!-- Mobile Nav -->
+        <nav id="mobile-nav"
+            class=" flex transition-all duration-300 ease-in-out hide-mobile-nav bg-white backdrop-blur-md border-b-[1px] border-text-color/10  overflow-hidden w-full z-20  flex-col items-start justify-start">
+            <!-- Links -->
+            <div class="flex h-fit w-full items-start justify-start flex-col gap-2 min-w-fit ">
+                <div class="flex items-center pb-3">
+                    <div
+                        class="h-[35px] w-auto aspect-square text-lg rounded-full bg-primary-color ring-4 ring-white text-white/90 flex items-center justify-center">
+                        <i class='bx bx-user'></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <p
+                            class="pl-2 capitalize text-sm whitespace-nowrap truncate text-ellipsis max-w-[120px] font-medium">
+                            Officer John
+                        <p
+                            class="pl-2 capitalize text-xs whitespace-nowrap truncate text-ellipsis max-w-[120px] font-medium opacity-65">
+                            B-ID: 2148D3
+
+                    </div>
+                    </p>
+                </div>
+                <a href="index.html"
+                    class="text-sm font-normal whitespace-nowrap w-full h-fit flex items-center justify-start bg-stone-100 py-2 px-6 border-l-[3px] hover:opacity-85 border-primary-color/90">
+                    Home
+                </a>
+                <a href="Explore.html"
+                    class="text-sm font-normal whitespace-nowrap w-full h-fit flex items-center justify-start bg-stone-100 py-2 px-6 border-l-[3px] hover:opacity-85 border-transparent">
+                    Explore
+                </a>
+                <a href="Report.html"
+                    class="text-sm font-normal whitespace-nowrap w-full h-fit flex items-center justify-start bg-stone-100 py-2 px-6 border-l-[3px] hover:opacity-85 border-transparent">
+                    Report
+                </a>
+                <a href="Officer.html"
+                    class="text-sm font-normal whitespace-nowrap w-full h-fit flex items-center justify-start bg-stone-100 py-2 px-6 border-l-[3px] hover:opacity-85 border-transparent">
+                    Officers
+                </a>
+            </div>
+
+        </nav>
+    </div>
+
+
+
+    <!-- Pc Nav -->
     <nav
-        class="h-[60px] flex px-10 max-md:px-4 bg-white/80 backdrop-blur-md border-b-[1px] border-text-color/10 sticky top-0 z-20">
+        class="h-[60px] flex px-10 max-lg:px-4 bg-white/80 backdrop-blur-md border-b-[1px] border-text-color/10 sticky top-0 z-20 max-md:hidden">
         <!-- logo -->
         <div class=" h-full w-full flex flex-col justify-center items-start text-primary-color">
             <span class="text-3xl font-extrabold leading-7 tracking-tight">A.R.M.S</span>
@@ -445,6 +502,15 @@
                 $('#toggleContent').toggleClass('showDropDown');
             });
         });
+    </script>
+
+    <!-- handle Mobile nav -->
+    <script>
+        function handleMobileNav() {
+            const nav = document.getElementById('mobile-nav')
+            nav.classList.toggle('hide-mobile-nav')
+            nav.classList.toggle('show-mobile-nav')
+        }
     </script>
 </body>
 
