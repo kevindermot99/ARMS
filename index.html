@@ -142,7 +142,7 @@
 
 
     <!-- Slider -->
-    <section class="w-full flex items-center justify-center py-5 px-10 h-[400px]">
+    <section class="w-full flex items-center justify-center py-5 px-10 max-md:px-4 h-[400px]">
         <!-- prev -->
 
         <div class="swiper mySwiper w-full h-full">
@@ -155,19 +155,19 @@
                 </div>
             </div>
             <div
-                class="swiper-button-next top-[46%] right-[30px] cursor-pointer bg-white/90 w-14 h-14 rounded-full aspect-square">
+                class="swiper-button-next top-[46%] right-[30px] max-md:right-[10px] cursor-pointer bg-white/90 w-14 h-14 rounded-full aspect-square">
             </div>
             <div
-                class="swiper-button-prev top-[46%] left-[30px] cursor-pointer bg-white/90 w-14 h-14 rounded-full aspect-square">
+                class="swiper-button-prev top-[46%] left-[30px] max-md:left-[10px] cursor-pointer bg-white/90 w-14 h-14 rounded-full aspect-square">
             </div>
         </div>
         <!-- next -->
     </section>
 
     <!-- quick filters -->
-    <section class="flex flex-col px-10 pt-5">
+    <section class="flex flex-col px-10 max-md:px-4 pt-5">
         <!-- filter by vehicle type -->
-        <div class="flex items-center justify-center gap-4 mb-4 overflow-x-auto">
+        <div class="flex items-center justify-start gap-4 mb-4 overflow-x-auto">
             <button
                 class="text-text-color text-sm capitalize py-2 px-4 border-b-[3px] border-text-color whitespace-nowrap">Cars</button>
             <button
@@ -185,10 +185,10 @@
                 class="text-text-color text-sm capitalize py-2 px-4 border-b-[3px] border-transparent whitespace-nowrap">Tractors</button>
         </div>
         <!-- results -->
-        <div class="py-2 grid grid-cols-2 gap-5">
+        <div class="py-2 grid grid-cols-2 gap-5 max-md:grid-cols-1">
             <!-- 1 result -->
-            <div class="flex flex-1 h-[220px] items-center justify-start">
-                <div class="h-full w-full bg-stone-50 rounded-md flex items-center justify-center">
+            <div class="flex flex-1 h-[220px] max-md:h-fit items-center justify-start max-md:flex-col">
+                <div class="h-full max-md:min-h-[250px] w-full bg-stone-50 rounded-md flex items-center justify-center">
                     <i class='bx bxs-image text-[50px] text-text-color/10'></i>
                 </div>
                 <div class="p-5 w-fit">
@@ -202,8 +202,8 @@
                 </div>
             </div>
             <!-- 1 result -->
-            <div class="flex flex-1 h-[220px] items-center justify-start">
-                <div class="h-full w-full bg-stone-50 rounded-md flex items-center justify-center">
+            <div class="flex flex-1 h-[220px] max-md:h-fit items-center justify-start max-md:flex-col">
+                <div class="h-full max-md:min-h-[250px] w-full bg-stone-50 rounded-md flex items-center justify-center">
                     <i class='bx bxs-image text-[50px] text-text-color/10'></i>
                 </div>
                 <div class="p-5 w-fit">
@@ -217,8 +217,8 @@
                 </div>
             </div>
             <!-- 1 result -->
-            <div class="flex flex-1 h-[220px] items-center justify-start">
-                <div class="h-full w-full bg-stone-50 rounded-md flex items-center justify-center">
+            <div class="flex flex-1 h-[220px] max-md:h-fit items-center justify-start max-md:flex-col">
+                <div class="h-full max-md:min-h-[250px] w-full bg-stone-50 rounded-md flex items-center justify-center">
                     <i class='bx bxs-image text-[50px] text-text-color/10'></i>
                 </div>
                 <div class="p-5 w-fit">
@@ -232,8 +232,8 @@
                 </div>
             </div>
             <!-- 1 result -->
-            <div class="flex flex-1 h-[220px] items-center justify-start">
-                <div class="h-full w-full bg-stone-50 rounded-md flex items-center justify-center">
+            <div class="flex flex-1 h-[220px] max-md:h-fit items-center justify-start max-md:flex-col">
+                <div class="h-full max-md:min-h-[250px] w-full bg-stone-50 rounded-md flex items-center justify-center">
                     <i class='bx bxs-image text-[50px] text-text-color/10'></i>
                 </div>
                 <div class="p-5 w-fit">
@@ -246,12 +246,14 @@
                             class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
                 </div>
             </div>
+
+
 
         </div>
     </section>
 
     <!-- Recent Accidents -->
-    <section class="w-full flex flex-col items-start py-5 px-10 h-fit">
+    <section class="w-full flex flex-col items-start py-5 px-10 max-md:px-4 h-fit">
         <div class="flex items-center justify-between w-full">
             <p class="font-bold text-2xl pt-10 pb-3">Recent Accident</p>
             <a href="#" class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize">view more</a>
@@ -339,10 +341,10 @@
 
             </div>
             <div
-                class="swiper-button-next top-[46%] right-[30px] cursor-pointer bg-white/90 w-14 h-14 rounded-full aspect-square">
+                class="swiper-button-next top-[46%] right-[30px] max-md:right-[10px] cursor-pointer bg-white/90 w-14 h-14 rounded-full aspect-square">
             </div>
             <div
-                class="swiper-button-prev top-[46%] left-[30px] cursor-pointer bg-white/90 w-14 h-14 rounded-full aspect-square">
+                class="swiper-button-prev top-[46%] left-[30px] max-md:left-[10px] cursor-pointer bg-white/90 w-14 h-14 rounded-full aspect-square">
             </div>
         </div>
     </section>
@@ -390,6 +392,22 @@
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
             },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                    spaceBetween: 20
+                },
+                // when window width is >= 320px
+                480: {
+                    slidesPerView: 1,
+                    spaceBetween: 20
+                },
+                // when window width is >= 480px
+                800: {
+                    slidesPerView: 2,
+                    spaceBetween: 30
+                },
+            }
         });
     </script>
 
