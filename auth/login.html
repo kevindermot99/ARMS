@@ -6,6 +6,11 @@
     <title>sign in</title>
 </head>
 <body>
+    <?php
+if (isset($_GET['error']) && $_GET['error'] == '1') {
+    echo '<p style="color:red;">Incorrect password or user does not exist.</p>';
+}
+?>
 <div class="container" id="container">
 	<style>
         .input-option { display: none; }
@@ -31,7 +36,7 @@
 	</script>
 	
 	<div class="form-container sign-in-container">
-		<form action="#">
+		<form action="process.php" method="POST">
 			<h1>Sign in</h1>
 			<div class="social-container">
 				<a href="#" onclick="showInput('email')"  class="social">
@@ -56,7 +61,7 @@
 			<input type="text" id="email-input" placeholder="Email:officer@gmail.com " />
 			<input type="email" id="username-input" placeholder="username:john " />
 			<input type="password" placeholder="Password" />
-			<button>Sign In</button>
+			<button type="submit">Sign In</button>
 			<a href="#">Forgot your password?</a>
 		</form>
 	</div>
