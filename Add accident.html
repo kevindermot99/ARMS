@@ -256,7 +256,9 @@
     
             <!-- Step 3: Testimonials -->
             <div class="step" id="testimonials">
-                <h3>Testimonials <button type="button" class="btn btn-sm btn-primary float-right" id="add-testimonial">Add Testimonial</button></h3>
+                <h3> <button type="button" class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize float-right" id="add-testimonial">Add Testimonial</button></h3>
+                <fieldset>
+                    <legend>testimonial</legend>
                 <div id="testimonial-section">
                     <div class="testimonial">
                         <div class="form-group">
@@ -291,6 +293,7 @@
                     </div>
                     </div>
                 </div>
+                </fieldset>
             </div>
     
             <!-- Step 4: Damage Report -->
@@ -378,12 +381,15 @@
         // Populate provinces and other location fields
         const locationData = {
             "kigali": {
-                "Kigali": {
+                "Gasabo": {
                     "Gasabo": ["gisozi", "Cell2"],
                     "Nyaugenge": ["kagugu", "Cell4"],
                     "kicukiro": ["Cell3", "Cell4"]
                 },
-                "District2": {
+                "Nyarugenge": {
+                    "Sector3": ["Cell5", "Cell6"]
+                },
+                "Kicukiro": {
                     "Sector3": ["Cell5", "Cell6"]
                 }
             },
@@ -444,7 +450,8 @@
         // Add testimonial dynamically
         $('#add-testimonial').click(function() {
             let testimonialHTML = `
-            <legend>
+            <fieldset>
+                <legend>testionial</legend>
                 <div class="testimonial">
                     <div class="form-group">
                         <label for="individualName">Individual Name</label>
@@ -476,7 +483,7 @@
                     </div>
                     </div>
                 </div>
-                </legend>
+                </fieldset>
             `;
             $('#testimonial-section').append(testimonialHTML);
         });
@@ -643,5 +650,12 @@
     </script>
 </body>
 
-
+<style>
+    legend { 
+  display: block;
+  padding-left: 2px;
+  padding-right: 2px;
+  border: none;
+}
+</style>
 </html>
