@@ -42,6 +42,6 @@
     display: flex;
 }
 
-.navBar.showDropDown ~ .navBarOverlay{
+.navBarOverlay.show, .navBarOverlayMobile.show{
     display: flex;
 }

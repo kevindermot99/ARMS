@@ -42,10 +42,12 @@
     <!-- Mobile nav -->
     <div class="w-full sticky top-0 z-20 hidden max-md:flex flex-col">
         <!--Logo & toggle  -->
-        <div class="h-fit w-full bg-white flex items-center justify-between px-3 py-3 border-b-[1px] border-primary-color/10 sticky top-0 z-20 ">
+        <div
+            class="h-fit w-full bg-white flex items-center justify-between px-3 py-3 border-b-[1px] border-primary-color/10 sticky top-0 z-20 ">
             <!-- logo -->
             <div class=" flex items-center justify-start w-fit gap-2">
-                <button onclick="handleMobileNav()" class="text-3xl cursor-pointer text-primary-color flex items-center justify-center h-full transition active:scale-75">
+                <button onclick="handleMobileNav()"
+                    class="text-3xl cursor-pointer text-primary-color flex items-center justify-center h-full transition active:scale-75">
                     <i class='bx bx-menu'></i>
                 </button>
                 <div class=" h-fit w-fit flex flex-col justify-center items-start text-primary-color">
@@ -55,77 +57,77 @@
             </div>
 
             <!-- notification and Profile -->
-        <div class="h-full w-full flex items-center justify-end gap-0 relative">
-            <!-- <button
+            <div class="h-full w-full flex items-center justify-end gap-0 relative">
+                <!-- <button
                 class="h-[40px] w-fit gap-1 rounded-full hover:opacity-85 transition flex items-center justify-center">
                 <i class='bx bx-plus text-[22px]'></i>
                 <p class="text-sm whitespace-nowrap">Record</p>
             </button>--->
-            <button
-                class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
-                <i class='bx bx-image-add'></i>
-            </button>
-            <button
-                class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
-                <i class='bx bx-bell'></i>
-            </button>
-            <button id="toggleButtonMobile"
-                class="flex items-center justify-start hover:bg-text-color/10 rounded-full ml-3 transition active:bg-text-color/20">
-                <div
-                    class="h-[30px] w-auto aspect-square text-lg rounded-full bg-primary-color text-white/90 flex items-center justify-center">
-                    <i class='bx bx-user'></i>
-                </div>
-            </button>
-
-            <!-- Prifle Dropdown -->
-            <div class="navBarOverlay hidden fixed top-0 left-0 w-full h-[100vh] bg-black/10 z-30"></div>
-            <div id="toggleContentMobile"
-                class="navBar absolute top-[90%] right-0 bg-white p-2 h-fit w-[230px] z-50 shadow-xl rounded-sm ring-1 ring-text-color/10 hidden flex-col items-start justify-start">
-                <div class="flex items-center p-[6px]">
+                <button
+                    class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
+                    <i class='bx bx-image-add'></i>
+                </button>
+                <button
+                    class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
+                    <i class='bx bx-bell'></i>
+                </button>
+                <button id="toggleButtonMobile"
+                    class="flex items-center justify-start hover:bg-text-color/10 rounded-full ml-3 transition active:bg-text-color/20">
                     <div
-                        class="h-[30px] w-auto aspect-square text-lg rounded-full bg-primary-color ring-4 ring-white text-white/90 flex items-center justify-center">
+                        class="h-[30px] w-auto aspect-square text-lg rounded-full bg-primary-color text-white/90 flex items-center justify-center">
                         <i class='bx bx-user'></i>
                     </div>
-                    <div class="flex flex-col">
-                        <p
-                            class="pl-2 capitalize text-sm whitespace-nowrap truncate text-ellipsis max-w-[120px] font-medium">
-                            Officer John
-                        <p
-                            class="pl-2 capitalize text-xs whitespace-nowrap truncate text-ellipsis max-w-[120px] font-medium opacity-65">
-                            B-ID: 2148D3
+                </button>
 
+                <!-- Prifle Dropdown -->
+                <div class="navBarOverlayMobile hidden fixed top-0 left-0 w-full h-[100vh] bg-transparent z-50"></div>
+                <div id="toggleContentMobile"
+                    class="navBar absolute top-[90%] right-0 bg-white p-2 h-fit w-[230px] z-50 shadow-xl rounded-sm ring-1 ring-text-color/10 hidden flex-col items-start justify-start">
+                    <div class="flex items-center p-[6px]">
+                        <div
+                            class="h-[30px] w-auto aspect-square text-lg rounded-full bg-primary-color ring-4 ring-white text-white/90 flex items-center justify-center">
+                            <i class='bx bx-user'></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <p
+                                class="pl-2 capitalize text-sm whitespace-nowrap truncate text-ellipsis max-w-[120px] font-medium">
+                                Officer John
+                            <p
+                                class="pl-2 capitalize text-xs whitespace-nowrap truncate text-ellipsis max-w-[120px] font-medium opacity-65">
+                                B-ID: 2148D3
+
+                        </div>
+                        </p>
                     </div>
-                    </p>
+                    <span class="h-[1px] w-[90%] mx-auto bg-text-color/10 my-2"></span>
+                    <!-- 1 link -->
+                    <a href="#"
+                        class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
+                        <i class='bx bx-user text-xl opacity-60'></i>
+                        <p class="text-sm">My Profile</p>
+                    </a>
+                    <!-- 1 link -->
+                    <a href="#"
+                        class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
+                        <i class='bx bx-history text-xl opacity-60'></i>
+                        <p class="text-sm">Activity</p>
+                    </a>
+                    <!-- 1 link -->
+                    <a href="#"
+                        class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
+                        <i class='bx bx-help-circle text-xl opacity-60'></i>
+                        <p class="text-sm">Support Center</p>
+                    </a>
+                    <span class="h-[1px] w-[90%] mx-auto bg-text-color/10 my-2"></span>
+                    <!-- 1 link -->
+                    <a href="#"
+                        class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
+                        <i class='bx bx-log-out-circle text-xl text-red-500'></i>
+                        <p class="text-sm">Sign Out</p>
+                    </a>
                 </div>
-                <span class="h-[1px] w-[90%] mx-auto bg-text-color/10 my-2"></span>
-                <!-- 1 link -->
-                <a href="#"
-                    class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
-                    <i class='bx bx-user text-xl opacity-60'></i>
-                    <p class="text-sm">My Profile</p>
-                </a>
-                <!-- 1 link -->
-                <a href="#"
-                    class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
-                    <i class='bx bx-history text-xl opacity-60'></i>
-                    <p class="text-sm">Activity</p>
-                </a>
-                <!-- 1 link -->
-                <a href="#"
-                    class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
-                    <i class='bx bx-help-circle text-xl opacity-60'></i>
-                    <p class="text-sm">Support Center</p>
-                </a>
-                <span class="h-[1px] w-[90%] mx-auto bg-text-color/10 my-2"></span>
-                <!-- 1 link -->
-                <a href="#"
-                    class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
-                    <i class='bx bx-log-out-circle text-xl text-red-500'></i>
-                    <p class="text-sm">Sign Out</p>
-                </a>
-            </div>
 
-        </div>
+            </div>
 
         </div>
         <!-- Mobile Nav Links -->
@@ -229,13 +231,13 @@
                 <i class='bx bx-plus text-[22px]'></i>
                 <p class="text-sm whitespace-nowrap">Record</p>
             </button> -->
-            <a href="Add accident.html"> 
-            <button 
-                class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center" >
-                <!--<a href="Add accident.html">  -->
+            <a href="Add accident.html">
+                <button
+                    class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
+                    <!--<a href="Add accident.html">  -->
                     <i class='bx bx-image-add'></i>
-                <!-- </a> -->
-            </button>
+                    <!-- </a> -->
+                </button>
             </a>
             <button
                 class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
@@ -253,7 +255,7 @@
             </button>
 
             <!-- Prifle Dropdown -->
-            <div class="navBarOverlay hidden fixed top-0 left-0 w-full h-[100vh] bg-black/50 z-20"></div>
+            <div class="navBarOverlay hidden fixed top-0 left-0 w-full h-[100vh] bg-transparent z-20"></div>
             <div id="toggleContent"
                 class="navBar absolute top-[90%] right-0 bg-white p-2 h-fit w-[230px] z-50 shadow-xl rounded-sm ring-1 ring-text-color/10 hidden flex-col items-start justify-start">
                 <div class="flex items-center p-[6px]">
@@ -305,7 +307,7 @@
 
     <!-- Navbar -->
 
-    
+
 
     <!-- Slider -->
     <section class="w-full flex items-center justify-center py-5 px-10 max-md:px-4 h-[400px]">
@@ -605,21 +607,37 @@
 
     <!-- Toggle Nav Dropdown functionality -->
     <script>
+        // PC
         $(document).ready(function () {
             $('#toggleButton').on('click', function () {
+                $('.navBarOverlay').toggleClass('show')
                 $('#toggleContent').toggleClass('showDropDown');
             });
         });
-    </script>
-
-<!-- Toggle Nav Dropdown functionality Mobile -->
-<script>
-    $(document).ready(function () {
-        $('#toggleButtonMobile').on('click', function () {
-            $('#toggleContentMobile').toggleClass('showDropDown');
+        // Mobile
+        $(document).ready(function () {
+            $('#toggleButtonMobile').on('click', function () {
+                $('.navBarOverlayMobile').toggleClass('show')
+                $('#toggleContentMobile').toggleClass('showDropDown');
+            });
         });
-    });
-</script>
+
+
+        // hide dropdaown
+        $(document).ready(function () {
+            // pc
+            $('.navBarOverlay').on('click', function () {
+                $('#toggleContent').removeClass('showDropDown');
+                $('.navBarOverlay').removeClass('show')
+            })
+
+            // mobile
+            $('.navBarOverlayMobile').on('click', function () {
+                $('#toggleContentMobile').removeClass('showDropDown');
+                $('.navBarOverlayMobile').removeClass('show')
+            })
+        })
+    </script>
 
     <!-- handle Mobile nav -->
     <script>
