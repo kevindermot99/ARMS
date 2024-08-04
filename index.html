@@ -69,7 +69,7 @@
                 class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
                 <i class='bx bx-bell'></i>
             </button>
-            <button id="toggleButton"
+            <button id="toggleButtonMobile"
                 class="flex items-center justify-start hover:bg-text-color/10 rounded-full ml-3 transition active:bg-text-color/20">
                 <div
                     class="h-[30px] w-auto aspect-square text-lg rounded-full bg-primary-color text-white/90 flex items-center justify-center">
@@ -79,7 +79,7 @@
 
             <!-- Prifle Dropdown -->
             <div class="navBarOverlay hidden fixed top-0 left-0 w-full h-[100vh] bg-black/10 z-30"></div>
-            <div id="toggleContent"
+            <div id="toggleContentMobile"
                 class="navBar absolute top-[90%] right-0 bg-white p-2 h-fit w-[230px] z-50 shadow-xl rounded-sm ring-1 ring-text-color/10 hidden flex-col items-start justify-start">
                 <div class="flex items-center p-[6px]">
                     <div
@@ -253,7 +253,7 @@
             </button>
 
             <!-- Prifle Dropdown -->
-            <div class="navBarOverlay hidden fixed top-0 left-0 w-full h-[100vh] bg-black/10 z-20"></div>
+            <div class="navBarOverlay hidden fixed top-0 left-0 w-full h-[100vh] bg-black/50 z-20"></div>
             <div id="toggleContent"
                 class="navBar absolute top-[90%] right-0 bg-white p-2 h-fit w-[230px] z-50 shadow-xl rounded-sm ring-1 ring-text-color/10 hidden flex-col items-start justify-start">
                 <div class="flex items-center p-[6px]">
@@ -590,7 +590,6 @@
         window.addEventListener('load', function () {
             Promise.all([
                 loadComponent('./components/Header.html', 'Header-Container'),
-                loadComponent('./components/Nav.html', 'Nav'),
                 loadComponent('./components/Footer.html', 'Footer')
             ]).then(() => {
                 // window.scrollTo(0, 0);
@@ -604,7 +603,7 @@
     </script>
 
 
-    <!-- Toggle functionality -->
+    <!-- Toggle Nav Dropdown functionality -->
     <script>
         $(document).ready(function () {
             $('#toggleButton').on('click', function () {
@@ -612,6 +611,15 @@
             });
         });
     </script>
+
+<!-- Toggle Nav Dropdown functionality Mobile -->
+<script>
+    $(document).ready(function () {
+        $('#toggleButtonMobile').on('click', function () {
+            $('#toggleContentMobile').toggleClass('showDropDown');
+        });
+    });
+</script>
 
     <!-- handle Mobile nav -->
     <script>
