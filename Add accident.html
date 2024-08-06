@@ -417,10 +417,7 @@
             document.getElementById('mediaUpload').files = files;
         });
     </script>
-                    <div class="form-group">
-                        <label for="audioUpload">Upload Audio</label>
-                        <input type="file" class="form-control-file" id="audioUpload" name="audio">
-                    </div>
+                    
                 </div>
         
                 <!-- Step 3: Testimonials -->
@@ -437,16 +434,23 @@
                                 <label for="individualId">Individual ID Number</label>
                                 <input type="text" class="form-control" name="individual_id[]">
                             </div>
-    
-                            
-                            <div class="flexy">
-                                <div class="form-group">
+
+                        <div class="flexy">
+                            <div class="form-group">
                                 <label for="vehicle">Vehicle</label>
                                 <select class="form-control" name="vehicle[]">
                                     <option value="">Select Vehicle</option>
+                                    <option value=""> suv</option>
+                                    <option value=""> pickup</option>
+                                    <option value=""> sedan</option>
+                                    <option value=""> truck </option>
+                                    <option value=""> bike</option>
                                     <!-- Add options dynamically from database -->
                                 </select>
                                 </div>
+                             
+                            
+                                
                                 <div class="form-group">
                                 <label for="vehiclePlate">Vehicle Plate</label>
                                 <input type="text" class="form-control" name="vehicle_plate[]">
@@ -458,6 +462,31 @@
                                     <option value="deactivated">Deactivated</option>
                                 </select>
                                 </div> 
+                                <div class="form-group">
+                                <label for="vehicle">insurance</label>
+                                <select class="form-control" name="vehicle[]">
+                                    <option value="">Select insurance</option>
+                                    <option value="">sanlam</option>
+                                    <option value="">Radiant</option>
+                                    <option value="">prime</option>
+                                    <option value="">mua</option>
+                                    <!-- Add options dynamically from database -->
+                                </select>
+                                </div>
+                                <div class="form-group">
+                                <label for="vehicle">alcohol test</label>
+                                <select class="form-control" name="vehicle[]">
+                                    <option value="">Select alchol results</option>
+                                    <option value="">not drunk</option>
+                                    <option value="">wasted</option> 
+                                    <!-- Add options dynamically from database -->
+                                </select>
+                                </div>
+                                <br>
+                               
+                           </div> <div class="form-group">
+                             <label for="audioUpload">Upload Audio</label>
+                             <input type="file" class="form-control-file" id="audioUpload" name="audio">
                             </div> 
                         </div>
                     </div>
@@ -1229,6 +1258,13 @@
             padding: 15px;
             /* box-shadow: 2px 0 5px rgba(0,0,0,0.1); */
         }
+        /* Hide sidebar for tablets and mobile devices */
+@media (max-width: 1024px) {
+    .sidebar {
+        display: none;
+    }
+}
+
         
         /* .sidebar a { */
             /* display: block;
@@ -1237,6 +1273,7 @@
             color: #007bff;
             margin-bottom: 5px; */
         /* } */ 
+
     </style>
     
 </section>
