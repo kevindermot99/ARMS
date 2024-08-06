@@ -46,3 +46,21 @@
 .navBarOverlay.show, .navBarOverlayMobile.show{
     display: flex;
 }
+
+
+
+@media screen and (max-width: 768px) {
+    .mobile-Filter{
+        display: none;
+    }
+    .mobile-Filter.show-filter{
+        display: flex;
+        width: 90%;
+        max-width: unset !important;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        box-shadow: 0px 5px 20px 3px #141a292f;
+    }
+}
+
