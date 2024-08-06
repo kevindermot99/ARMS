@@ -11,11 +11,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- tailwind Css -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- bootstrapp and more shit some i got on gpt so .  -->
-    
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-    <script src="https://cdn.tiny.cloud/1/jxeugg7sidhs8kjsbk1phsjb81a7ci70r2aouu2uk7f1a3ul/tinymce/5/tinymce.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/jxeugg7sidhs8kjsbk1phsjb81a7ci70r2aouu2uk7f1a3ul/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -39,10 +35,131 @@
 <body class="text-text-color">
     <!-- header -->
     <div id="Header-Container"></div>
-    <!-- Nav -->
-    <!-- <div id="Nav" class="sticky top-0 z-20"></div> -->
+
+
+
+    <!-- Navbar -->
+
+    <!-- Mobile nav -->
+    <div class="w-full sticky top-0 z-20 hidden max-md:flex flex-col">
+        <!--Logo & toggle  -->
+        <div
+            class="h-fit w-full bg-white flex items-center justify-between px-3 py-3 border-b-[1px] border-primary-color/10 sticky top-0 z-20 ">
+            <!-- logo -->
+            <div class=" flex items-center justify-start w-fit gap-2">
+                <button onclick="handleMobileNav()"
+                    class="text-3xl cursor-pointer text-primary-color flex items-center justify-center h-full transition active:scale-75">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <div class=" h-fit w-fit flex flex-col justify-center items-start text-primary-color">
+                    <span class="text-xl font-extrabold tracking-tight">A.R.M.S</span>
+                    <!-- <span class="text-[6px] pr-1">Accident Report Managment System</span> -->
+                </div>
+            </div>
+
+            <!-- notification and Profile -->
+            <div class="h-full w-full flex items-center justify-end gap-0 relative">
+                <!-- <button
+                class="h-[40px] w-fit gap-1 rounded-full hover:opacity-85 transition flex items-center justify-center">
+                <i class='bx bx-plus text-[22px]'></i>
+                <p class="text-sm whitespace-nowrap">Record</p>
+            </button>--->
+                <button
+                    class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
+                    <i class='bx bx-image-add'></i>
+                </button>
+                <a href="Notifications.html"
+                    class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
+                    <i class='bx bx-bell'></i>
+                </a>
+                <button id="toggleButtonMobile"
+                    class="flex items-center justify-start hover:bg-text-color/10 rounded-full ml-3 transition active:bg-text-color/20">
+                    <div
+                        class="h-[30px] w-auto aspect-square text-lg rounded-full bg-primary-color text-white/90 flex items-center justify-center">
+                        <i class='bx bx-user'></i>
+                    </div>
+                </button>
+
+                <!-- Prifle Dropdown -->
+                <div class="navBarOverlayMobile hidden fixed top-0 left-0 w-full h-[100vh] bg-transparent z-50"></div>
+                <div id="toggleContentMobile"
+                    class="navBar absolute top-[90%] right-0 bg-white p-2 h-fit w-[230px] z-50 shadow-xl rounded-sm ring-1 ring-text-color/10 hidden flex-col items-start justify-start">
+                    <div class="flex items-center p-[6px]">
+                        <div
+                            class="h-[30px] w-auto aspect-square text-lg rounded-full bg-primary-color ring-4 ring-white text-white/90 flex items-center justify-center">
+                            <i class='bx bx-user'></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <p
+                                class="pl-2 capitalize text-sm whitespace-nowrap truncate text-ellipsis max-w-[120px] font-medium">
+                                Officer John
+                            <p
+                                class="pl-2 capitalize text-xs whitespace-nowrap truncate text-ellipsis max-w-[120px] font-medium opacity-65">
+                                B-ID: 2148D3
+
+                        </div>
+                        </p>
+                    </div>
+                    <span class="h-[1px] w-[90%] mx-auto bg-text-color/10 my-2"></span>
+                    <!-- 1 link -->
+                    <a href="#"
+                        class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
+                        <i class='bx bx-user text-xl opacity-60'></i>
+                        <p class="text-sm">My Profile</p>
+                    </a>
+                    <!-- 1 link -->
+                    <a href="#"
+                        class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
+                        <i class='bx bx-history text-xl opacity-60'></i>
+                        <p class="text-sm">Activity</p>
+                    </a>
+                    <!-- 1 link -->
+                    <a href="#"
+                        class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
+                        <i class='bx bx-help-circle text-xl opacity-60'></i>
+                        <p class="text-sm">Support Center</p>
+                    </a>
+                    <span class="h-[1px] w-[90%] mx-auto bg-text-color/10 my-2"></span>
+                    <!-- 1 link -->
+                    <a href="#"
+                        class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
+                        <i class='bx bx-log-out-circle text-xl text-red-500'></i>
+                        <p class="text-sm">Sign Out</p>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Mobile Nav Links -->
+        <nav id="mobile-nav"
+            class=" flex transition-all duration-300 ease-in-out hide-mobile-nav bg-white backdrop-blur-md overflow-hidden w-full z-10  flex-col items-start justify-start">
+            <!-- Links -->
+            <div class="flex h-fit w-full items-start justify-start flex-col gap-2 min-w-fit ">
+                <a href="index.html"
+                    class="text-sm font-normal whitespace-nowrap w-full h-fit flex items-center justify-start bg-stone-100 py-2 px-6 border-l-[3px] hover:opacity-85 border-primary-color/90">
+                    Home
+                </a>
+                <a href="Explore.html"
+                    class="text-sm font-normal whitespace-nowrap w-full h-fit flex items-center justify-start bg-stone-100 py-2 px-6 border-l-[3px] hover:opacity-85 border-transparent">
+                    Explore
+                </a>
+                <a href="Report.html"
+                    class="text-sm font-normal whitespace-nowrap w-full h-fit flex items-center justify-start bg-stone-100 py-2 px-6 border-l-[3px] hover:opacity-85 border-transparent">
+                    Report
+                </a>
+                <a href="Officer.html"
+                    class="text-sm font-normal whitespace-nowrap w-full h-fit flex items-center justify-start bg-stone-100 py-2 px-6 border-l-[3px] hover:opacity-85 border-transparent">
+                    Officers
+                </a>
+            </div>
+
+        </nav>
+    </div>
+
+    <!-- Pc Nav -->
     <nav
-        class="h-[60px] flex px-10 max-md:px-4 bg-white/80 backdrop-blur-md border-b-[1px] border-text-color/10 sticky top-0 z-20">
+        class="h-[60px] flex px-10 max-lg:px-4 bg-white/80 backdrop-blur-md border-b-[1px] border-text-color/10 sticky top-0 z-20 max-md:hidden">
         <!-- logo -->
         <div class=" h-full w-full flex flex-col justify-center items-start text-primary-color">
             <span class="text-3xl font-extrabold leading-7 tracking-tight">A.R.M.S</span>
@@ -52,7 +169,7 @@
         <div class="flex h-full w-full items-center justify-center gap-0 min-w-fit ">
 
             <a href="index.html"
-            class="text-sm font-normal whitespace-nowrap w-fit h-full flex items-center justify-center py-2 px-6 border-b-[3px] hover:opacity-85 border-transparent">
+                class="text-sm font-normal whitespace-nowrap w-fit h-full flex items-center justify-center py-2 px-6 border-b-[3px] hover:opacity-85 border-transparent">
                 Home
             </a>
             <a href="Explore.html"
@@ -75,14 +192,18 @@
                 <i class='bx bx-plus text-[22px]'></i>
                 <p class="text-sm whitespace-nowrap">Record</p>
             </button> -->
-            <button
-                class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
-                <i class='bx bx-image-add'></i>
-            </button>
-            <button
+            <a href="Add accident.html">
+                <button
+                    class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
+                    <!--<a href="Add accident.html">  -->
+                    <i class='bx bx-image-add'></i>
+                    <!-- </a> -->
+                </button>
+            </a>
+            <a href="Notifications.html"
                 class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
                 <i class='bx bx-bell'></i>
-            </button>
+            </a>
             <button id="toggleButton"
                 class="flex items-center justify-start hover:bg-text-color/10 rounded-full ml-3 pr-2 transition active:bg-text-color/20">
                 <div
@@ -95,7 +216,7 @@
             </button>
 
             <!-- Prifle Dropdown -->
-            <div class="navBarOverlay hidden fixed top-0 left-0 w-full h-[100vh] bg-black/10 z-20"></div>
+            <div class="navBarOverlay hidden fixed top-0 left-0 w-full h-[100vh] bg-transparent z-20"></div>
             <div id="toggleContent"
                 class="navBar absolute top-[90%] right-0 bg-white p-2 h-fit w-[230px] z-50 shadow-xl rounded-sm ring-1 ring-text-color/10 hidden flex-col items-start justify-start">
                 <div class="flex items-center p-[6px]">
@@ -135,7 +256,7 @@
                 </a>
                 <span class="h-[1px] w-[90%] mx-auto bg-text-color/10 my-2"></span>
                 <!-- 1 link -->
-                <a href="#"
+                <a href="auth/signin.html"
                     class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
                     <i class='bx bx-log-out-circle text-xl text-red-500'></i>
                     <p class="text-sm">Sign Out</p>
@@ -144,6 +265,9 @@
 
         </div>
     </nav>
+
+    <!-- Navbar -->
+
     <section class="w-full flex items-center justify-center py-5 px-10 h-[200px]">
         <span class="text-3xl font-extrabold leading-7 tracking-tight">ADD ACCIDENT</span>
     </section>
