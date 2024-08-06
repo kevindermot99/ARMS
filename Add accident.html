@@ -268,12 +268,12 @@
 
     <!-- Navbar -->
 
-    <section class="w-full flex items-center justify-center py-5 px-10 h-[200px]">
+    <section class="backgroundz w-full flex items-center justify-center py-5 px-10 h-[200px]">
         <span class="text-3xl font-extrabold leading-7 tracking-tight">ADD ACCIDENT</span>
     </section>
 
 <!-- add form -->
-<section class="w-full flex items-center  py-5 px-10  ">
+<section class="w-full flex items-center  pad ">
 
     <div class="contentzz">
         <div class="sidebar">
@@ -1258,11 +1258,44 @@
             padding: 15px;
             /* box-shadow: 2px 0 5px rgba(0,0,0,0.1); */
         }
+        .backgroundz{
+            background-color: whitesmoke;
+        }
+        .pad{
+            padding: 0 20px 0 20px;
+        }
         /* Hide sidebar for tablets and mobile devices */
 @media (max-width: 1024px) {
     .sidebar {
         display: none;
     }
+    .content{ 
+            padding:20px 15px 20px 15px; 
+            width: 100%;
+            border-left: solid 0px;   
+        } 
+}
+@media (max-width: 320px) {
+      .content{ 
+            padding:20px 15px 20px 15px; 
+            width: 100%;
+            border-left: solid 0px;   
+        } 
+        .contentx{
+        border:solid 0px;
+        width: 100%;
+        margin-top:20px;
+        border-radius:14px;
+        padding: 20px; 
+        }
+         .contentzz{
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            border: solid 1px;
+            border-radius:15px;
+            display:flex;
+            width:100%; 
+            margin-right: -200px;
+        }
 }
 
         
