@@ -327,9 +327,10 @@
                         <input type="text" class="form-control" id="accidentTitle" name="accident_title">
                     </div>
                     <div class="form-group">
-                        <label for="accidentDate">Date</label>
-                        <input type="date" class="form-control" id="accidentDate" name="accident_date">
+                      <label for="accidentDateTime">Date and Time</label>
+                      <input type="datetime-local" class="form-control" id="accidentDateTime" name="accident_date_time">
                     </div>
+
                     <div class="flexy">
                         <div class="form-group">
                             <label for="province">Province</label>
@@ -369,10 +370,11 @@
                 <!-- Step 2: Media -->
                 <div class="step" id="media">
                     <h3>Media</h3>
-                    <div class="form-group">
-                        <label for="mediaUpload">Upload Pictures</label>
-                        <input type="file" class="form-control-file" id="mediaUpload" name="media[]" multiple>
-                    </div>
+                   <div class="form-group">
+    <label for="mediaUpload">Upload Pictures</label>
+    <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*" multiple>
+</div>
+
                     <div class="form-group">
                         <label for="audioUpload">Upload Audio</label>
                         <input type="file" class="form-control-file" id="audioUpload" name="audio">
