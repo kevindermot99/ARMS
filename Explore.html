@@ -266,8 +266,14 @@
 
     <!-- /Navbar -->
 
-    <section class="backgroundz w-full flex items-center justify-center py-5 px-10 h-[200px]">
+    <section class="backgroundz w-full h-fit flex items-center justify-center flex-col py-20 px-10">
         <span class="text-3xl font-extrabold leading-7 tracking-normal uppercase">Search </span>
+        <form>
+            <div class="w-[90%] max-w-[500px] grid grid-cols-2 bg-white">
+                <!-- titles -->
+                <div class=""></div>
+            </div>
+        </form>
     </section>
 
     <section class="h-full w-full flex items-start justify-between py-5 px-10 max-md:px-4 gap-7">
@@ -310,8 +316,8 @@
                     <p class="text-xs">Unknown Reason</p>
                 </label>
                 <!-- separator -->
-                 <div class="w-full h-[1px] bg-gray-300 my-2"></div>
-                 <!-- category -->
+                <div class="w-full h-[1px] bg-gray-300 my-2"></div>
+                <!-- category -->
                 <h1 class="text-sm font-semibold">Case Status</h1>
                 <label class="flex items-center gap-1 cursor-pointer w-fit">
                     <input type="checkbox" name="" class="accent-primary-color">
@@ -340,14 +346,16 @@
                 <!-- separator -->
                 <div class="w-full h-[1px] bg-gray-300 my-2"></div>
                 <div class="flex items-center justify-between max-md:flex-col gap-2">
-                    <button type="reset" class="w-1/2 max-md:w-full h-[40px] bg-primary-color/15 flex items-center justify-center text-sm rounded-sm">Clear</button>
-                    <button type="submit" class="w-1/2 max-md:w-full h-[40px] bg-primary-color text-white flex items-center justify-center text-sm rounded-sm">Apply</button>
+                    <button type="reset"
+                        class="w-1/2 max-md:w-full h-[40px] bg-primary-color/15 flex items-center justify-center text-sm rounded-sm">Clear</button>
+                    <button type="submit"
+                        class="w-1/2 max-md:w-full h-[40px] bg-primary-color text-white flex items-center justify-center text-sm rounded-sm">Apply</button>
                 </div>
             </form>
         </div>
         <!-- result -->
         <div class="flex-1 h-full flex flex-col gap-4">
-            <h1 >6 Results</h1>
+            <h1>6 Results</h1>
 
             <!-- Results -->
             <!-- 1 result -->
