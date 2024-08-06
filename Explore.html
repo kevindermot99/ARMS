@@ -267,11 +267,21 @@
     <!-- /Navbar -->
 
     <section class="backgroundz w-full h-fit flex items-center justify-center flex-col py-20 px-10">
-        <span class="text-3xl font-extrabold leading-7 tracking-normal uppercase">Search </span>
-        <form>
-            <div class="w-[90%] max-w-[500px] grid grid-cols-2 bg-white">
-                <!-- titles -->
-                <div class=""></div>
+        <h1 class="text-3xl font-extrabold leading-7 tracking-normal uppercase">Search </h1>
+        <form class="w-[90%] max-w-[600px] flex bg-white gap-1 p-3">
+            <!-- input 1 -->
+            <div class="w-2/5 bg-stone-300 flex flex-col">
+                <h1 class="text-xs caption-top">keyword</h1>
+                <input type="text">
+            </div>
+            <!-- input 1 -->
+            <div class="w-2/5 bg-stone-300 flex flex-col">
+                <h1 class="text-xs caption-top">District</h1>
+                <input type="text">
+            </div>
+            <!-- input 1 -->
+            <div class="w-1/5 bg-stone-300 flex flex-col">
+                <button type="submit" class="w-full h-[40px] bg-primary-color text-white flex items-center justify-center text-sm rounded-sm">Search</button>
             </div>
         </form>
     </section>
@@ -346,10 +356,8 @@
                 <!-- separator -->
                 <div class="w-full h-[1px] bg-gray-300 my-2"></div>
                 <div class="flex items-center justify-between max-md:flex-col gap-2">
-                    <button type="reset"
-                        class="w-1/2 max-md:w-full h-[40px] bg-primary-color/15 flex items-center justify-center text-sm rounded-sm">Clear</button>
-                    <button type="submit"
-                        class="w-1/2 max-md:w-full h-[40px] bg-primary-color text-white flex items-center justify-center text-sm rounded-sm">Apply</button>
+                    <button type="reset" class="w-1/2 max-md:w-full h-[40px] bg-primary-color/15 flex items-center justify-center text-sm rounded-sm">Clear</button>
+                    <button type="submit" class="w-1/2 max-md:w-full h-[40px] bg-primary-color text-white flex items-center justify-center text-sm rounded-sm">Apply</button>
                 </div>
             </form>
         </div>
