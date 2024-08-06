@@ -257,9 +257,8 @@
         
                 <!-- Step 3: Testimonials -->
                 <div class="step" id="testimonials">
-                    <h3> <button type="button" class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize float-right" id="add-testimonial">Add Testimonial</button></h3>
-                    <fieldset>
-                        <legend>testimonial</legend>
+                    <h3> <button type="button" class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize float-right" id="add-testimonial">Add Testimonial</button></h3> 
+                         
                     <div id="testimonial-section">
                         <div class="testimonial">
                             <div class="form-group">
@@ -272,31 +271,29 @@
                             </div>
     
                             
-                    <div class="flexy">
-                            <div class="form-group">
+                            <div class="flexy">
+                                <div class="form-group">
                                 <label for="vehicle">Vehicle</label>
                                 <select class="form-control" name="vehicle[]">
                                     <option value="">Select Vehicle</option>
                                     <!-- Add options dynamically from database -->
                                 </select>
-                            </div>
-                            <div class="form-group">
+                                </div>
+                                <div class="form-group">
                                 <label for="vehiclePlate">Vehicle Plate</label>
                                 <input type="text" class="form-control" name="vehicle_plate[]">
-                            </div>
-                            <div class="form-group">
+                                </div>
+                                <div class="form-group">
                                 <label for="licenseStatus">License Status</label>
                                 <select class="form-control" name="license_status[]">
                                     <option value="active">Active</option>
                                     <option value="deactivated">Deactivated</option>
                                 </select>
-                            </div>
-                        </div>
+                                </div> 
+                            </div> 
                         </div>
                     </div>
-                    </fieldset>
                 </div>
-        
                 <!-- Step 4: Damage Report -->
                 <div class="step" id="damage-report">
                     <h3>Damage Report</h3>
@@ -452,8 +449,7 @@
             $('#add-testimonial').click(function() {
                 let testimonialHTML = `
                 <div class="contentx">
-                <fieldset>
-                    <legend>testionial</legend>
+                <fieldset> 
                     <div class="testimonial">
                         <div class="form-group">
                             <label for="individualName">Individual Name</label>
@@ -546,14 +542,7 @@
             margin-right: 3px;
         }
         
-        .sidebar {
-            /* position: fixed; */
-            gap:100px; 
-            height: 70vh;
-            /* background-color: #f8f9fa; */
-            padding: 15px;
-            /* box-shadow: 2px 0 5px rgba(0,0,0,0.1); */
-        }
+        
         .contentzz{
             box-shadow: 2px 0 5px rgba(0,0,0,0.1);
             border: solid 1px;
@@ -561,22 +550,13 @@
             display:flex;
             width:98%; 
         }
-        .contentx{
-        border:solid 1px;
-        }
+
         .step {
             display: none;
         }
         .step.active {
             display: block;
         }
-        /* .sidebar a { */
-            /* display: block;
-            padding: 10px;
-            text-decoration: none;
-            color: #007bff;
-            margin-bottom: 5px; */
-        /* } */
         .sidebar a.active {
             background-color: #e9ecef; 
             padding:4px 4px;
@@ -606,22 +586,38 @@
             flex-direction:column;
             gap:10px;
         }
-        .content{
-            /* width:1500px; */
-            padding:20px;
-            margin-left:20px;
-            /* border:solid 1px; */
-            /* border-radius:10px; */
+        .content{ 
+            padding:20px 20px 20px 20px; 
+            width: 80%;
+            border-left: solid 1px;  
+        } 
+        .contentx{
+        border:solid 1px;
+        width: 100%;
+        margin-top:20px;
+        border-radius:14px;
+        padding: 20px; 
         }
         .sidebar{
             width:20%;
-            border-right: solid 1px;
+            /* border-right: solid 1px; */
             margin-top:15px;
 /*            background-color: blue;*/
+            /* position: fixed; */
+            gap:100px; 
+            height: 70vh;
+            /* background-color: #f8f9fa; */
+            padding: 15px;
+            /* box-shadow: 2px 0 5px rgba(0,0,0,0.1); */
         }
-        .content{
-            width: 80%;
-        }
+        
+        /* .sidebar a { */
+            /* display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #007bff;
+            margin-bottom: 5px; */
+        /* } */ 
     </style>
     
 </section>
@@ -669,13 +665,4 @@
         });
     </script>
 </body>
-
-<style>
-    legend { 
-  display: block;
-  padding-left: 2px;
-  padding-right: 2px;
-  border: none;
-}
-</style>
 </html>
