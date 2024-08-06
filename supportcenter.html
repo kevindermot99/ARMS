@@ -266,19 +266,99 @@
     </nav>
 
     <!-- Navbar -->
+    <section class="backgroundz w-full h-fit flex items-center justify-center flex-col py-16 max-md:py-8 gap-4 px-10 max-md:px-4">
+    <h1 class="text-3xl font-extrabold leading-7 tracking-tight">Support Center</h1>
+    <button type="button" class="w-full h-[40px] bg-primary-color text-white flex items-center justify-center text-sm rounded-sm widy open-popup">Create request</button>
+    <style>
+        .widy {
+            width: 150px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+        .popup-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            z-index: 1000;
+        } 
+        .close-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            float: right;
+        }
+        textarea{
+            width: 100%;
+            height: 100px;
+            margin-top: 10px;
+        }
+        .sub{
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+        .popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 999; /* Behind the popup-form */
+}
 
-    <section class="backgroundz w-full flex items-center justify-center py-5 px-10 h-[200px]">
-        <span class="text-3xl font-extrabold leading-7 tracking-tight">support center</span>
-        <a href="#" class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize">
-            <span>Create request</span></a>
-    </section>
+    </style>
+    <div class="popup-overlay"></div>
+    <div class="popup-form">
+        <button class="close-btn">&times;</button>
+        <h2>Create Support Request</h2>
+        <center>
+        <form>
+            <!-- <label for="issue">Issue:</label> -->
+            <textarea id="issue" name="issue" placeholder="issue: please add and U.A.V"  required ></textarea>
+            <br><br> 
+            <button class="bg-primary-color text-white flex items-center justify-center text-sm rounded-sm sub" type="submit">Submit</button>
+        </form>
+    </div>
+</section>
+<script>
+    document.querySelector('.open-popup').addEventListener('click', () => {
+        document.querySelector('.popup-form').style.display = 'block';
+        document.querySelector('.popup-overlay').style.display = 'block';
+    });
+
+    document.querySelector('.close-btn').addEventListener('click', () => {
+        document.querySelector('.popup-form').style.display = 'none';
+        document.querySelector('.popup-overlay').style.display = 'none';
+    });
+
+    document.querySelector('.popup-overlay').addEventListener('click', () => {
+        document.querySelector('.popup-form').style.display = 'none';
+        document.querySelector('.popup-overlay').style.display = 'none';
+    });
+</script>
+
+
+   
 
     <div class="w-full h-fit flex flex-col gap-0 text-text-color max-w-[800px] min-h-svh mx-auto my-7 max-lg:px-4">
         <div class="w-full flex items-center justify-between mb-7 gap-3 flex-wrap">
-            <h1 class="font-semibold text-2xl">Officers names</h1>
+            <h1 class="font-semibold text-2xl">Pending requests</h1>
                         <div class="form-group"> 
                             <select class="form-control" id="province" name="province">
                             <option value="">filter by</option>
+                            <option value="">page</option>
+                            <option value="">date</option>
                           </select>
                         </div>
                         <style>
@@ -310,14 +390,17 @@
                 <div class="flex items-start justify-between flex-1">
                     <div class="flex flex-col flex-1 w-full">
                         <h1 class="text-sm font-medium">Officer John</h1>
-                        <p class="text-sm opacity-70">Rank: super intendent </p>
+                        <p class="text-sm opacity-70">center the add accident in the mobile version </p>
                     </div>
                     <div class="flex flex-col justify-end items-end gap-3">
-                        <span class="h-[8px] w-[8px] rounded-lg bg-primary-color"></span>
+                        <p>Done</p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+  <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+</svg>
+                        
                     </div>
                 </div>
-            </div>
-            <p class="text-xs opacity-70 w-full flex justify-end">Joined:12 June 2023, 2:30 AM</p>
+            </div> 
         </div>
         <div class=" ok flex flex-col gap-3 w-full bg-primary-color/5 p-4 border-b">
             <div class="flex items-start justify-between gap-2">
@@ -330,14 +413,14 @@
                 <div class="flex items-start justify-between flex-1">
                     <div class="flex flex-col flex-1 w-full">
                         <h1 class="text-sm font-medium">Officer jeniffer</h1>
-                        <p class="text-sm opacity-70">Rank: rukurutu </p>
+                        <p class="text-sm opacity-70">can you create a dark mode for the application please </p>
                     </div>
                     <div class="flex flex-col justify-end items-end gap-3">
-                        <span class="h-[8px] w-[8px] rounded-lg bg-primary-color"></span>
+                         
+                        <p>working on</p>
                     </div>
                 </div>
-            </div>
-            <p class="text-xs opacity-70 w-full flex justify-end">Joined: 12 June 2023, 2:30 AM</p>
+            </div> 
         </div>
         
     </div>
