@@ -269,7 +269,79 @@
         <span class="text-3xl font-extrabold leading-7 tracking-tight">OFFICERS</span>
     </section>
 
-<section class="w-full flex items-center  py-5 px-10  ">
+    <div class="w-full h-fit flex flex-col gap-0 text-text-color max-w-[800px] min-h-svh mx-auto my-7 max-lg:px-4">
+        <div class="w-full flex items-center justify-between mb-7 gap-3 flex-wrap">
+            <h1 class="font-semibold text-2xl">Officers names</h1>
+                        <div class="form-group"> 
+                            <select class="form-control" id="province" name="province">
+                            <option value="">filter by</option>
+                            <option value="">  rank</option>
+                            <option value="">  gender</option> 
+                            <!-- Add options dynamically from database -->
+                          </select>
+                        </div>
+                        <style>
+                            .form-group{
+                                padding: 10px;
+                                background-color: whitesmoke;
+                                width: 140px;
+                                border-radius: 10px;
+                            }
+                            select{
+                                background-color: whitesmoke;
+                                width: 100%;
+                            }
+                            .ok{
+                                border-radius: 10px;
+                                margin-top: 10px;
+                            }
+                        </style>
+        </div>
+         
+        <div class="ok flex flex-col gap-3 w-full bg-primary-color/5 p-4 border-b">
+            <div class="flex items-start justify-between gap-2">
+                <!-- profile image -->
+                <div
+                    class="w-[40px] h-auto aspect-square rounded-full bg-primary-color flex items-center justify-center">
+                    <p class="font-medium text-base text-white ">JM</p>
+                </div>
+                <!-- details -->
+                <div class="flex items-start justify-between flex-1">
+                    <div class="flex flex-col flex-1 w-full">
+                        <h1 class="text-sm font-medium">Officer John</h1>
+                        <p class="text-sm opacity-70">Rank: super intendent </p>
+                    </div>
+                    <div class="flex flex-col justify-end items-end gap-3">
+                        <span class="h-[8px] w-[8px] rounded-lg bg-primary-color"></span>
+                    </div>
+                </div>
+            </div>
+            <p class="text-xs opacity-70 w-full flex justify-end">Joined:12 June 2023, 2:30 AM</p>
+        </div>
+        <div class=" ok flex flex-col gap-3 w-full bg-primary-color/5 p-4 border-b">
+            <div class="flex items-start justify-between gap-2">
+                <!-- profile image -->
+                <div
+                    class="w-[40px] h-auto aspect-square rounded-full bg-primary-color flex items-center justify-center">
+                    <p class="font-medium text-base text-white ">JF</p>
+                </div>
+                <!-- details -->
+                <div class="flex items-start justify-between flex-1">
+                    <div class="flex flex-col flex-1 w-full">
+                        <h1 class="text-sm font-medium">Officer jeniffer</h1>
+                        <p class="text-sm opacity-70">Rank: rukurutu </p>
+                    </div>
+                    <div class="flex flex-col justify-end items-end gap-3">
+                        <span class="h-[8px] w-[8px] rounded-lg bg-primary-color"></span>
+                    </div>
+                </div>
+            </div>
+            <p class="text-xs opacity-70 w-full flex justify-end">Joined: 12 June 2023, 2:30 AM</p>
+        </div>
+        
+    </div>
+
+<!-- <section class="w-full flex items-center  py-5 px-10  ">
      <div class="officerlist">
           <div class="Officer">
              <div class="officerimg">
@@ -311,10 +383,11 @@
              </div>
          </div>
      </div>
-</section>
+</section> -->
 <style>
     .backgroundz{
         background-color: whitesmoke;
+
 /*        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf9HLyGbNeY6dNloQDQcGduv9sdW_eP-yFkw&s");*/
         opacity: 0.9;
     }
