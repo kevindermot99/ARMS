@@ -58,6 +58,7 @@ select {
   background-position-x: 95%;
   background-position-y: 50%;
   padding-right: 30px !important;
+  background-color: transparent !important;
 }
 
 @media screen and (max-width: 768px) {
