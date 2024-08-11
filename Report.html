@@ -334,14 +334,22 @@
                 </p>
             </div>
         </div>
-        <div class="flex items-center justify-end">
-            <select type="text" class="h-[40px] rounded-md p-3 text-sm ring-1 ring-primary-color/20">
-                <option value="Car">Car</option>
-                <option value="Bike">Bicycle</option>
-                <option value="Truck">Truck</option>
-                <option value="Motor Bikes">Motor Bike</option>
-                <option value="Bus">Bus</option>
-            </select>
+        <div class="w-full flex items-center justify-end gap-5">
+            <label class="flex items-center gap-3">
+                <p class="text-sm opacity-80">Vehicle type</p>
+                <select type="text" class="h-[35px] rounded-md px-3 text-sm ring-1 ring-primary-color/20">
+                    <option value="Car">Car</option>
+                    <option value="Bike">Bicycle</option>
+                    <option value="Truck">Truck</option>
+                    <option value="Motor Bikes">Motor Bike</option>
+                    <option value="Bus">Bus</option>
+                </select>
+            </label>
+            <label class="flex items-center gap-3">
+                <p class="text-sm opacity-80">Date</p>
+                <input type="date" class="h-[35px] text-text-color/90 text-sm rounded-md px-3 ring-1 ring-primary-color/20"/>
+            </label>
+            <button type="submit" class="w-fit h-[35px] px-5 bg-primary-color text-white flex items-center justify-center text-sm rounded-md">Filter</button>
         </div>
 
     </div>
