@@ -101,7 +101,7 @@
                     </div>
                     <span class="h-[1px] w-[90%] mx-auto bg-text-color/10 my-2"></span>
                     <!-- 1 link -->
-                    <a href="profile.html"
+                    <a href="#"
                         class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
                         <i class='bx bx-user text-xl opacity-60'></i>
                         <p class="text-sm">My Profile</p>
@@ -120,7 +120,7 @@
                     </a>
                     <span class="h-[1px] w-[90%] mx-auto bg-text-color/10 my-2"></span>
                     <!-- 1 link -->
-                    <a href="auth/signin.html"
+                    <a href="#"
                         class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
                         <i class='bx bx-log-out-circle text-xl text-red-500'></i>
                         <p class="text-sm">Sign Out</p>
@@ -236,7 +236,7 @@
                 </div>
                 <span class="h-[1px] w-[90%] mx-auto bg-text-color/10 my-2"></span>
                 <!-- 1 link -->
-                <a href="profile.html"
+                <a href="#"
                     class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
                     <i class='bx bx-user text-xl opacity-60'></i>
                     <p class="text-sm">My Profile</p>
@@ -268,124 +268,351 @@
     <!-- Navbar -->
 
     <section class="backgroundz w-full flex items-center justify-center py-5 px-10 h-[200px]">
-        <span class="text-3xl font-extrabold leading-7 tracking-tight">OFFICERS</span>
+        <span class="text-3xl font-extrabold leading-7 tracking-tight">Profile</span>
     </section>
 
-    <div class="w-full h-fit flex flex-col gap-0 text-text-color max-w-[800px] min-h-svh mx-auto my-7 max-lg:px-4">
-        <div class="w-full flex items-center justify-between mb-7 gap-3 flex-wrap">
-            <h1 class="font-semibold text-2xl">Officers names</h1>
-                        <div class="form-group"> 
-                            <select class="form-control" id="province" name="province">
-                            <option value="">filter by</option>
-                            <option value="">  rank</option>
-                            <option value="">  gender</option> 
-                            <!-- Add options dynamically from database -->
-                          </select>
-                        </div>
-                        <style>
-                            .form-group{
-                                padding: 10px;
-                                background-color: whitesmoke;
-                                width: 140px;
-                                border-radius: 10px;
-                            }
-                            select{
-                                background-color: whitesmoke;
-                                width: 100%;
-                            }
-                            .ok{
-                                border-radius: 10px;
-                                margin-top: 10px;
-                            }
-                        </style>
-        </div>
-         
-        <div class="ok flex flex-col gap-3 w-full bg-primary-color/5 p-4 border-b">
-            <div class="flex items-start justify-between gap-2">
-                <!-- profile image -->
-                <div
-                    class="w-[40px] h-auto aspect-square rounded-full bg-primary-color flex items-center justify-center">
-                    <p class="font-medium text-base text-white ">JM</p>
+    <div class="w-full h-fit flex flex-col gap-0 text-text-color max-w-[1000px] min-h-svh mx-auto my-7 max-lg:px-4">
+           
+    <style> 
+        .container {
+            display: flex;
+            background-color:  white; 
+        }
+
+        .side-nav {
+            border-radius: 8px;
+            width: 250px;
+            background-color: #f7f8fa; /* White background for side nav */
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+        .side-nav button{
+            background-color: #f7f8fa;
+        }
+        .side-nav button:hover{
+            background-color: red;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: solid 1px rgba(0, 0, 0, 0.295) ;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #1F3365; /* Placeholder color for avatar */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .jd {
+            font-size: 25px;
+            font-weight: 600;
+            color: white; /* Dark text for contrast */
+        }
+
+        .jdtext {
+            margin-top: 10px;
+            color: #555; /* Slightly lighter color for the name */
+        }
+
+        .side-nav button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: none;
+            background-color: #e7e7e7;  
+            color: #333;  
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;  
+            border-radius: 4px;  
+        }
+
+        .side-nav button:hover {
+            background-color: #dcdcdc;  
+            color: #2980b9;  
+        }
+
+        .main-content {
+            width: 85%;
+            flex: 1;
+            margin-left: 10px;
+            padding: 20px;
+            background-color: #f7f8fa;  
+            overflow-y: auto;
+            border-radius: 8px;
+        }
+
+        .tab {
+            display: none; /* Hidden by default */
+        }
+
+        .tab h3 {
+            margin-top: 0;
+            color: #333; /* Dark color for section headings */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold; /* Bold labels for emphasis */
+            color: #333; /* Dark color for labels */
+        }
+
+        input, select, textarea {
+            padding: 8px; 
+            border: 1px solid #ccc; /* Light grey border */
+            border-radius: 4px; /* Rounded corners */
+            font-size: 16px; /* Consistent font size */
+            transition: border-color 0.3s; /* Smooth transition for focus effects */
+            background-color: rgba(255, 255, 255, 0);
+        }
+
+        .elementzz{ 
+            display: flex;
+            flex-direction: column;
+            width: 330px;
+        }
+        .flexify{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #2980b9; /* Change border color on focus */
+            outline: none; /* Remove default outline */
+        }
+ 
+
+        button[type="button"] {
+            margin-top: 20px;
+            width: 150px;
+            padding: 12px;
+            background-color: #2980b9; /* Blue background for save button */
+            color: white; /* White text for contrast */
+            border: none;
+            border-radius: 4px; /* Rounded corners */
+            cursor: pointer;
+            transition: background-color 0.3s; /* Smooth transition for hover effects */
+        }
+
+        button[type="button"]:hover {
+            background-color: #1a5f8a; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <nav class="side-nav">
+        <center>
+            <div class="profile">
+                <div class="avatar">
+                    <p class="jd">JD</p>
                 </div>
-                <!-- details -->
-                <div class="flex items-start justify-between flex-1">
-                    <div class="flex flex-col flex-1 w-full">
-                        <h1 class="text-sm font-medium">Officer John</h1>
-                        <p class="text-sm opacity-70">Rank: super intendent </p>
-                    </div>
-                    <div class="flex flex-col justify-end items-end gap-3">
-                        <span class="h-[8px] w-[8px] rounded-lg bg-primary-color"></span>
-                    </div>
-                </div>
+                <p class="font-semibold text-base jdtext">John Dohn</p>
             </div>
-            <p class="text-xs opacity-70 w-full flex justify-end">Joined:12 June 2023, 2:30 AM</p>
+        </center>
+        <button onclick="showTab('basic-info')">Basic Info</button>
+        <button onclick="showTab('gender-sex')">Gender & Sex</button>
+        <button onclick="showTab('language')">Language</button>
+        <button onclick="showTab('skills')">Skills</button>
+    </nav>
+    <div class="main-content">
+        <div id="basic-info" class="tab">
+            <h3>Basic Info</h3>
+            <form>
+                <div class="flexify">
+                    <div class="elementzz">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="elementzz">
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+    
+                    <div class="elementzz">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="elementzz">
+                        <label class="email">Account:</label>
+                        <p>john doe@gmail.com</p>
+                    </div>
+                    
+
+                </div>
+               
+                
+                <button type="button" onclick="updateInfo()">Save</button>
+            </form>
         </div>
-        <div class=" ok flex flex-col gap-3 w-full bg-primary-color/5 p-4 border-b">
-            <div class="flex items-start justify-between gap-2">
-                <!-- profile image -->
-                <div
-                    class="w-[40px] h-auto aspect-square rounded-full bg-primary-color flex items-center justify-center">
-                    <p class="font-medium text-base text-white ">JF</p>
+
+        <div id="gender-sex" class="tab" style="display: none;">
+            <h3>Gender & Sex</h3>
+            <form>
+                <div class="elementzz">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
                 </div>
-                <!-- details -->
-                <div class="flex items-start justify-between flex-1">
-                    <div class="flex flex-col flex-1 w-full">
-                        <h1 class="text-sm font-medium">Officer jeniffer</h1>
-                        <p class="text-sm opacity-70">Rank: rukurutu </p>
-                    </div>
-                    <div class="flex flex-col justify-end items-end gap-3">
-                        <span class="h-[8px] w-[8px] rounded-lg bg-primary-color"></span>
-                    </div>
+                 
+                
+                <button type="button" onclick="updateInfo()">Save</button>
+            </form>
+        </div>
+
+        <div id="language" class="tab" style="display: none;">
+            <h3>Language</h3>
+            <form>
+                <label>Preferred Languages:</label><br>
+                <div>
+                <input type="checkbox" id="english" name="languages" value="english">
+                <label for="english">English</label> 
                 </div>
-            </div>
-            <p class="text-xs opacity-70 w-full flex justify-end">Joined: 12 June 2023, 2:30 AM</p>
+                <div>
+                <input type="checkbox" id="spanish" name="languages" value="spanish">
+                <label for="spanish">Spanish</label>  
+                </div>
+                <div>
+                <input type="checkbox" id="french" name="languages" value="french">
+                <label for="french">French</label>
+                </div>
+                <div>
+                <input type="checkbox" id="german" name="languages" value="german">
+                <label for="german">German</label>
+                </div>
+                <div>
+                <input type="checkbox" id="chinese" name="languages" value="chinese">
+                <label for="chinese">Chinese</label>
+                </div>
+                <div>
+                <input type="checkbox" id="japanese" name="languages" value="japanese">
+                <label for="japanese">Japanese</label>
+                </div>
+                
+                
+                
+                
+                
+                <button type="button" onclick="updateInfo()">Save</button>
+            </form>
         </div>
         
+        <script>
+            function updateInfo() {
+                const checkboxes = document.querySelectorAll('input[name="languages"]:checked');
+                const selectedLanguages = Array.from(checkboxes).map(checkbox => checkbox.value);
+                
+                alert("Selected Languages: " + selectedLanguages.join(', ')); // Display selected languages
+            }
+        
+            // Show the Basic Info tab by default
+            document.addEventListener('DOMContentLoaded', () => {
+                showTab('basic-info');
+            });
+        </script>
+        
+        
+        
+        
+
+        <div id="skills" class="tab" style="display: none;">
+            <h3>Skills</h3>
+            <form>
+                <label for="skills">Your Skills:</label>
+                <textarea id="skills" name="skills" rows="4" required></textarea>
+                
+                <button type="button" onclick="updateInfo()">Save</button>
+            </form>
+        </div>
     </div>
+</div>
 
-<!-- <section class="w-full flex items-center  py-5 px-10  ">
-     <div class="officerlist">
-          <div class="Officer">
-             <div class="officerimg">
-             <img src="images/images.jpeg" ></div>
-             <div class="officercontent">
-                 <span class="title">Title:officer john</span>
-                 <span class="rank">Rank:sergent</span>
-             </div>
-         </div>
-         <div class="Officer">
-             <div class="officerimg">
-             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk8ieT2hzpopG6aFdisa0kETwUW2cEf2GCiw&s" ></div>
-             <div class="officercontent">
-                 <span class="title">Title:officer john</span>
-                 <span class="rank">Rank:General</span>
-             </div>
-         </div>
+<script>
+    function showTab(tabId) {
+        // Hide all tabs
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.style.display = 'none';
+        });
 
-         <div class="Officer">
-             <div class="officerimg">
-          <img src="images/RNP_LOGO.png" ></div>
-             <div class="officercontent">
-                 <span class="title">Title:officer john</span>
-                 <span class="rank">Rank:sergent</span>
-             </div>
-         </div><div class="Officer">
-             <div class="officerimg">
-          <img src="images/RNP_LOGO.png" ></div>
-             <div class="officercontent">
-                 <span class="title">Title:officer john</span>
-                 <span class="rank">Rank:General</span>
-             </div>
-         </div><div class="Officer">
-             <div class="officerimg">
-          <img src="images/RNP_LOGO.png" ></div>
-             <div class="officercontent">
-                 <span class="title">Title:officer john</span>
-                 <span class="rank">Rank:sergent</span>
-             </div>
-         </div>
-     </div>
-</section> -->
+        // Show the selected tab
+        document.getElementById(tabId).style.display = 'block';
+    }
+
+    function updateInfo() {
+        alert("Information updated! (This is a placeholder for backend functionality.)");
+    }
+
+    // Show the Basic Info tab by default
+    document.addEventListener('DOMContentLoaded', () => {
+        showTab('basic-info');
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+    </div>
+ 
 <style>
     .backgroundz{
         background-color: whitesmoke;
