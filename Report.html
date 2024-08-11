@@ -273,13 +273,14 @@
         <h1 class="font-bold text-xl ">Overview</h1>
         <div class="grid grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1 gap-4 py-4 w-full h-fit">
             <!-- 1card -->
-            <div class="h-[130px] w-full p-5 flex flex-col items-start justify-center gap-1 bg-white ring-1 ring-text-color/10 rounded-md shadow-xl shadow-text-color/5">
+            <div
+                class="h-[130px] w-full p-5 flex flex-col items-start justify-center gap-1 bg-white ring-1 ring-text-color/10 rounded-md shadow-xl shadow-text-color/5">
                 <p class="text-xs opacity-80">Total Accidents</p>
                 <h1 class="text-2xl font-bold">42,580</h1>
                 <p class="capitalize text-xs text-text-color/80">
                     <span class="text-red-600 font-semibold">
-                        <span >
-                            <i class='bx bx-trending-up text-sm translate-y-[3px]' ></i>
+                        <span>
+                            <i class='bx bx-trending-up text-sm translate-y-[3px]'></i>
                         </span>
                         <span>
                             0.3%
@@ -288,13 +289,14 @@
                     increase from last 12 months
                 </p>
             </div>
-            <div class="h-[130px] w-full p-5 flex flex-col items-start justify-center gap-1 bg-white ring-1 ring-text-color/10 rounded-md shadow-xl shadow-text-color/5">
+            <div
+                class="h-[130px] w-full p-5 flex flex-col items-start justify-center gap-1 bg-white ring-1 ring-text-color/10 rounded-md shadow-xl shadow-text-color/5">
                 <p class="text-xs opacity-80">Total Deaths</p>
                 <h1 class="text-2xl font-bold">2,390</h1>
                 <p class="capitalize text-xs text-text-color/80">
                     <span class="text-green-600 font-semibold">
-                        <span >
-                            <i class='bx bx-trending-down text-sm translate-y-[1px]' ></i>
+                        <span>
+                            <i class='bx bx-trending-down text-sm translate-y-[1px]'></i>
                         </span>
                         <span>
                             83%
@@ -303,13 +305,14 @@
                     Decrease from last 12 months
                 </p>
             </div>
-            <div class="h-[130px] w-full p-5 flex flex-col items-start justify-center gap-1 bg-white ring-1 ring-text-color/10 rounded-md shadow-xl shadow-text-color/5">
+            <div
+                class="h-[130px] w-full p-5 flex flex-col items-start justify-center gap-1 bg-white ring-1 ring-text-color/10 rounded-md shadow-xl shadow-text-color/5">
                 <p class="text-xs opacity-80">Other Injuries</p>
                 <h1 class="text-2xl font-bold">990</h1>
                 <p class="capitalize text-xs text-text-color/80">
                     <span class="text-red-600 font-semibold">
-                        <span >
-                            <i class='bx bx-trending-up text-sm translate-y-[3px]' ></i>
+                        <span>
+                            <i class='bx bx-trending-up text-sm translate-y-[3px]'></i>
                         </span>
                         <span>
                             12%
@@ -318,13 +321,14 @@
                     increase from last 12 months
                 </p>
             </div>
-            <div class="h-[130px] w-full p-5 flex flex-col items-start justify-center gap-1 bg-white ring-1 ring-text-color/10 rounded-md shadow-xl shadow-text-color/5">
+            <div
+                class="h-[130px] w-full p-5 flex flex-col items-start justify-center gap-1 bg-white ring-1 ring-text-color/10 rounded-md shadow-xl shadow-text-color/5">
                 <p class="text-xs opacity-80">Damaged Properties</p>
                 <h1 class="text-2xl font-bold">1,390</h1>
                 <p class="capitalize text-xs text-text-color/80">
                     <span class="text-green-600 font-semibold">
-                        <span >
-                            <i class='bx bx-trending-down text-sm translate-y-[1px]' ></i>
+                        <span>
+                            <i class='bx bx-trending-down text-sm translate-y-[1px]'></i>
                         </span>
                         <span>
                             23%
@@ -347,19 +351,64 @@
             </label>
             <label class="flex items-center gap-3">
                 <p class="text-sm opacity-80">Date</p>
-                <input type="month" class="h-[35px] text-text-color/90 text-sm rounded-md px-3 ring-1 ring-primary-color/20"/>
+                <input type="month"
+                    class="h-[35px] text-text-color/90 text-sm rounded-md px-3 ring-1 ring-primary-color/20" />
             </label>
-            <button type="submit" class="w-fit h-[35px] px-5 bg-primary-color text-white flex items-center justify-center text-sm rounded-md">Filter</button>
+            <button type="submit"
+                class="w-fit h-[35px] px-5 bg-primary-color text-white flex items-center justify-center text-sm rounded-md">Filter</button>
         </div>
         <div class="w-full mt-7">
-            <table class="w-full border-1 border-stone-400" border="1">
-                <th class="text-left h-[35px] px-3">Id</th>
-                <th class="text-left h-[35px] px-3">Id</th>
-                <th class="text-left h-[35px] px-3">Id</th>
-                <th class="text-left h-[35px] px-3">Id</th>
-                <th class="text-left h-[35px] px-3">Id</th>
-                <th class="text-left h-[35px] px-3">Id</th>
-                <th class="text-left h-[35px] px-3">Id</th>
+            <table class="w-full " border="1">
+                <thead class="bg-text-color/10">
+                    <th class="text-left h-[35px] px-3">Id</th>
+                    <th class="text-left h-[35px] px-3">Id</th>
+                    <th class="text-left h-[35px] px-3">Id</th>
+                    <th class="text-left h-[35px] px-3">Id</th>
+                </thead>
+                <tbody>
+                    <tr class="">
+                        <td class="p-3 text-sm">1038323</td>
+                        <td class="p-3 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
+                        <td class="p-3 text-sm">12/20/2023</td>
+                        <td class="p-3 text-sm">closed</td>
+                    </tr>
+                    <tr class="">
+                        <td class="p-3 text-sm">1038323</td>
+                        <td class="p-3 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
+                        <td class="p-3 text-sm">12/20/2023</td>
+                        <td class="p-3 text-sm">closed</td>
+                    </tr>
+                    <tr class="">
+                        <td class="p-3 text-sm">1038323</td>
+                        <td class="p-3 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
+                        <td class="p-3 text-sm">12/20/2023</td>
+                        <td class="p-3 text-sm">closed</td>
+                    </tr>
+                    <tr class="">
+                        <td class="p-3 text-sm">1038323</td>
+                        <td class="p-3 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
+                        <td class="p-3 text-sm">12/20/2023</td>
+                        <td class="p-3 text-sm">closed</td>
+                    </tr>
+                    <tr class="">
+                        <td class="p-3 text-sm">1038323</td>
+                        <td class="p-3 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
+                        <td class="p-3 text-sm">12/20/2023</td>
+                        <td class="p-3 text-sm">closed</td>
+                    </tr>
+                    <tr class="">
+                        <td class="p-3 text-sm">1038323</td>
+                        <td class="p-3 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
+                        <td class="p-3 text-sm">12/20/2023</td>
+                        <td class="p-3 text-sm">closed</td>
+                    </tr>
+                    <tr class="">
+                        <td class="p-3 text-sm">1038323</td>
+                        <td class="p-3 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
+                        <td class="p-3 text-sm">12/20/2023</td>
+                        <td class="p-3 text-sm">closed</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
 
