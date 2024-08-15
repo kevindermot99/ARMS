@@ -368,6 +368,7 @@
                 
                     <div id="testimonial-section">
                         <div class="testimonial">
+                            <div class="flexy"> 
                             <div class="form-group">
                                 <label for="individualName">Individual Name</label>
                                 <input type="text" class="form-control" name="individual_name[]">
@@ -375,6 +376,7 @@
                             <div class="form-group">
                                 <label for="individualId">Individual ID Number</label>
                                 <input type="text" class="form-control" name="individual_id[]">
+                            </div>
                             </div>
                 
                             <div class="flexy">
@@ -422,7 +424,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="mediaUpload">Upload media</label>
-                                <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
+                                <input type="file" class="form-control-file" id="mediaUpload" name="individual_media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
                                 <div class="drop-zone" id="dropZone">
                                     Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
                                 </div>
@@ -518,23 +520,12 @@
                         <div class="form-group">
                            <label for="injured">Individuals Injured</label>
                            <input type="text" class="form-control" id="injured" name="injured">
-                        </div>
-                        <div class="form-group">
-                           <label for="injured">Individuals names</label>
-                           <input type="text" class="form-control" id="injured" name="injured">
                         </div> 
-                    </div>
-                    <div class="flexy">
                     <div class="form-group">
                         <label for="dead">Individuals Dead</label>
                         <input type="text" class="form-control" id="dead" name="dead">
                     </div>
-                    <div class="form-group">
-                        <label for="dead">Individuals names</label>
-                        <input type="text" class="form-control" id="dead" name="dead">
-                    </div>
-
-                    </div>
+                    </div> 
                     <div class="form-group">
                         <label for="mediaUpload">Upload media</label>
                         <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
