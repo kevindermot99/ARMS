@@ -274,7 +274,11 @@
     <section class="backgroundz w-full flex items-center justify-center py-5 px-10 h-[200px]">
         <span class="text-3xl font-extrabold leading-7 tracking-tight">ADD ACCIDENT</span>
     </section><br><br>
-
+<style>
+                        .lower{
+                            margin-bottom: -48px;
+                        }
+                    </style>
     <!-- add form --> 
      <section class="content">
         <div class="sidenav">
@@ -288,7 +292,7 @@
         
         
         <div class="maincontent">
-            <form id="multiStepForm" action="process_form.php" method="post" enctype="multipart/form-data">
+            <form id="multiStepForm" action="auth/process.php" method="post" enctype="multipart/form-data">
                 <!-- Step 1: Basic Information -->
                 <div class="step active" id="basic-info">
 
@@ -353,11 +357,7 @@
         
                 <!-- Step 3: Testimonials -->
                 <div class="step" id="Testimonials">
-                    <style>
-                        .lower{
-                            margin-bottom: -48px;
-                        }
-                    </style>
+                    
                     <div class="lower">
                     <h3 class="titlez">Testimonial</h3>  
                     </div>
@@ -438,6 +438,78 @@
                         </div>
                     </div>
                 </div>
+                
+                
+        
+                <!-- Step 4: Damage Report -->
+                <div class="step" id="Damage">
+                    <h3 class="titlez">Damage report</h3>
+                    <div class="flexy">
+                        <div class="form-group">
+                           <label for="injured">Individuals Injured</label>
+                           <input type="number" placeholder="1" class="form-control" id="injured" name="number_injured">
+                        </div> 
+                    <div class="form-group">
+                        <label for="dead">Individuals passed away</label>
+                        <input type="number" placeholder="0" class="form-control" id="dead" name="dead">
+                    </div>
+                    </div> 
+                    <div class="form-group">
+                        <label for="mediaUpload">Upload media</label>
+                        <input type="file" class="form-control-file" id="mediaUpload" name="Damage_media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
+                        <div class="drop-zone" id="dropZone">
+                            Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
+                        </div>
+                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
+                    </div>
+                    <div class="form-group">
+                        <label for="propertyDamage">Damaged report</label> 
+                        <textarea class="form-control" id="propertyDamageDesc" name="damage_desc"></textarea>
+                    </div>
+                </div>
+        
+                <!-- Step 5: Officers' P.O.V. -->
+                <div class="step" id="Officers">
+                    <h3 class="titlez">officers report</h3>
+                    <div class="form-group">
+                        <label for="mediaUpload">Upload media</label>
+                        <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
+                        <div class="drop-zone" id="dropZone">
+                            Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
+                        </div>
+                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
+                    </div>
+                    <div class="form-group">
+                        <label for="officerDescription">Officer Description</label>
+                        <textarea class="form-control" id="officerDescription" name="officer_description"></textarea>
+                    </div>
+                </div>
+        
+                <!-- Step 6: Officers' P.O.V. -->
+                <div class="step" id="Extra">
+                    <h3 class="titlez">extra-info</h3>
+                    <div class="form-group">
+                        <label for="mediaUpload">Upload media</label>
+                        <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
+                        <div class="drop-zone" id="dropZone">
+                            Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
+                        </div>
+                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
+                    </div>
+                    <div class="form-group">
+                        <label for="officerDescription">Officer Description</label>
+                        <textarea class="form-control" id="officerDescription" name="extra_info"></textarea>
+                    </div> 
+                </div>
+        
+                <!-- Navigation Buttons -->
+                <div class="form-navigation">
+                    <button type="button" class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize" id="prevBtn">Previous</button>
+                    <button type="button" class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize" id="nextBtn">Next</button>
+                </div>
+            </form>
+
+
                 <script>
                     $(document).ready(function () {
                         // Function to add a new testimonial
@@ -510,76 +582,6 @@
                         });
                     });
                 </script>
-                
-                
-        
-                <!-- Step 4: Damage Report -->
-                <div class="step" id="Damage">
-                    <h3 class="titlez">Damage report</h3>
-                    <div class="flexy">
-                        <div class="form-group">
-                           <label for="injured">Individuals Injured</label>
-                           <input type="text" class="form-control" id="injured" name="injured">
-                        </div> 
-                    <div class="form-group">
-                        <label for="dead">Individuals Dead</label>
-                        <input type="text" class="form-control" id="dead" name="dead">
-                    </div>
-                    </div> 
-                    <div class="form-group">
-                        <label for="mediaUpload">Upload media</label>
-                        <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
-                        <div class="drop-zone" id="dropZone">
-                            Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
-                        </div>
-                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
-                    </div>
-                    <div class="form-group">
-                        <label for="propertyDamage">Damaged report</label> 
-                        <textarea class="form-control" id="propertyDamageDesc" name="property_damage_desc"></textarea>
-                    </div>
-                </div>
-        
-                <!-- Step 5: Officers' P.O.V. -->
-                <div class="step" id="Officers">
-                    <h3 class="titlez">officers report</h3>
-                    <div class="form-group">
-                        <label for="mediaUpload">Upload media</label>
-                        <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
-                        <div class="drop-zone" id="dropZone">
-                            Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
-                        </div>
-                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
-                    </div>
-                    <div class="form-group">
-                        <label for="officerDescription">Officer Description</label>
-                        <textarea class="form-control" id="officerDescription" name="officer_description"></textarea>
-                    </div>
-                </div>
-        
-                <!-- Step 6: Officers' P.O.V. -->
-                <div class="step" id="Extra">
-                    <h3 class="titlez">extra-info</h3>
-                    <div class="form-group">
-                        <label for="mediaUpload">Upload media</label>
-                        <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
-                        <div class="drop-zone" id="dropZone">
-                            Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
-                        </div>
-                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
-                    </div>
-                    <div class="form-group">
-                        <label for="officerDescription">Officer Description</label>
-                        <textarea class="form-control" id="officerDescription" name="officer_description"></textarea>
-                    </div> 
-                </div>
-        
-                <!-- Navigation Buttons -->
-                <div class="form-navigation">
-                    <button type="button" class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize" id="prevBtn">Previous</button>
-                    <button type="button" class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize" id="nextBtn">Next</button>
-                </div>
-            </form>
             <script>
                 tinymce.init({
                     selector: 'textarea',
