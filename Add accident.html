@@ -52,11 +52,20 @@
                     class="text-3xl cursor-pointer text-primary-color flex items-center justify-center h-full transition active:scale-75">
                     <i class='bx bx-menu'></i>
                 </button>
+               <a href="index.html">
                 <div class=" h-fit w-fit flex flex-col justify-center items-start text-primary-color">
                     <span class="text-xl font-extrabold tracking-tight">A.R.M.S</span>
                     <!-- <span class="text-[6px] pr-1">Accident Report Managment System</span> -->
                 </div>
+            </a>
             </div>
+            <script>
+                function handleMobileNav() {
+                    const nav = document.getElementById('mobile-nav')
+                    nav.classList.toggle('hide-mobile-nav')
+                    nav.classList.toggle('show-mobile-nav')
+                }
+            </script>
 
             <!-- notification and Profile -->
             <div class="h-full w-full flex items-center justify-end gap-0 relative">
@@ -164,10 +173,10 @@
     <nav
         class="h-[60px] flex px-10 max-lg:px-4 bg-white/80 backdrop-blur-md border-b-[1px] border-text-color/10 sticky top-0 z-20 max-md:hidden">
         <!-- logo -->
-        <div class=" h-full w-full flex flex-col justify-center items-start text-primary-color">
-            <span class="text-3xl font-extrabold leading-7 tracking-tight">A.R.M.S</span>
+         <a href="index.html"> <div class=" h-full w-full flex flex-col justify-center items-start text-primary-color">
+           <span class="text-3xl font-extrabold leading-7 tracking-tight">A.R.M.S</span>
             <span class="text-[6px] pr-1">Accident Report Managment System</span>
-        </div>
+        </div></a>
         <!-- Links -->
         <div class="flex h-full w-full items-center justify-center gap-0 min-w-fit ">
 
@@ -908,12 +917,7 @@ function displayFileNames(files) {
                 /* display: none; */
                 font-size: 12px;
             }
-
-            .content {
-                padding: 20px 15px 20px 15px;
-                width: 100%; 
-                justify-content: center;
-            }
+ 
         } 
         @media (max-width: 767px) {
             .sidenav {
@@ -921,11 +925,15 @@ function displayFileNames(files) {
                 /* font-size: 12px; */
             }
 
-            /* .content {
+            .content {
                 padding: 5px;
                 width: 100%; 
                 justify-content: center;
-            } */
+            }
+            .maincontent{ 
+        padding-left: 1px;
+        padding-right: 1px; 
+    }
         }
  </style>
 
