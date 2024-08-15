@@ -689,6 +689,30 @@ function displayFileNames(files) {
                 font-size: medium;
                 margin-bottom: 10px;
             }  
+            @media (max-width: 1024px) {
+                .sidenav {
+                    /* display: none; */
+                    font-size: 12px;
+                }
+
+                .content {
+                    padding: 20px 15px 20px 15px;
+                    width: 100%; 
+                    justify-content: center;
+                }
+            } 
+            @media (max-width: 767px) {
+                .sidenav {
+                    display: none;
+                    /* font-size: 12px; */
+                }
+
+                /* .content {
+                    padding: 5px;
+                    width: 100%; 
+                    justify-content: center;
+                } */
+            }
      </style>
      <script>
         tinymce.init({
