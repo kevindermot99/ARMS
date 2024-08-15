@@ -278,14 +278,14 @@
     <!-- add form --> 
      <section class="content">
         <div class="sidenav">
-            <!-- <h1><u> <B>Nav</B></u></h1> -->
-            <button class="active">Basic Info</button>
-            <button>Forensic</button>
-            <button>Testimonials</button>
-            <button>Damage Report</button>
-            <button>Officers' P.O.V.</button>
-            <button>Extra Info</button>
+            <a href="#basic-info" data-step="0" class="nav-link active"><button>Basic Info</button></a>
+            <a href="#forensic" data-step="1"><button>Forensic</button></a>
+            <a href="#testimonials" data-step="2"><button>Testimonials</button></a>
+            <a href="#damage" data-step="3"><button>Damage Report</button></a>
+            <a href="#officers" data-step="4"><button>Officers' P.O.V.</button></a>
+            <a href="#extra" data-step="5"><button>Extra Info</button></a>
         </div>
+        
         
         <div class="maincontent">
             <form id="multiStepForm" action="process_form.php" method="post" enctype="multipart/form-data">
@@ -331,7 +331,7 @@
                 </div>
         
                 <!-- Step 2: Media -->
-                <div class="step" id="media">
+                <div class="step" id="forensic">
                     <h3 class="titlez">Forensic</h3>
                     <div class="form-group">
                         <label for="mediaUpload">Upload media</label>
@@ -349,16 +349,20 @@
                 </div>
         
                 <!-- Step 3: Testimonials -->
-                <div class="step" id="testimonials">
-                    <div class="stepheader">
-                      <h3 class="titlez">Testimonial</h3><button></button>
-                       <button 
-                            class="bg-text-color/10 text-sm font-medium   py-2 px-4 rounded-md capitalize"
-                            id="add-testimonial">
-                            Add Testimonial
-                        </button>
-                    </div> 
-        
+                <div class="step" id="Testimonials">
+                    <style>
+                        .lower{
+                            margin-bottom: -48px;
+                        }
+                    </style>
+                    <div class="lower">
+                    <h3 class="titlez">Testimonial</h3>  
+                    </div>
+                    <h3> <button type="button"
+                        class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize float-right"
+                        id="add-testimonial">Add Testimonial</button>
+                    </h3><br><br>
+                
                     <div id="testimonial-section">
                         <div class="testimonial">
                             <div class="form-group">
@@ -369,20 +373,20 @@
                                 <label for="individualId">Individual ID Number</label>
                                 <input type="text" class="form-control" name="individual_id[]">
                             </div>
-        
+                
                             <div class="flexy">
                                 <div class="form-group">
                                     <label for="vehicle">Vehicle</label>
                                     <select class="form-control" name="vehicle[]">
                                         <option value="">Select Vehicle</option>
-                                        <option value="">suv</option>
-                                        <option value="">pickup</option>
-                                        <option value="">sedan</option>
-                                        <option value="">truck</option>
-                                        <option value="">bike</option>
+                                        <option value="suv">SUV</option>
+                                        <option value="pickup">Pickup</option>
+                                        <option value="sedan">Sedan</option>
+                                        <option value="truck">Truck</option>
+                                        <option value="bike">Bike</option>
                                     </select>
                                 </div>
-        
+                
                                 <div class="form-group">
                                     <label for="vehiclePlate">Vehicle Plate</label>
                                     <input type="text" class="form-control" name="vehicle_plate[]">
@@ -398,40 +402,114 @@
                                     <label for="insurance">Insurance</label>
                                     <select class="form-control" name="insurance[]">
                                         <option value="">Select Insurance</option>
-                                        <option value="">sanlam</option>
-                                        <option value="">Radiant</option>
-                                        <option value="">prime</option>
-                                        <option value="">mua</option>
+                                        <option value="sanlam">Sanlam</option>
+                                        <option value="radiant">Radiant</option>
+                                        <option value="prime">Prime</option>
+                                        <option value="mua">MUA</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="alcoholTest">Alcohol Test</label>
                                     <select class="form-control" name="alcohol_test[]">
                                         <option value="">Select Alcohol Results</option>
-                                        <option value="">not drunk</option>
-                                        <option value="">drunk</option>
+                                        <option value="not drunk">Not Drunk</option>
+                                        <option value="drunk">Drunk</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="mediaUpload">Upload media</label>
-                                <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
+                                <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple>
                                 <div class="drop-zone" id="dropZone">
                                     Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
                                 </div>
                                 <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
                             </div>
-        
-                            <div class="form-group  ">
+                
+                            <div class="form-group">
                                 <label for="propertyDamage">Description</label>
-                                <textarea class="form-control" id="propertyDamageDesc" name="property_damage_desc"></textarea>
+                                <textarea class="form-control" id="propertyDamageDesc" name="property_damage_desc[]"></textarea>
                             </div>
                         </div>
                     </div>
                 </div>
+                <script>
+                    $(document).ready(function () {
+                        // Function to add a new testimonial
+                        $('#add-testimonial').click(function () {
+                            let testimonialHTML = `
+                            <div class="testimonial " style="border-top: 5px solid blue; padding-top: 10px; margin-top: 10px;">
+                                <div class="form-group">
+                                    <label for="individualName">Individual Name</label>
+                                    <input type="text" class="form-control" name="individual_name[]">
+                                </div>
+                                <div class="form-group">
+                                    <label for="individualId">Individual ID Number</label>
+                                    <input type="text" class="form-control" name="individual_id[]">
+                                </div>
+                
+                                <div class="flexy">
+                                    <div class="form-group">
+                                        <label for="vehicle">Vehicle</label>
+                                        <select class="form-control" name="vehicle[]">
+                                            <option value="">Select Vehicle</option>
+                                            <option value="suv">SUV</option>
+                                            <option value="pickup">Pickup</option>
+                                            <option value="sedan">Sedan</option>
+                                            <option value="truck">Truck</option>
+                                            <option value="bike">Bike</option>
+                                        </select>
+                                    </div>
+                
+                                    <div class="form-group">
+                                        <label for="vehiclePlate">Vehicle Plate</label>
+                                        <input type="text" class="form-control" name="vehicle_plate[]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="licenseStatus">License Status</label>
+                                        <select class="form-control" name="license_status[]">
+                                            <option value="active">Active</option>
+                                            <option value="deactivated">Deactivated</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="insurance">Insurance</label>
+                                        <select class="form-control" name="insurance[]">
+                                            <option value="">Select Insurance</option>
+                                            <option value="sanlam">Sanlam</option>
+                                            <option value="radiant">Radiant</option>
+                                            <option value="prime">Prime</option>
+                                            <option value="mua">MUA</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="alcoholTest">Alcohol Test</label>
+                                        <select class="form-control" name="alcohol_test[]">
+                                            <option value="">Select Alcohol Results</option>
+                                            <option value="not drunk">Not Drunk</option>
+                                            <option value="drunk">Drunk</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mediaUpload">Upload media</label>
+                                    <input type="file" class="form-control-file" name="media[]" accept="image/*,video/*,audio/*" multiple>
+                                </div>
+                
+                                <div class="form-group">
+                                    <label for="propertyDamage">Description</label>
+                                    <textarea class="form-control" name="property_damage_desc[]"></textarea>
+                                </div>
+                            </div>`;
+                            $('#testimonial-section').append(testimonialHTML);
+                        });
+                    });
+                </script>
+                
+                
         
                 <!-- Step 4: Damage Report -->
-                <div class="step" id="damage-report">
+                <div class="step" id="Damage">
                     <h3 class="titlez">Damage report</h3>
                     <div class="flexy">
                         <div class="form-group">
@@ -469,7 +547,7 @@
                 </div>
         
                 <!-- Step 5: Officers' P.O.V. -->
-                <div class="step" id="officers-pov">
+                <div class="step" id="Officers">
                     <h3 class="titlez">officers report</h3>
                     <div class="form-group">
                         <label for="mediaUpload">Upload media</label>
@@ -486,7 +564,7 @@
                 </div>
         
                 <!-- Step 6: Officers' P.O.V. -->
-                <div class="step" id="extra-info">
+                <div class="step" id="Extra">
                     <h3 class="titlez">extra-info</h3>
                     <div class="form-group">
                         <label for="mediaUpload">Upload media</label>
@@ -508,6 +586,142 @@
                     <button type="button" class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize" id="nextBtn">Next</button>
                 </div>
             </form>
+            <script>
+                tinymce.init({
+                    selector: 'textarea',
+                      // Apply TinyMCE to all textareas
+                    menubar: false,
+                    plugins: 'link image code',
+                    toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+                    content_css: 'https://www.tiny.cloud/css/codepen.min.css'
+                });
+            
+                // JavaScript for multi-step form
+                let currentStep = 0;
+            
+                function showStep(step) {
+                    $('.step').removeClass('active');
+                    $('#multiStepForm .step').eq(step).addClass('active');
+                    
+                    // Update the active state of the sidebar links
+                    $('.sidenav a').removeClass('active');
+                    $('.sidenav a[data-step="' + step + '"]').addClass('active');
+            
+                    // Show/Hide navigation buttons
+                    $('#prevBtn').toggle(step > 0);
+                    $('#nextBtn').text(step === $('.step').length - 1 ? 'Submit' : 'Next');
+                }
+            
+                function changeStep(stepChange) {
+                    const newStep = currentStep + stepChange;
+                    if (newStep >= 0 && newStep < $('.step').length) {
+                        currentStep = newStep;
+                        showStep(currentStep);
+                    }
+                }
+            
+                $(document).ready(function () {
+                    // Sidebar navigation
+                    $('.sidenav a').click(function (e) {
+                        e.preventDefault(); // Prevent default anchor behavior
+            
+                        // Get the step index from the clicked link
+                        const stepIndex = $(this).data('step');
+            
+                        // Set the current step and show it
+                        currentStep = stepIndex;
+                        showStep(currentStep);
+                    });
+            
+                    // Navigation buttons
+                    $('#prevBtn').click(function () {
+                        changeStep(-1);
+                    });
+            
+                    $('#nextBtn').click(function () {
+                        if (currentStep === $('.step').length - 1) {
+                            $('#multiStepForm').submit();
+                        } else {
+                            changeStep(1);
+                        }
+                    });
+            
+                    // Initialize the form to show the first step
+                    showStep(currentStep);
+                });
+            
+                // Populate provinces and other location fields
+                const locationData = {
+                    "Kigali": {
+                        "Gasabo": {
+                            "Bumbogo": ["Kibenga", "Kinyaga", "Kinyana", "Ngara", "Rubungo"],
+                            "Gatsata": ["Bweramvura", "Kadobogo", "Kabuye", "Nyamugari", "Rwesero"],
+                            "Gikomero": ["Bukoro", "Gahengeri", "Kabuye", "Nyagasozi", "Rugarama"],
+                            "Gisozi": ["Kangondo", "Kibiraro", "Nyabisindu", "Nyamabuye", "Rukingu"],
+                            "Jabana": ["Gashenyi", "Jabana", "Murama", "Taba", "Yanza"],
+                            "Jali": ["Gasabo", "Kagugu", "Kamatamu", "Kinyaga", "Rudakabukirwa"],
+                            "Kacyiru": ["Kamatamu", "Kamukina", "Nyarutarama", "Rugando", "Rugunga"],
+                            "Kimihurura": ["Kimihurura", "Kinyinya", "Nyakabanda", "Remera", "Rukingu"],
+                            "Kimironko": ["Bibare", "Kibagabaga", "Nyagatovu", "Nyarutarama", "Rwabushenyi"],
+                            "Kinyinya": ["Gasharu", "Murama", "Nyagatovu", "Nyarutarama", "Tunga"],
+                            "Nduba": ["Bweramvura", "Gasagara", "Kabuye", "Kigabiro", "Murambi"],
+                            "Ndera": ["Bushyogo", "Bweramvura", "Gihogwe", "Murama", "Rutunga"],
+                            "Remera": ["Gikondo", "Kabuga", "Kinyinya", "Nyabisindu", "Rugando"],
+                            "Rusororo": ["Kabuga", "Mwulire", "Nyagahinga", "Nyarugenge", "Rugarama"],
+                            "Rutunga": ["Bumbogo", "Gatsata", "Jabana", "Murambi", "Nyabikenke"]
+                        }
+                    }
+                };
+            
+                // Populate provinces dropdown
+                for (let province in locationData) {
+                    $('#province').append(`<option value="${province}">${province}</option>`);
+                }
+            
+                // Update district dropdown based on province selection
+                $('#province').change(function () {
+                    const selectedProvince = $(this).val();
+                    $('#district').empty().append('<option value="">Select District</option>');
+                    $('#sector').empty().append('<option value="">Select Sector</option>');
+                    $('#cell').empty().append('<option value="">Select Cell</option>');
+                    $('#village').empty().append('<option value="">Select Village</option>');
+                    if (selectedProvince) {
+                        for (let district in locationData[selectedProvince]) {
+                            $('#district').append(`<option value="${district}">${district}</option>`);
+                        }
+                    }
+                });
+            
+                // Update sector dropdown based on district selection
+                $('#district').change(function () {
+                    const selectedProvince = $('#province').val();
+                    const selectedDistrict = $(this).val();
+                    $('#sector').empty().append('<option value="">Select Sector</option>');
+                    $('#cell').empty().append('<option value="">Select Cell</option>');
+                    $('#village').empty().append('<option value="">Select Village</option>');
+                    if (selectedDistrict) {
+                        for (let sector in locationData[selectedProvince][selectedDistrict]) {
+                            $('#sector').append(`<option value="${sector}">${sector}</option>`);
+                        }
+                    }
+                });
+            
+                // Update cell dropdown based on sector selection
+                $('#sector').change(function () {
+                    const selectedProvince = $('#province').val();
+                    const selectedDistrict = $('#district').val();
+                    const selectedSector = $(this).val();
+                    $('#cell').empty().append('<option value="">Select Cell</option>');
+                    if (selectedSector) {
+                        const cells = locationData[selectedProvince][selectedDistrict][selectedSector];
+                        cells.forEach(cell => {
+                            $('#cell').append(`<option value="${cell}">${cell}</option>`);
+                        });
+                    }
+                });
+            
+              
+            </script>
         </div> 
         
         <style>
@@ -617,309 +831,107 @@ function displayFileNames(files) {
         </script>
         
      </section>
-     <style>
+     
+     
+    
 
-        .backgroundz{
-            background-color: rgba(176, 176, 176, 0.212);
+ <style>
+
+    .backgroundz{
+        background-color: rgba(176, 176, 176, 0.212);
+    }
+    .content{
+        width: 100%; 
+        margin-top: -50px;
+        display: flex;
+        padding: 50px; 
+    }
+    .sidenav{
+        width: 25%;  
+        border-right: solid 1px rgba(128, 128, 128, 0.393);
+        display: flex;
+        flex-direction: column;
+        padding: 30px 0px 0px 30px;
+        gap: 10px;  
+    } 
+
+    .sidenav button {   
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s, border 0.2s;
+        position: relative;
+        text-align: left ;
+        padding: 3px 10px 3px 25px;
+        font-weight: 560; 
+        border-radius: 0px;
+    }
+
+    .sidenav button:hover {
+      transform: translateX(5px);
+    }
+
+    .sidenav a.active {
+       border-left: 3.5px solid #1F3365;  
+    }
+    .maincontent{
+        width: 75%; 
+        padding-left: 35px;
+        padding-right: 35px; 
+    }
+    .step {
+            display: none;
         }
-        .content{
-            width: 100%; 
-            margin-top: -50px;
-            display: flex;
-            padding: 50px; 
+
+        .step.active {
+            display: block;
         }
-        .sidenav{
-            width: 25%;  
-            border-right: solid 1px rgba(128, 128, 128, 0.393);
+        .form-control { 
+            padding: 10px; 
+            border-radius: 4px;  
             display: flex;
             flex-direction: column;
-            padding: 30px 0px 0px 30px;
-            gap: 10px;  
         } 
+        .flexy{
+            display:flex;
+            gap: 10px;
+        }
+        .stepheader {
+          display: flex;
+          justify-content: space-between; /* Space between items */
+          align-items: center; /* Center items vertically */
+          margin-bottom: 15px; /* Optional: space below the header */
+        }
+        .titlez{
+            font-weight: 650;
+            text-decoration: underline;
+            font-size: medium;
+            margin-bottom: 10px;
+        }  
+        @media (max-width: 1024px) {
+            .sidenav {
+                /* display: none; */
+                font-size: 12px;
+            }
 
-        .sidenav button {   
-            border: none;
-            cursor: pointer;
-            transition: transform 0.2s, border 0.2s;
-            position: relative;
-            text-align: left ;
-            padding: 3px 10px 3px 25px;
-            font-weight: 560; 
-            border-radius: 0px;
-        }
-
-        .sidenav button:hover {
-          transform: translateX(5px);
-        }
-
-        .sidenav button.active {
-           border-left: 3.5px solid #1F3365;  
-        }
-        .maincontent{
-            width: 75%; 
-            padding-left: 35px;
-            padding-right: 35px; 
-        }
-        .step {
+            .content {
+                padding: 20px 15px 20px 15px;
+                width: 100%; 
+                justify-content: center;
+            }
+        } 
+        @media (max-width: 767px) {
+            .sidenav {
                 display: none;
+                /* font-size: 12px; */
             }
 
-            .step.active {
-                display: block;
-            }
-            .form-control { 
-                padding: 10px; 
-                border-radius: 4px;  
-                display: flex;
-                flex-direction: column;
-            } 
-            .flexy{
-                display:flex;
-                gap: 10px;
-            }
-            .stepheader {
-              display: flex;
-              justify-content: space-between; /* Space between items */
-              align-items: center; /* Center items vertically */
-              margin-bottom: 15px; /* Optional: space below the header */
-            }
-            .titlez{
-                font-weight: 650;
-                text-decoration: underline;
-                font-size: medium;
-                margin-bottom: 10px;
-            }  
-            @media (max-width: 1024px) {
-                .sidenav {
-                    /* display: none; */
-                    font-size: 12px;
-                }
-
-                .content {
-                    padding: 20px 15px 20px 15px;
-                    width: 100%; 
-                    justify-content: center;
-                }
-            } 
-            @media (max-width: 767px) {
-                .sidenav {
-                    display: none;
-                    /* font-size: 12px; */
-                }
-
-                /* .content {
-                    padding: 5px;
-                    width: 100%; 
-                    justify-content: center;
-                } */
-            }
-     </style>
-     <script>
-        tinymce.init({
-            selector: 'textarea',  // Apply TinyMCE to all textareas
-            menubar: false,
-            plugins: 'link image code',
-            toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
-            content_css: 'https://www.tiny.cloud/css/codepen.min.css'
-        });
-
-        // JavaScript for multi-step form
-        let currentStep = 0;
-
-        function showStep(step) {
-            $('.step').removeClass('active');
-            $('#multiStepForm .step').eq(step).addClass('active');
-            $('.sidebar a').removeClass('active');
-            $('.sidebar a').eq(step).addClass('active');
-
-            // Show/Hide navigation buttons
-            $('#prevBtn').toggle(step > 0);
-            $('#nextBtn').text(step === $('.step').length - 1 ? 'Submit' : 'Next');
+            /* .content {
+                padding: 5px;
+                width: 100%; 
+                justify-content: center;
+            } */
         }
-
-        function changeStep(stepChange) {
-            const newStep = currentStep + stepChange;
-            if (newStep >= 0 && newStep < $('.step').length) {
-                currentStep = newStep;
-                showStep(currentStep);
-            }
-        }
-
-        $(document).ready(function () {
-            // Populate provinces and other location fields
-            const locationData = {
-                "Kigali": {
-                    "Gasabo": {
-                        "Bumbogo": ["Kibenga", "Kinyaga", "Kinyana", "Ngara", "Rubungo"],
-                        "Gatsata": ["Bweramvura", "Kadobogo", "Kabuye", "Nyamugari", "Rwesero"],
-                        "Gikomero": ["Bukoro", "Gahengeri", "Kabuye", "Nyagasozi", "Rugarama"],
-                        "Gisozi": ["Kangondo", "Kibiraro", "Nyabisindu", "Nyamabuye", "Rukingu"],
-                        "Jabana": ["Gashenyi", "Jabana", "Murama", "Taba", "Yanza"],
-                        "Jali": ["Gasabo", "Kagugu", "Kamatamu", "Kinyaga", "Rudakabukirwa"],
-                        "Kacyiru": ["Kamatamu", "Kamukina", "Nyarutarama", "Rugando", "Rugunga"],
-                        "Kimihurura": ["Kimihurura", "Kinyinya", "Nyakabanda", "Remera", "Rukingu"],
-                        "Kimironko": ["Bibare", "Kibagabaga", "Nyagatovu", "Nyarutarama", "Rwabushenyi"],
-                        "Kinyinya": ["Gasharu", "Murama", "Nyagatovu", "Nyarutarama", "Tunga"],
-                        "Nduba": ["Bweramvura", "Gasagara", "Kabuye", "Kigabiro", "Murambi"],
-                        "Ndera": ["Bushyogo", "Bweramvura", "Gihogwe", "Murama", "Rutunga"],
-                        "Remera": ["Gikondo", "Kabuga", "Kinyinya", "Nyabisindu", "Rugando"],
-                        "Rusororo": ["Kabuga", "Mwulire", "Nyagahinga", "Nyarugenge", "Rugarama"],
-                        "Rutunga": ["Bumbogo", "Gatsata", "Jabana", "Murambi", "Nyabikenke"]
-                    },  
-                }}
-
-
-            // Populate provinces dropdown
-            for (let province in locationData) {
-                $('#province').append(`<option value="${province}">${province}</option>`);
-            }
-
-            // Update district dropdown based on province selection
-            $('#province').change(function () {
-                const selectedProvince = $(this).val();
-                $('#district').empty().append('<option value="">Select District</option>');
-                $('#sector').empty().append('<option value="">Select Sector</option>');
-                $('#cell').empty().append('<option value="">Select Cell</option>');
-                $('#village').empty().append('<option value="">Select Village</option>');
-                if (selectedProvince) {
-                    for (let district in locationData[selectedProvince]) {
-                        $('#district').append(`<option value="${district}">${district}</option>`);
-                    }
-                }
-            });
-
-            // Update sector dropdown based on district selection
-            $('#district').change(function () {
-                const selectedProvince = $('#province').val();
-                const selectedDistrict = $(this).val();
-                $('#sector').empty().append('<option value="">Select Sector</option>');
-                $('#cell').empty().append('<option value="">Select Cell</option>');
-                $('#village').empty().append('<option value="">Select Village</option>');
-                if (selectedDistrict) {
-                    for (let sector in locationData[selectedProvince][selectedDistrict]) {
-                        $('#sector').append(`<option value="${sector}">${sector}</option>`);
-                    }
-                }
-            });
-
-            // Update cell dropdown based on sector selection
-            $('#sector').change(function () {
-                const selectedProvince = $('#province').val();
-                const selectedDistrict = $('#district').val();
-                const selectedSector = $(this).val();
-                $('#cell').empty().append('<option value="">Select Cell</option>');
-                if (selectedSector) {
-                    const cells = locationData[selectedProvince][selectedDistrict][selectedSector];
-                    cells.forEach(cell => {
-                        $('#cell').append(`<option value="${cell}">${cell}</option>`);
-                    });
-                }
-            });
-
-            // Add testimonial dynamically
-            $('#add-testimonial').click(function () {
-                let testimonialHTML = `
-                <div class="testimonial">
-                    <div class="form-group">
-                        <label for="individualName">Individual Name</label>
-                        <input type="text" class="form-control" name="individual_name[]">
-                    </div>
-                    <div class="form-group">
-                        <label for="individualId">Individual ID Number</label>
-                        <input type="text" class="form-control" name="individual_id[]">
-                    </div>
-
-                    <div class="flexy">
-                        <div class="form-group">
-                            <label for="vehicle">Vehicle</label>
-                            <select class="form-control" name="vehicle[]">
-                                <option value="">Select Vehicle</option>
-                                <option value=""> suv</option>
-                                <option value=""> pickup</option>
-                                <option value=""> sedan</option>
-                                <option value=""> truck </option>
-                                <option value=""> bike</option>
-                                <!-- Add options dynamically from database -->
-                            </select>
-                        </div>
-
-
-
-                        <div class="form-group">
-                            <label for="vehiclePlate">Vehicle Plate</label>
-                            <input type="text" class="form-control" name="vehicle_plate[]">
-                        </div>
-                        <div class="form-group">
-                            <label for="licenseStatus">License Status</label>
-                            <select class="form-control" name="license_status[]">
-                                <option value="active">Active</option>
-                                <option value="deactivated">Deactivated</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="vehicle">insurance</label>
-                            <select class="form-control" name="vehicle[]">
-                                <option value="">Select insurance</option>
-                                <option value="">sanlam</option>
-                                <option value="">Radiant</option>
-                                <option value="">prime</option>
-                                <option value="">mua</option>
-                                <!-- Add options dynamically from database -->
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="vehicle">alcohol test</label>
-                            <select class="form-control" name="vehicle[]">
-                                <option value="">Select alchol results</option>
-                                <option value="">not drunk</option>
-                                <option value="">wasted</option>
-                                <!-- Add options dynamically from database -->
-                            </select>
-                        </div>
-                        <br>
-
-                    </div>
-                    <div class="form-group">
-                        <label for="audioUpload">Upload Audio</label>
-                        <input type="file" class="form-control-file" id="audioUpload" name="audio">
-                    </div>
-
-                    <div class="form-group mt-4">
-                        <label for="propertyDamage">Description</label>
-                        <textarea class="form-control" id="propertyDamageDesc"
-                            name="property_damage_desc"></textarea>
-                    </div>
-                </div>
-                `;
-                $('#testimonial-section').append(testimonialHTML);
-            });
-
-            // Sidebar navigation
-            $('.sidebar a').click(function (e) {
-                e.preventDefault();
-                const stepId = $(this).data('step');
-                currentStep = $('.step').index($('#' + stepId));
-                showStep(currentStep);
-            });
-
-            // Navigation buttons
-            $('#prevBtn').click(function () {
-                changeStep(-1);
-            });
-
-            $('#nextBtn').click(function () {
-                if (currentStep === $('.step').length - 1) {
-                    $('#multiStepForm').submit();
-                } else {
-                    changeStep(1);
-                }
-            });
-
-            // Initialize the form to show the first step
-            showStep(currentStep);
-        });
-    </script>
- 
+ </style>
 
 
 
