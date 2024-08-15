@@ -524,10 +524,7 @@
                 width: 100%; /* Full width */
                 box-sizing: border-box; /* Include padding and border in width */
             }
-        
-            textarea {
-                resize: vertical; /* Allow vertical resizing only */
-            }
+         
         
             .flexy {
                 display: flex; /* Use flexbox for layout */
@@ -535,7 +532,7 @@
             }
         
             .flexy .form-group {
-                flex: 1; /* Allow form groups to grow */
+                 flex: 1;/* Allow form groups to grow */
                 min-width: 200px; /* Minimum width for each form group */
                 margin-right: 10px; /* Space between form groups */
             }
@@ -629,16 +626,15 @@ function displayFileNames(files) {
             width: 100%; 
             margin-top: -50px;
             display: flex;
-            padding: 50px;
+            padding: 50px; 
         }
         .sidenav{
-            width: 25%; 
-            /* background-color: rgb(67, 43, 226); */
+            width: 25%;  
             border-right: solid 1px rgba(128, 128, 128, 0.393);
             display: flex;
             flex-direction: column;
             padding: 30px 0px 0px 30px;
-            gap: 10px;
+            gap: 10px;  
         } 
 
         .sidenav button {   
@@ -648,8 +644,7 @@ function displayFileNames(files) {
             position: relative;
             text-align: left ;
             padding: 3px 10px 3px 25px;
-            font-weight: 630;
-            /* background-color: brown;  */
+            font-weight: 560; 
             border-radius: 0px;
         }
 
@@ -663,9 +658,8 @@ function displayFileNames(files) {
         .maincontent{
             width: 75%; 
             padding-left: 35px;
-            padding-right: 35px;
-            /* background-color: blueviolet; */
-        } 
+            padding-right: 35px; 
+        }
         .step {
                 display: none;
             }
@@ -675,9 +669,7 @@ function displayFileNames(files) {
             }
             .form-control { 
                 padding: 10px; 
-                border-radius: 4px; 
-                /* width: 250px;  */
-                /* box-sizing: border-box;  */
+                border-radius: 4px;  
                 display: flex;
                 flex-direction: column;
             } 
@@ -696,10 +688,7 @@ function displayFileNames(files) {
                 text-decoration: underline;
                 font-size: medium;
                 margin-bottom: 10px;
-            }
-
-
-
+            }  
      </style>
      <script>
         tinymce.init({
@@ -906,27 +895,8 @@ function displayFileNames(files) {
             showStep(currentStep);
         });
     </script>
+ 
 
-    
-
-
-
-
-
-
-
-
-
-
-    <!-- footer -->
-    <footer class="bg-stone-50/50 p-6 text-text-color/70">
-        <div class="text-xs flex items-center justify-center flex-wrap gap-5">
-            <p class="px-3">© Copyright A.R.M.S 2024 All rights reserved</p>
-            <P class="px-3 cursor-pointer hover:text-primary-color">Support center</P>
-            <p class="px-3 cursor-pointer hover:text-primary-color">Terms of Use</p>
-            <p class="px-3 cursor-pointer hover:text-primary-color">System Status</p>
-        </div>
-    </footer>
 
 
 
@@ -966,5 +936,6 @@ function displayFileNames(files) {
         });
     </script>
 </body>
-
+    <!-- footer -->
+    <div id="Footer"></div> 
 </html>
