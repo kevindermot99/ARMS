@@ -326,7 +326,7 @@
                     <div class="form-group ">
                         <label for="propertyDamage">Description</label>
                         <textarea class="form-control" id="propertyDamageDesc"
-                            name="property_damage_desc"></textarea>
+                            name="basicinfo_desc"></textarea>
                     </div>
                 </div>
         
@@ -335,7 +335,10 @@
                     <h3 class="titlez">Forensic</h3>
                     <div class="form-group">
                         <label for="mediaUpload">Upload media</label>
-                        <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
+                        <!---- name="media[]"------>
+                        <input type="file" class="form-control-file" id="mediaUpload" 
+                        name="forensicmedia" 
+                        accept="image/*,video/*,audio/*" multiple style="display: none;">
                         <div class="drop-zone" id="dropZone">
                             Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
                         </div>
@@ -344,7 +347,7 @@
                     
                     <div class="form-group mt-4">
                         <label for="propertyDamage">Description</label>
-                        <textarea class="form-control" id="propertyDamageDesc" name="property_damage_desc"></textarea>
+                        <textarea class="form-control" id="propertyDamageDesc" name="forensic_desc"></textarea>
                     </div>
                 </div>
         
@@ -419,7 +422,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="mediaUpload">Upload media</label>
-                                <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple>
+                                <input type="file" class="form-control-file" id="mediaUpload" name="individual_media[]" accept="image/*,video/*,audio/*" multiple>
                                 <div class="drop-zone" id="dropZone">
                                     Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
                                 </div>
@@ -428,7 +431,7 @@
                 
                             <div class="form-group">
                                 <label for="propertyDamage">Description</label>
-                                <textarea class="form-control" id="propertyDamageDesc" name="property_damage_desc[]"></textarea>
+                                <textarea class="form-control" id="propertyDamageDesc" name="indiviaul_desc[]"></textarea>
                             </div>
                         </div>
                     </div>
