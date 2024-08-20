@@ -1,3 +1,67 @@
+<?php 
+$conn = new mysqli("localhost","root","","arms");
+
+if (isset($_POST["submit"])) {
+    // Accident Details
+    $accidentTitle = $_POST['accident_title'];
+    $accidentDateTime = $_POST['accident_date_time'];
+    $province = $_POST['province'];
+    $district = $_POST['district'];
+    $sector = $_POST['sector'];
+    $basicinfoDesc = $_POST['basicinfo_desc'];
+
+    // Testimonials
+    $individualNames = $_POST['individual_name'];
+    $individualIds = $_POST['individual_id'];
+    $vehicles = $_POST['vehicle'];
+    $vehiclePlates = $_POST['vehicle_plate'];
+    $licenseStatuses = $_POST['license_status'];
+    $insurances = $_POST['insurance'];
+    $alcoholTests = $_POST['alcohol_test'];
+    $individualDescs = $_POST['individual_desc'];
+
+    // Damage Report
+    $numberInjured = $_POST['number_injured'];
+    $dead = $_POST['dead'];
+    $damageDesc = $_POST['damage_desc'];
+
+    // Officer's Report
+    $officerDescription = $_POST['officer_description'];
+
+    // Extra Info
+    $extraInfo = $_POST['extra_info'];
+
+    // Insert Accident Data
+    $query = "INSERT INTO tb_accidents (accident_title, accident_date_time, province, district, sector, basicinfo_desc, number_injured, dead, damage_desc, officer_description, extra_info) 
+              VALUES ('$accidentTitle', '$accidentDateTime', '$province', '$district', '$sector', '$basicinfoDesc', '$numberInjured', '$dead', '$damageDesc', '$officerDescription', '$extraInfo')";
+
+    if (mysqli_query($conn, $query)) {
+        $accidentId = mysqli_insert_id($conn); // Get the ID of the inserted accident
+
+        // Insert Testimonials
+        foreach ($individualNames as $index => $name) {
+            $individualId = $individualIds[$index];
+            $vehicle = $vehicles[$index];
+            $vehiclePlate = $vehiclePlates[$index];
+            $licenseStatus = $licenseStatuses[$index];
+            $insurance = $insurances[$index];
+            $alcoholTest = $alcoholTests[$index];
+            $individualDesc = $individualDescs[$index];
+
+            $testimonialQuery = "INSERT INTO tb_testimonials (accident_id, individual_name, individual_id, vehicle, vehicle_plate, license_status, insurance, alcohol_test, individual_desc) 
+                                 VALUES ('$accidentId', '$name', '$individualId', '$vehicle', '$vehiclePlate', '$licenseStatus', '$insurance', '$alcoholTest', '$individualDesc')";
+            mysqli_query($conn, $testimonialQuery);
+        }
+
+        // Success message
+        echo "Accident report submitted successfully!";
+    } else {
+        // Error message
+        echo "Error: " . mysqli_error($conn);
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -301,7 +365,7 @@
         
         
         <div class="maincontent">
-            <form id="multiStepForm" action="auth/process.php" method="post" enctype="multipart/form-data">
+            <form id="multiStepForm"   method="post" enctype="multipart/form-data">
                 <!-- Step 1: Basic Information -->
                 <div class="step active" id="basic-info">
 
@@ -346,17 +410,7 @@
                 <!-- Step 2: Media -->
                 <div class="step" id="forensic">
                     <h3 class="titlez">Forensic</h3>
-                    <div class="form-group">
-                        <label for="mediaUpload">Upload media</label>
-                        <!---- name="media[]"------>
-                        <input type="file" class="form-control-file" id="mediaUpload" 
-                        name="forensicmedia" 
-                        accept="image/*,video/*,audio/*" multiple style="display: none;">
-                        <div class="drop-zone" id="dropZone">
-                            Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
-                        </div>
-                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
-                    </div>
+                    
                     
                     <div class="form-group mt-4">
                         <label for="propertyDamage">Description</label>
@@ -431,14 +485,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="mediaUpload">Upload media</label>
-                                <input type="file" class="form-control-file" id="mediaUpload" name="individual_media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
-                                <div class="drop-zone" id="dropZone">
-                                    Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
-                                </div>
-                                <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
-                            </div>
+                            
                 
                             <div class="form-group">
                                 <label for="propertyDamage">Description</label>
@@ -463,14 +510,7 @@
                         <input type="number" placeholder="0" class="form-control" id="dead" name="dead">
                     </div>
                     </div> 
-                    <div class="form-group">
-                        <label for="mediaUpload">Upload media</label>
-                        <input type="file" class="form-control-file" id="mediaUpload" name="Damage_media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
-                        <div class="drop-zone" id="dropZone">
-                            Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
-                        </div>
-                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
-                    </div>
+                    
                     <div class="form-group">
                         <label for="propertyDamage">Damaged report</label> 
                         <textarea class="form-control" id="propertyDamageDesc" name="damage_desc"></textarea>
@@ -480,14 +520,7 @@
                 <!-- Step 5: Officers' P.O.V. -->
                 <div class="step" id="Officers">
                     <h3 class="titlez">officers report</h3>
-                    <div class="form-group">
-                        <label for="mediaUpload">Upload media</label>
-                        <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
-                        <div class="drop-zone" id="dropZone">
-                            Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
-                        </div>
-                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
-                    </div>
+                    
                     <div class="form-group">
                         <label for="officerDescription">Officer Description</label>
                         <textarea class="form-control" id="officerDescription" name="officer_description"></textarea>
@@ -497,14 +530,7 @@
                 <!-- Step 6: Officers' P.O.V. -->
                 <div class="step" id="Extra">
                     <h3 class="titlez">extra-info</h3>
-                    <div class="form-group">
-                        <label for="mediaUpload">Upload media</label>
-                        <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
-                        <div class="drop-zone" id="dropZone">
-                            Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
-                        </div>
-                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
-                    </div>
+                     
                     <div class="form-group">
                         <label for="officerDescription">Officer Description</label>
                         <textarea class="form-control" id="officerDescription" name="extra_info"></textarea>
