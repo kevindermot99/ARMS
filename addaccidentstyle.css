@@ -1,0 +1,149 @@
+.form-group {
+    margin-bottom: 15px; /* Space between form groups */
+}
+
+.form-control,
+.form-control-file,
+textarea {
+    border: 1px solid #ccc; /* Add a border to inputs and textareas */
+    border-radius: 4px; /* Rounded corners for inputs */
+    padding: 10px; /* Padding inside inputs */
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+
+.flexy {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping */
+}
+
+.flexy .form-group {
+     flex: 1;/* Allow form groups to grow */
+    min-width: 200px; /* Minimum width for each form group */
+    margin-right: 10px; /* Space between form groups */
+}
+
+.flexy .form-group:last-child {
+    margin-right: 0; /* Remove right margin for the last item */
+}
+
+.drop-zone {
+    border: 2px dashed #ddd;
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #f9f9f9; /* Light background for contrast */
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.drop-zone.drag-over {
+    border-color: #333;
+    background-color: #e9e9e9; /* Slightly darker background on drag over */
+}
+
+.drop-zone:hover {
+    background-color: #f1f1f1; /* Light hover effect */
+}
+
+.form-navigation {
+    display: flex; /* Use flexbox for navigation buttons */
+    gap: 20px;
+    margin-top: 20px; /* Space above navigation buttons */
+} 
+
+
+.backgroundz{
+    background-color: rgba(176, 176, 176, 0.212);
+}
+.content{
+    width: 100%; 
+    margin-top: -50px;
+    display: flex;
+    padding: 50px; 
+}
+.sidenav{
+    width: 25%;  
+    border-right: solid 1px rgba(128, 128, 128, 0.393);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0px 0px 30px;
+    gap: 10px;  
+} 
+
+.sidenav button {   
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, border 0.2s;
+    position: relative;
+    text-align: left ;
+    padding: 3px 10px 3px 25px;
+    font-weight: 560; 
+    border-radius: 0px;
+}
+
+.sidenav button:hover {
+  transform: translateX(5px);
+}
+
+.sidenav a.active {
+   border-left: 3.5px solid #1F3365;  
+}
+.maincontent{
+    width: 75%; 
+    padding-left: 35px;
+    padding-right: 35px; 
+}
+.step {
+        display: none;
+    }
+
+    .step.active {
+        display: block;
+    }
+    .form-control { 
+        padding: 10px; 
+        border-radius: 4px;  
+        display: flex;
+        flex-direction: column;
+    } 
+    .flexy{
+        display:flex;
+        gap: 10px;
+    }
+    .stepheader {
+      display: flex;
+      justify-content: space-between; /* Space between items */
+      align-items: center; /* Center items vertically */
+      margin-bottom: 15px; /* Optional: space below the header */
+    }
+    .titlez{
+        font-weight: 650;
+        text-decoration: underline;
+        font-size: medium;
+        margin-bottom: 10px;
+    }  
+    @media (max-width: 1024px) {
+        .sidenav {
+            /* display: none; */
+            font-size: 12px;
+        }
+
+    } 
+    @media (max-width: 767px) {
+        .sidenav {
+            display: none;
+            /* font-size: 12px; */
+        }
+
+        .content {
+            padding: 5px;
+            width: 100%; 
+            justify-content: center;
+        }
+        .maincontent{ 
+    padding-left: 1px;
+    padding-right: 1px; 
+}
+    }

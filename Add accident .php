@@ -1,67 +1,3 @@
-<?php 
-$conn = new mysqli("localhost","root","","arms");
-
-if (isset($_POST["submit"])) {
-    // Accident Details
-    $accidentTitle = $_POST['accident_title'];
-    $accidentDateTime = $_POST['accident_date_time'];
-    $province = $_POST['province'];
-    $district = $_POST['district'];
-    $sector = $_POST['sector'];
-    $basicinfoDesc = $_POST['basicinfo_desc'];
-
-    // Testimonials
-    $individualNames = $_POST['individual_name'];
-    $individualIds = $_POST['individual_id'];
-    $vehicles = $_POST['vehicle'];
-    $vehiclePlates = $_POST['vehicle_plate'];
-    $licenseStatuses = $_POST['license_status'];
-    $insurances = $_POST['insurance'];
-    $alcoholTests = $_POST['alcohol_test'];
-    $individualDescs = $_POST['individual_desc'];
-
-    // Damage Report
-    $numberInjured = $_POST['number_injured'];
-    $dead = $_POST['dead'];
-    $damageDesc = $_POST['damage_desc'];
-
-    // Officer's Report
-    $officerDescription = $_POST['officer_description'];
-
-    // Extra Info
-    $extraInfo = $_POST['extra_info'];
-
-    // Insert Accident Data
-    $query = "INSERT INTO tb_accidents (accident_title, accident_date_time, province, district, sector, basicinfo_desc, number_injured, dead, damage_desc, officer_description, extra_info) 
-              VALUES ('$accidentTitle', '$accidentDateTime', '$province', '$district', '$sector', '$basicinfoDesc', '$numberInjured', '$dead', '$damageDesc', '$officerDescription', '$extraInfo')";
-
-    if (mysqli_query($conn, $query)) {
-        $accidentId = mysqli_insert_id($conn); // Get the ID of the inserted accident
-
-        // Insert Testimonials
-        foreach ($individualNames as $index => $name) {
-            $individualId = $individualIds[$index];
-            $vehicle = $vehicles[$index];
-            $vehiclePlate = $vehiclePlates[$index];
-            $licenseStatus = $licenseStatuses[$index];
-            $insurance = $insurances[$index];
-            $alcoholTest = $alcoholTests[$index];
-            $individualDesc = $individualDescs[$index];
-
-            $testimonialQuery = "INSERT INTO tb_testimonials (accident_id, individual_name, individual_id, vehicle, vehicle_plate, license_status, insurance, alcohol_test, individual_desc) 
-                                 VALUES ('$accidentId', '$name', '$individualId', '$vehicle', '$vehiclePlate', '$licenseStatus', '$insurance', '$alcoholTest', '$individualDesc')";
-            mysqli_query($conn, $testimonialQuery);
-        }
-
-        // Success message
-        echo "Accident report submitted successfully!";
-    } else {
-        // Error message
-        echo "Error: " . mysqli_error($conn);
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,6 +7,7 @@ if (isset($_POST["submit"])) {
     <title>Rwanda National Police</title>
     <!-- stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="addaccidentstyle.css">
     <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- tailwind Css -->
@@ -100,9 +37,7 @@ if (isset($_POST["submit"])) {
 <body class="text-text-color">
     <!-- header -->
     <div id="Header-Container"></div>
-
-
-
+  
     <!-- Navbar -->
 
     <!-- Mobile nav -->
@@ -347,7 +282,7 @@ if (isset($_POST["submit"])) {
     <section class="backgroundz w-full flex items-center justify-center py-5 px-10 h-[200px]">
         <span class="text-3xl font-extrabold leading-7 tracking-tight">ADD ACCIDENT</span>
     </section><br><br>
-<style>
+                    <style>
                         .lower{
                             margin-bottom: -48px;
                         }
@@ -365,7 +300,7 @@ if (isset($_POST["submit"])) {
         
         
         <div class="maincontent">
-            <form id="multiStepForm"   method="post" enctype="multipart/form-data">
+        <form id="multiStepForm" action="auth/addprocess.php" method="post" enctype="multipart/form-data">
                 <!-- Step 1: Basic Information -->
                 <div class="step active" id="basic-info">
 
@@ -410,7 +345,14 @@ if (isset($_POST["submit"])) {
                 <!-- Step 2: Media -->
                 <div class="step" id="forensic">
                     <h3 class="titlez">Forensic</h3>
-                    
+                    <div class="form-group">
+                        <label for="mediaUpload">Upload media</label> 
+                        <input type="file" class="form-control-file" id="mediaUpload" name="forensicmedia[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
+                        <div class="drop-zone" id="dropZone">
+                            Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
+                        </div>
+                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
+                    </div>
                     
                     <div class="form-group mt-4">
                         <label for="propertyDamage">Description</label>
@@ -485,7 +427,14 @@ if (isset($_POST["submit"])) {
                                     </select>
                                 </div>
                             </div>
-                            
+                            <div class="form-group">
+                                <label for="mediaUpload">Upload media</label>
+                                <input type="file" class="form-control-file" id="mediaUpload" name="individual_media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
+                                <div class="drop-zone" id="dropZone">
+                                    Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
+                                </div>
+                                <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
+                            </div>
                 
                             <div class="form-group">
                                 <label for="propertyDamage">Description</label>
@@ -494,9 +443,7 @@ if (isset($_POST["submit"])) {
                         </div>
                     </div>
                 </div>
-                
-                
-        
+                 
                 <!-- Step 4: Damage Report -->
                 <div class="step" id="Damage">
                     <h3 class="titlez">Damage report</h3>
@@ -510,7 +457,14 @@ if (isset($_POST["submit"])) {
                         <input type="number" placeholder="0" class="form-control" id="dead" name="dead">
                     </div>
                     </div> 
-                    
+                    <div class="form-group">
+                        <label for="mediaUpload">Upload media</label>
+                        <input type="file" class="form-control-file" id="mediaUpload" name="Damage_media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
+                        <div class="drop-zone" id="dropZone">
+                            Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
+                        </div>
+                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
+                    </div>
                     <div class="form-group">
                         <label for="propertyDamage">Damaged report</label> 
                         <textarea class="form-control" id="propertyDamageDesc" name="damage_desc"></textarea>
@@ -520,7 +474,14 @@ if (isset($_POST["submit"])) {
                 <!-- Step 5: Officers' P.O.V. -->
                 <div class="step" id="Officers">
                     <h3 class="titlez">officers report</h3>
-                    
+                    <div class="form-group">
+                        <label for="mediaUpload">Upload media</label>
+                        <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
+                        <div class="drop-zone" id="dropZone">
+                            Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
+                        </div>
+                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
+                    </div>
                     <div class="form-group">
                         <label for="officerDescription">Officer Description</label>
                         <textarea class="form-control" id="officerDescription" name="officer_description"></textarea>
@@ -530,7 +491,14 @@ if (isset($_POST["submit"])) {
                 <!-- Step 6: Officers' P.O.V. -->
                 <div class="step" id="Extra">
                     <h3 class="titlez">extra-info</h3>
-                     
+                    <div class="form-group">
+                        <label for="mediaUpload">Upload media</label>
+                        <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
+                        <div class="drop-zone" id="dropZone">
+                            Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
+                        </div>
+                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
+                    </div>
                     <div class="form-group">
                         <label for="officerDescription">Officer Description</label>
                         <textarea class="form-control" id="officerDescription" name="extra_info"></textarea>
@@ -701,455 +669,7 @@ if (isset($_POST["submit"])) {
                 "Rusororo": ["Kabuga", "Mwulire", "Nyagahinga", "Nyarugenge", "Rugarama"],
                 "Rutunga": ["Bumbogo", "Gatsata", "Jabana", "Murambi", "Nyabikenke"]
             },
-            "Kicukiro": {
-                "Gahanga": ["Agatare", "Gahanga", "Gikombe", "Murinja", "Nkenga"],
-                "Gatenga": ["Gasharu", "Kabeza", "Kamashashi", "Nyakabanda", "Rwezamenyo"],
-                "Gikondo": ["Bweramvura", "Gatenga", "Kabuye", "Nyabisindu", "Nyakabanda"],
-                "Kanombe": ["Busanza", "Kabuga", "Kabeza", "Kavumu", "Rubirizi"],
-                "Kicukiro": ["Gatenga", "Kabeza", "Kicukiro", "Kigarama", "Nyakabanda"],
-                "Kigarama": ["Gikondo", "Kigarama", "Murama", "Nyarurama", "Tunga"],
-                "Masaka": ["Kabuga", "Kanombe", "Masaka", "Murambi", "Nyabugogo"],
-                "Niboye": ["Gatenga", "Kagarama", "Niboye", "Nyakabanda", "Rwezamenyo"],
-                "Nyarugunga": ["Busanza", "Kanombe", "Kabeza", "Kicukiro", "Rubirizi"]
-            },
-            "Nyarugenge": {
-                "Gitega": ["Gitega", "Kigali", "Kimisagara", "Nyabugogo", "Rwezamenyo"],
-                "Kanyinya": ["Bweramvura", "Kabuye", "Kigabiro", "Murambi", "Taba"],
-                "Kigali": ["Gitega", "Kigali", "Kimisagara", "Nyamirambo", "Rwezamenyo"],
-                "Kimisagara": ["Gisozi", "Kagugu", "Kimisagara", "Nyamirambo", "Rwezamenyo"],
-                "Mageragere": ["Kabuye", "Mageragere", "Murambi", "Nyabugogo", "Taba"],
-                "Muhima": ["Gitega", "Kigali", "Muhima", "Nyabugogo", "Rwezamenyo"],
-                "Nyakabanda": ["Gisozi", "Kimisagara", "Nyakabanda", "Nyamirambo", "Rwezamenyo"],
-                "Nyamirambo": ["Gikondo", "Kagugu", "Kimisagara", "Nyamirambo", "Rwezamenyo"],
-                "Nyarugenge": ["Gitega", "Kigali", "Kimisagara", "Nyamirambo", "Rwezamenyo"],
-                "Rwezamenyo": ["Gisozi", "Kimisagara", "Nyamirambo", "Rwezamenyo", "Taba"]
-            }
-        },
-        "Eastern": {
-            "Bugesera": {
-                "Gashora": ["Gasenga", "Gatare", "Mugorore", "Musovu", "Nyakayaga"],
-                "Juru": ["Kabaya", "Kivumu", "Musagara", "Nyarunazi", "Rubona"],
-                "Kamabuye": ["Kabukuba", "Karwema", "Mbuye", "Nyabivumu", "Rugarama"],
-                "Mareba": ["Gakamba", "Gashora", "Mbare", "Murehe", "Nemba"],
-                "Mayange": ["Akabare", "Gahira", "Karambi", "Rango", "Runyinya"],
-                "Musenyi": ["Gicaca", "Gihinga", "Kabukuba", "Karambi", "Musenyi"],
-                "Mwogo": ["Kabuye", "Mwogo", "Ngeruka", "Rukora", "Rweru"],
-                "Ngeruka": ["Gashora", "Karama", "Kibaza", "Nyakabungo", "Rweru"],
-                "Ntarama": ["Gatare", "Kanazi", "Karambi", "Murambi", "Rugarama"],
-                "Nyamata": ["Gihinga", "Kabuye", "Mushikiri", "Ntarama", "Rugarama"],
-                "Rilima": ["Gakamba", "Karera", "Mugorore", "Musenyi", "Rilima"],
-                "Ruhuha": ["Kabukuba", "Karera", "Mugorore", "Nyakabingo", "Ruhuha"],
-                "Rweru": ["Gihinga", "Kabukuba", "Karambi", "Musenyi", "Rweru"],
-                "Shyara": ["Gakamba", "Karambi", "Mushikiri", "Ruhuha", "Rweru"]
-            },
-            "Gatsibo": {
-                "Gasange": ["Kabarore", "Kageyo", "Mugera", "Murambi", "Rwimbogo"],
-                "Gatsibo": ["Gasange", "Gatsibo", "Kabarore", "Kageyo", "Rwimbogo"],
-                "Gitoki": ["Gashora", "Gitoki", "Murambi", "Ngarama", "Rugarama"],
-                "Kabarore": ["Gasange", "Kabarore", "Kageyo", "Mugera", "Murambi"],
-                "Kageyo": ["Gasange", "Kabarore", "Kageyo", "Mugera", "Murambi"],
-                "Kiramuruzi": ["Gihinga", "Kabuye", "Kiramuruzi", "Murambi", "Rugarama"],
-                "Kiziguro": ["Gasange", "Gatsibo", "Kabarore", "Kageyo", "Kiziguro"],
-                "Muhura": ["Gasange", "Kabarore", "Kageyo", "Murambi", "Rwimbogo"],
-                "Murambi": ["Gasange", "Kabarore", "Kageyo", "Murambi", "Rwimbogo"],
-                "Ngarama": ["Gashora", "Gitoki", "Murambi", "Ngarama", "Rugarama"],
-                "Nyagihanga": ["Gasange", "Gatsibo", "Kabarore", "Kageyo", "Nyagihanga"],
-                "Remera": ["Gasange", "Gatsibo", "Kabarore", "Kageyo", "Remera"],
-                "Rwimbogo": ["Gasange", "Kabarore", "Kageyo", "Murambi", "Rwimbogo"]
-            },
-            "Kayonza": {
-                "Gahini": ["Gahini", "Kabare", "Kayonza", "Kabarondo", "Murama"],
-                "Kabare": ["Gahini", "Kabare", "Kayonza", "Murama", "Rukara"],
-                "Kabarondo": ["Gahini", "Kabare", "Kayonza", "Murama", "Rukara"],
-                "Kayonza": ["Gahini", "Kabare", "Kayonza", "Murama", "Rukara"],
-                "Kayonza City": ["Gahini", "Kabare", "Kayonza", "Murama", "Rukara"],
-                "Mukarange": ["Gahini", "Kabare", "Kayonza", "Murama", "Rukara"],
-                "Murama": ["Gahini", "Kabare", "Kayonza", "Murama", "Rukara"],
-                "Mwiri": ["Gahini", "Kabare", "Kayonza", "Murama", "Rukara"],
-                "Nyamirama": ["Gahini", "Kabare", "Kayonza", "Murama", "Rukara"],
-                "Rukara": ["Gahini", "Kabare", "Kayonza", "Murama", "Rukara"],
-                "Ruramira": ["Gahini", "Kabare", "Kayonza", "Murama", "Rukara"],
-                "Rwimishinya": ["Gahini", "Kabare", "Kayonza", "Murama", "Rukara"]
-            },
-            "Kirehe": {
-                "Gahara": ["Gahara", "Gatore", "Kigarama", "Kigina", "Kirehe"],
-                "Gatore": ["Gahara", "Gatore", "Kigarama", "Kigina", "Kirehe"],
-                "Kigarama": ["Gahara", "Gatore", "Kigarama", "Kigina", "Kirehe"],
-                "Kigina": ["Gahara", "Gatore", "Kigarama", "Kigina", "Kirehe"],
-                "Kirehe": ["Gahara", "Gatore", "Kigarama", "Kigina", "Kirehe"],
-                "Mahama": ["Gahara", "Gatore", "Kigarama", "Kigina", "Kirehe"],
-                "Mpanga": ["Gahara", "Gatore", "Kigarama", "Kigina", "Kirehe"],
-                "Musaza": ["Gahara", "Gatore", "Kigarama", "Kigina", "Kirehe"],
-                "Mushikiri": ["Gahara", "Gatore", "Kigarama", "Kigina", "Kirehe"],
-                "Nasho": ["Gahara", "Gatore", "Kigarama", "Kigina", "Kirehe"],
-                "Nyamugali": ["Gahara", "Gatore", "Kigarama", "Kigina", "Kirehe"],
-                "Nyarubuye": ["Gahara", "Gatore", "Kigarama", "Kigina", "Kirehe"]
-            },
-            "Ngoma": {
-                "Gashanda": ["Gashanda", "Janja", "Karembo", "Kazo", "Mugesera"],
-                "Jarama": ["Gashanda", "Jarama", "Karembo", "Kazo", "Mugesera"],
-                "Karembo": ["Gashanda", "Jarama", "Karembo", "Kazo", "Mugesera"],
-                "Kazo": ["Gashanda", "Jarama", "Karembo", "Kazo", "Mugesera"],
-                "Kibungo": ["Gashanda", "Jarama", "Karembo", "Kazo", "Mugesera"],
-                "Mugesera": ["Gashanda", "Jarama", "Karembo", "Kazo", "Mugesera"],
-                "Murama": ["Gashanda", "Jarama", "Karembo", "Kazo", "Murama"],
-                "Mutenderi": ["Gashanda", "Jarama", "Karembo", "Kazo", "Mutenderi"],
-                "Remera": ["Gashanda", "Jarama", "Karembo", "Kazo", "Remera"],
-                "Rukira": ["Gashanda", "Jarama", "Karembo", "Kazo", "Rukira"],
-                "Sake": ["Gashanda", "Jarama", "Karembo", "Kazo", "Sake"],
-                "Zaza": ["Gashanda", "Jarama", "Karembo", "Kazo", "Zaza"]
-            },
-            "Nyagatare": {
-                "Gatunda": ["Gatunda", "Kabarore", "Karangazi", "Karama", "Katabagemu"],
-                "Karangazi": ["Gatunda", "Kabarore", "Karangazi", "Karama", "Katabagemu"],
-                "Karama": ["Gatunda", "Kabarore", "Karangazi", "Karama", "Katabagemu"],
-                "Katabagemu": ["Gatunda", "Kabarore", "Karangazi", "Karama", "Katabagemu"],
-                "Kiyombe": ["Gatunda", "Kabarore", "Karangazi", "Karama", "Katabagemu"],
-                "Mimuli": ["Gatunda", "Kabarore", "Karangazi", "Karama", "Katabagemu"],
-                "Mukama": ["Gatunda", "Kabarore", "Karangazi", "Karama", "Katabagemu"],
-                "Musheri": ["Gatunda", "Kabarore", "Karangazi", "Karama", "Katabagemu"],
-                "Nyagatare": ["Gatunda", "Kabarore", "Karangazi", "Karama", "Katabagemu"],
-                "Rukomo": ["Gatunda", "Kabarore", "Karangazi", "Karama", "Katabagemu"],
-                "Rwempasha": ["Gatunda", "Kabarore", "Karangazi", "Karama", "Katabagemu"],
-                "Rwimiyaga": ["Gatunda", "Kabarore", "Karangazi", "Karama", "Katabagemu"],
-                "Tabagwe": ["Gatunda", "Kabarore", "Karangazi", "Karama", "Katabagemu"]
-            },
-            "Rwamagana": {
-                "Fumbwe": ["Fumbwe", "Gahengeri", "Gishari", "Karenge", "Kigabiro"],
-                "Gahengeri": ["Fumbwe", "Gahengeri", "Gishari", "Karenge", "Kigabiro"],
-                "Gishari": ["Fumbwe", "Gahengeri", "Gishari", "Karenge", "Kigabiro"],
-                "Karenge": ["Fumbwe", "Gahengeri", "Gishari", "Karenge", "Kigabiro"],
-                "Kigabiro": ["Fumbwe", "Gahengeri", "Gishari", "Karenge", "Kigabiro"],
-                "Muhazi": ["Fumbwe", "Gahengeri", "Gishari", "Karenge", "Kigabiro"],
-                "Munyaga": ["Fumbwe", "Gahengeri", "Gishari", "Karenge", "Kigabiro"],
-                "Mwulire": ["Fumbwe", "Gahengeri", "Gishari", "Karenge", "Kigabiro"],
-                "Nyakariro": ["Fumbwe", "Gahengeri", "Gishari", "Karenge", "Kigabiro"],
-                "Nzige": ["Fumbwe", "Gahengeri", "Gishari", "Karenge", "Kigabiro"],
-                "Rubona": ["Fumbwe", "Gahengeri", "Gishari", "Karenge", "Kigabiro"],
-                "Rwamagana": ["Fumbwe", "Gahengeri", "Gishari", "Karenge", "Kigabiro"]
-            }
-        },
-        "Northern": {
-            "Burera": {
-                "Bungwe": ["Bungwe", "Gahunga", "Gatebe", "Gitovu", "Kagogo"],
-                "Butaro": ["Bungwe", "Butaro", "Cyanika", "Cyeru", "Gahunga"],
-                "Cyanika": ["Bungwe", "Butaro", "Cyanika", "Cyeru", "Gahunga"],
-                "Cyeru": ["Bungwe", "Butaro", "Cyanika", "Cyeru", "Gahunga"],
-                "Gahunga": ["Bungwe", "Butaro", "Cyanika", "Cyeru", "Gahunga"],
-                "Gatebe": ["Bungwe", "Butaro", "Cyanika", "Cyeru", "Gahunga"],
-                "Gitovu": ["Bungwe", "Butaro", "Cyanika", "Cyeru", "Gahunga"],
-                "Kagogo": ["Bungwe", "Butaro", "Cyanika", "Cyeru", "Gahunga"],
-                "Kinoni": ["Bungwe", "Butaro", "Cyanika", "Cyeru", "Gahunga"],
-                "Kivuye": ["Bungwe", "Butaro", "Cyanika", "Cyeru", "Gahunga"],
-                "Nemba": ["Bungwe", "Butaro", "Cyanika", "Cyeru", "Gahunga"],
-                "Rugarama": ["Bungwe", "Butaro", "Cyanika", "Cyeru", "Gahunga"],
-                "Rugengabari": ["Bungwe", "Butaro", "Cyanika", "Cyeru", "Gahunga"],
-                "Ruhunde": ["Bungwe", "Butaro", "Cyanika", "Cyeru", "Gahunga"],
-                "Rusarabuye": ["Bungwe", "Butaro", "Cyanika", "Cyeru", "Gahunga"],
-                "Rwerere": ["Bungwe", "Butaro", "Cyanika", "Cyeru", "Gahunga"]
-            },
-            "Gakenke": {
-                "Busengo": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Coko": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Cyabingo": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Gakenke": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Gashenyi": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Janja": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Kamubuga": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Karambo": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Kivuruga": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Mataba": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Mugunga": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Muhondo": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Minazi": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Muyongwe": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Muzo": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Nemba": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Ruli": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Rusasa": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"],
-                "Rushashi": ["Busengo", "Coko", "Cyabingo", "Gakenke", "Gashenyi"]
-            },
-            "Gicumbi": {
-                "Bukure": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Bwisige": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Byumba": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Cyumba": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Giti": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Kageyo": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Kaniga": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Manyagiro": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Miyove": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Mukarange": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Muko": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Mutete": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Nyamiyaga": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Nyankenke": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Rubaya": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Rukomo": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Rushaki": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Rutare": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Ruvune": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"],
-                "Rwamiko": ["Bukure", "Bwisige", "Byumba", "Cyumba", "Giti"]
-            },
-            "Musanze": {
-                "Busogo": ["Busogo", "Cyuve", "Gacaca", "Gashaki", "Kimonyi"],
-                "Cyuve": ["Busogo", "Cyuve", "Gacaca", "Gashaki", "Kimonyi"],
-                "Gacaca": ["Busogo", "Cyuve", "Gacaca", "Gashaki", "Kimonyi"],
-                "Gashaki": ["Busogo", "Cyuve", "Gacaca", "Gashaki", "Kimonyi"],
-                "Kimonyi": ["Busogo", "Cyuve", "Gacaca", "Gashaki", "Kimonyi"],
-                "Kinigi": ["Busogo", "Cyuve", "Gacaca", "Gashaki", "Kimonyi"],
-                "Muhoza": ["Busogo", "Cyuve", "Gacaca", "Gashaki", "Kimonyi"],
-                "Muko": ["Busogo", "Cyuve", "Gacaca", "Gashaki", "Kimonyi"],
-                "Musanze": ["Busogo", "Cyuve", "Gacaca", "Gashaki", "Kimonyi"],
-                "Nkotsi": ["Busogo", "Cyuve", "Gacaca", "Gashaki", "Kimonyi"],
-                "Nyange": ["Busogo", "Cyuve", "Gacaca", "Gashaki", "Kimonyi"],
-                "Remera": ["Busogo", "Cyuve", "Gacaca", "Gashaki", "Kimonyi"],
-                "Rwaza": ["Busogo", "Cyuve", "Gacaca", "Gashaki", "Kimonyi"],
-                "Shingiro": ["Busogo", "Cyuve", "Gacaca", "Gashaki", "Kimonyi"]
-            },
-            "Rulindo": {
-                "Base": ["Base", "Burega", "Bushoki", "Buyoga", "Cyinzuzi"],
-                "Burega": ["Base", "Burega", "Bushoki", "Buyoga", "Cyinzuzi"],
-                "Bushoki": ["Base", "Burega", "Bushoki", "Buyoga", "Cyinzuzi"],
-                "Buyoga": ["Base", "Burega", "Bushoki", "Buyoga", "Cyinzuzi"],
-                "Cyinzuzi": ["Base", "Burega", "Bushoki", "Buyoga", "Cyinzuzi"],
-                "Cyungo": ["Base", "Burega", "Bushoki", "Buyoga", "Cyinzuzi"],
-                "Kinihira": ["Base", "Burega", "Bushoki", "Buyoga", "Cyinzuzi"],
-                "Kisaro": ["Base", "Burega", "Bushoki", "Buyoga", "Cyinzuzi"],
-                "Masoro": ["Base", "Burega", "Bushoki", "Buyoga", "Cyinzuzi"],
-                "Mbogo": ["Base", "Burega", "Bushoki", "Buyoga", "Cyinzuzi"],
-                "Murambi": ["Base", "Burega", "Bushoki", "Buyoga", "Cyinzuzi"],
-                "Ntarabana": ["Base", "Burega", "Bushoki", "Buyoga", "Cyinzuzi"],
-                "Rukozo": ["Base", "Burega", "Bushoki", "Buyoga", "Cyinzuzi"],
-                "Rulindo": ["Base", "Burega", "Bushoki", "Buyoga", "Cyinzuzi"],
-                "Rusiga": ["Base", "Burega", "Bushoki", "Buyoga", "Cyinzuzi"],
-                "Shyorongi": ["Base", "Burega", "Bushoki", "Buyoga", "Cyinzuzi"],
-                "Tumba": ["Base", "Burega", "Bushoki", "Buyoga", "Cyinzuzi"]
-            }
-        },
-        "Southern": {
-            "Gisagara": {
-                "Gikore": ["Gikore", "Gikonko", "Kansi", "Kibilizi", "Kigembe"],
-                "Gikonko": ["Gikore", "Gikonko", "Kansi", "Kibilizi", "Kigembe"],
-                "Kansi": ["Gikore", "Gikonko", "Kansi", "Kibilizi", "Kigembe"],
-                "Kibilizi": ["Gikore", "Gikonko", "Kansi", "Kibilizi", "Kigembe"],
-                "Kigembe": ["Gikore", "Gikonko", "Kansi", "Kibilizi", "Kigembe"],
-                "Mamba": ["Gikore", "Gikonko", "Kansi", "Kibilizi", "Kigembe"],
-                "Muganza": ["Gikore", "Gikonko", "Kansi", "Kibilizi", "Kigembe"],
-                "Mukindo": ["Gikore", "Gikonko", "Kansi", "Kibilizi", "Kigembe"],
-                "Musha": ["Gikore", "Gikonko", "Kansi", "Kibilizi", "Kigembe"],
-                "Ndora": ["Gikore", "Gikonko", "Kansi", "Kibilizi", "Kigembe"],
-                "Nyanza": ["Gikore", "Gikonko", "Kansi", "Kibilizi", "Kigembe"],
-                "Save": ["Gikore", "Gikonko", "Kansi", "Kibilizi", "Kigembe"]
-            },
-            "Huye": {
-                "Gishamvu": ["Gishamvu", "Huye", "Karama", "Kigoma", "Kinazi"],
-                "Huye": ["Gishamvu", "Huye", "Karama", "Kigoma", "Kinazi"],
-                "Karama": ["Gishamvu", "Huye", "Karama", "Kigoma", "Kinazi"],
-                "Kigoma": ["Gishamvu", "Huye", "Karama", "Kigoma", "Kinazi"],
-                "Kinazi": ["Gishamvu", "Huye", "Karama", "Kigoma", "Kinazi"],
-                "Maraba": ["Gishamvu", "Huye", "Karama", "Kigoma", "Kinazi"],
-                "Mbazi": ["Gishamvu", "Huye", "Karama", "Kigoma", "Kinazi"],
-                "Mukura": ["Gishamvu", "Huye", "Karama", "Kigoma", "Kinazi"],
-                "Ngoma": ["Gishamvu", "Huye", "Karama", "Kigoma", "Kinazi"],
-                "Ruhashya": ["Gishamvu", "Huye", "Karama", "Kigoma", "Kinazi"],
-                "Rusatira": ["Gishamvu", "Huye", "Karama", "Kigoma", "Kinazi"],
-                "Rwaniro": ["Gishamvu", "Huye", "Karama", "Kigoma", "Kinazi"],
-                "Simbi": ["Gishamvu", "Huye", "Karama", "Kigoma", "Kinazi"],
-                "Tumba": ["Gishamvu", "Huye", "Karama", "Kigoma", "Kinazi"]
-            },
-            "Kamonyi": {
-                "Gacurabwenge": ["Gacurabwenge", "Kayenzi", "Kayumbu", "Mugina", "Musambira"],
-                "Kayenzi": ["Gacurabwenge", "Kayenzi", "Kayumbu", "Mugina", "Musambira"],
-                "Kayumbu": ["Gacurabwenge", "Kayenzi", "Kayumbu", "Mugina", "Musambira"],
-                "Mugina": ["Gacurabwenge", "Kayenzi", "Kayumbu", "Mugina", "Musambira"],
-                "Musambira": ["Gacurabwenge", "Kayenzi", "Kayumbu", "Mugina", "Musambira"],
-                "Ngamba": ["Gacurabwenge", "Kayenzi", "Kayumbu", "Mugina", "Musambira"],
-                "Nyamiyaga": ["Gacurabwenge", "Kayenzi", "Kayumbu", "Mugina", "Musambira"],
-                "Nyarubaka": ["Gacurabwenge", "Kayenzi", "Kayumbu", "Mugina", "Musambira"],
-                "Rugalika": ["Gacurabwenge", "Kayenzi", "Kayumbu", "Mugina", "Musambira"],
-                "Rukoma": ["Gacurabwenge", "Kayenzi", "Kayumbu", "Mugina", "Musambira"],
-                "Runda": ["Gacurabwenge", "Kayenzi", "Kayumbu", "Mugina", "Musambira"]
-            },
-            "Muhanga": {
-                "Cyeza": ["Cyeza", "Kabacuzi", "Kibangu", "Kiyumba", "Muhanga"],
-                "Kabacuzi": ["Cyeza", "Kabacuzi", "Kibangu", "Kiyumba", "Muhanga"],
-                "Kibangu": ["Cyeza", "Kabacuzi", "Kibangu", "Kiyumba", "Muhanga"],
-                "Kiyumba": ["Cyeza", "Kabacuzi", "Kibangu", "Kiyumba", "Muhanga"],
-                "Muhanga": ["Cyeza", "Kabacuzi", "Kibangu", "Kiyumba", "Muhanga"],
-                "Mushishiro": ["Cyeza", "Kabacuzi", "Kibangu", "Kiyumba", "Muhanga"],
-                "Nyabinoni": ["Cyeza", "Kabacuzi", "Kibangu", "Kiyumba", "Muhanga"],
-                "Nyarusange": ["Cyeza", "Kabacuzi", "Kibangu", "Kiyumba", "Muhanga"],
-                "Rongi": ["Cyeza", "Kabacuzi", "Kibangu", "Kiyumba", "Muhanga"],
-                "Rugendabari": ["Cyeza", "Kabacuzi", "Kibangu", "Kiyumba", "Muhanga"],
-                "Shyogwe": ["Cyeza", "Kabacuzi", "Kibangu", "Kiyumba", "Muhanga"]
-            },
-            "Nyamagabe": {
-                "Buruhukiro": ["Buruhukiro", "Cyanika", "Gasaka", "Gatare", "Kaduha"],
-                "Cyanika": ["Buruhukiro", "Cyanika", "Gasaka", "Gatare", "Kaduha"],
-                "Gasaka": ["Buruhukiro", "Cyanika", "Gasaka", "Gatare", "Kaduha"],
-                "Gatare": ["Buruhukiro", "Cyanika", "Gasaka", "Gatare", "Kaduha"],
-                "Kaduha": ["Buruhukiro", "Cyanika", "Gasaka", "Gatare", "Kaduha"],
-                "Kamegeri": ["Buruhukiro", "Cyanika", "Gasaka", "Gatare", "Kaduha"],
-                "Kibumbwe": ["Buruhukiro", "Cyanika", "Gasaka", "Gatare", "Kaduha"],
-                "Kitabi": ["Buruhukiro", "Cyanika", "Gasaka", "Gatare", "Kaduha"],
-                "Mbazi": ["Buruhukiro", "Cyanika", "Gasaka", "Gatare", "Kaduha"],
-                "Mugano": ["Buruhukiro", "Cyanika", "Gasaka", "Gatare", "Kaduha"],
-                "Musange": ["Buruhukiro", "Cyanika", "Gasaka", "Gatare", "Kaduha"],
-                "Musebeya": ["Buruhukiro", "Cyanika", "Gasaka", "Gatare", "Kaduha"],
-                "Mushubi": ["Buruhukiro", "Cyanika", "Gasaka", "Gatare", "Kaduha"],
-                "Nkomane": ["Buruhukiro", "Cyanika", "Gasaka", "Gatare", "Kaduha"],
-                "Tare": ["Buruhukiro", "Cyanika", "Gasaka", "Gatare", "Kaduha"],
-                "Uwinkingi": ["Buruhukiro", "Cyanika", "Gasaka", "Gatare", "Kaduha"]
-            },
-            "Nyanza": {
-                "Busasamana": ["Busasamana", "Busoro", "Cyabakamyi", "Kibirizi", "Kigoma"],
-                "Busoro": ["Busasamana", "Busoro", "Cyabakamyi", "Kibirizi", "Kigoma"],
-                "Cyabakamyi": ["Busasamana", "Busoro", "Cyabakamyi", "Kibirizi", "Kigoma"],
-                "Kibirizi": ["Busasamana", "Busoro", "Cyabakamyi", "Kibirizi", "Kigoma"],
-                "Kigoma": ["Busasamana", "Busoro", "Cyabakamyi", "Kibirizi", "Kigoma"],
-                "Mukingo": ["Busasamana", "Busoro", "Cyabakamyi", "Kibirizi", "Kigoma"],
-                "Muyira": ["Busasamana", "Busoro", "Cyabakamyi", "Kibirizi", "Kigoma"],
-                "Ntyazo": ["Busasamana", "Busoro", "Cyabakamyi", "Kibirizi", "Kigoma"],
-                "Rwabicuma": ["Busasamana", "Busoro", "Cyabakamyi", "Kibirizi", "Kigoma"]
-            },
-            "Nyaruguru": {
-                "Busanze": ["Busanze", "Cyahinda", "Kibeho", "Kivu", "Mata"],
-                "Cyahinda": ["Busanze", "Cyahinda", "Kibeho", "Kivu", "Mata"],
-                "Kibeho": ["Busanze", "Cyahinda", "Kibeho", "Kivu", "Mata"],
-                "Kivu": ["Busanze", "Cyahinda", "Kibeho", "Kivu", "Mata"],
-                "Mata": ["Busanze", "Cyahinda", "Kibeho", "Kivu", "Mata"],
-                "Muganza": ["Busanze", "Cyahinda", "Kibeho", "Kivu", "Mata"],
-                "Munini": ["Busanze", "Cyahinda", "Kibeho", "Kivu", "Mata"],
-                "Ngera": ["Busanze", "Cyahinda", "Kibeho", "Kivu", "Mata"],
-                "Ngoma": ["Busanze", "Cyahinda", "Kibeho", "Kivu", "Mata"],
-                "Nyabimata": ["Busanze", "Cyahinda", "Kibeho", "Kivu", "Mata"],
-                "Nyagisozi": ["Busanze", "Cyahinda", "Kibeho", "Kivu", "Mata"],
-                "Ruheru": ["Busanze", "Cyahinda", "Kibeho", "Kivu", "Mata"],
-                "Rusenge": ["Busanze", "Cyahinda", "Kibeho", "Kivu", "Mata"],
-                "Ruramba": ["Busanze", "Cyahinda", "Kibeho", "Kivu", "Mata"],
-                "Rwamagana": ["Busanze", "Cyahinda", "Kibeho", "Kivu", "Mata"]
-            },
-            "Ruhango": {
-                "Bweramana": ["Bweramana", "Byimana", "Kabagali", "Kinihira", "Kinazi"],
-                "Byimana": ["Bweramana", "Byimana", "Kabagali", "Kinihira", "Kinazi"],
-                "Kabagali": ["Bweramana", "Byimana", "Kabagali", "Kinihira", "Kinazi"],
-                "Kinihira": ["Bweramana", "Byimana", "Kabagali", "Kinihira", "Kinazi"],
-                "Kinazi": ["Bweramana", "Byimana", "Kabagali", "Kinihira", "Kinazi"],
-                "Mbuye": ["Bweramana", "Byimana", "Kabagali", "Kinihira", "Kinazi"],
-                "Mwendo": ["Bweramana", "Byimana", "Kabagali", "Kinihira", "Kinazi"],
-                "Ntongwe": ["Bweramana", "Byimana", "Kabagali", "Kinihira", "Kinazi"],
-                "Ruhango": ["Bweramana", "Byimana", "Kabagali", "Kinihira", "Kinazi"]
-            }
-        },
-        "Western": {
-            "Karongi": {
-                "Bwishyura": ["Bwishyura", "Gashari", "Gishyita", "Gisovu", "Gitesi"],
-                "Gashari": ["Bwishyura", "Gashari", "Gishyita", "Gisovu", "Gitesi"],
-                "Gishyita": ["Bwishyura", "Gashari", "Gishyita", "Gisovu", "Gitesi"],
-                "Gisovu": ["Bwishyura", "Gashari", "Gishyita", "Gisovu", "Gitesi"],
-                "Gitesi": ["Bwishyura", "Gashari", "Gishyita", "Gisovu", "Gitesi"],
-                "Mubuga": ["Bwishyura", "Gashari", "Gishyita", "Gisovu", "Gitesi"],
-                "Murambi": ["Bwishyura", "Gashari", "Gishyita", "Gisovu", "Gitesi"],
-                "Murundi": ["Bwishyura", "Gashari", "Gishyita", "Gisovu", "Gitesi"],
-                "Mutuntu": ["Bwishyura", "Gashari", "Gishyita", "Gisovu", "Gitesi"],
-                "Rugabano": ["Bwishyura", "Gashari", "Gishyita", "Gisovu", "Gitesi"],
-                "Rwankuba": ["Bwishyura", "Gashari", "Gishyita", "Gisovu", "Gitesi"],
-                "Rubengera": ["Bwishyura", "Gashari", "Gishyita", "Gisovu", "Gitesi"],
-                "Ruganda": ["Bwishyura", "Gashari", "Gishyita", "Gisovu", "Gitesi"],
-                "Twumba": ["Bwishyura", "Gashari", "Gishyita", "Gisovu", "Gitesi"]
-            },
-            "Ngororero": {
-                "Bwira": ["Bwira", "Gatumba", "Hindiro", "Kabaya", "Kageyo"],
-                "Gatumba": ["Bwira", "Gatumba", "Hindiro", "Kabaya", "Kageyo"],
-                "Hindiro": ["Bwira", "Gatumba", "Hindiro", "Kabaya", "Kageyo"],
-                "Kabaya": ["Bwira", "Gatumba", "Hindiro", "Kabaya", "Kageyo"],
-                "Kageyo": ["Bwira", "Gatumba", "Hindiro", "Kabaya", "Kageyo"],
-                "Kavumu": ["Bwira", "Gatumba", "Hindiro", "Kabaya", "Kageyo"],
-                "Matyazo": ["Bwira", "Gatumba", "Hindiro", "Kabaya", "Kageyo"],
-                "Muhanda": ["Bwira", "Gatumba", "Hindiro", "Kabaya", "Kageyo"],
-                "Muhororo": ["Bwira", "Gatumba", "Hindiro", "Kabaya", "Kageyo"],
-                "Ndaro": ["Bwira", "Gatumba", "Hindiro", "Kabaya", "Kageyo"],
-                "Ngororero": ["Bwira", "Gatumba", "Hindiro", "Kabaya", "Kageyo"],
-                "Nyange": ["Bwira", "Gatumba", "Hindiro", "Kabaya", "Kageyo"],
-                "Sovu": ["Bwira", "Gatumba", "Hindiro", "Kabaya", "Kageyo"]
-            },
-            "Nyabihu": {
-                "Bigogwe": ["Bigogwe", "Jenda", "Jomba", "Kabatwa", "Karago"],
-                "Jenda": ["Bigogwe", "Jenda", "Jomba", "Kabatwa", "Karago"],
-                "Jomba": ["Bigogwe", "Jenda", "Jomba", "Kabatwa", "Karago"],
-                "Kabatwa": ["Bigogwe", "Jenda", "Jomba", "Kabatwa", "Karago"],
-                "Karago": ["Bigogwe", "Jenda", "Jomba", "Kabatwa", "Karago"],
-                "Kintobo": ["Bigogwe", "Jenda", "Jomba", "Kabatwa", "Karago"],
-                "Mukamira": ["Bigogwe", "Jenda", "Jomba", "Kabatwa", "Karago"],
-                "Muringa": ["Bigogwe", "Jenda", "Jomba", "Kabatwa", "Karago"],
-                "Rambura": ["Bigogwe", "Jenda", "Jomba", "Kabatwa", "Karago"],
-                "Rugera": ["Bigogwe", "Jenda", "Jomba", "Kabatwa", "Karago"],
-                "Rurembo": ["Bigogwe", "Jenda", "Jomba", "Kabatwa", "Karago"],
-                "Shyira": ["Bigogwe", "Jenda", "Jomba", "Kabatwa", "Karago"]
-            },
-            "Nyamasheke": {
-                "Bushekeri": ["Bushekeri", "Bushenge", "Cyato", "Gihombo", "Kagano"],
-                "Bushenge": ["Bushekeri", "Bushenge", "Cyato", "Gihombo", "Kagano"],
-                "Cyato": ["Bushekeri", "Bushenge", "Cyato", "Gihombo", "Kagano"],
-                "Gihombo": ["Bushekeri", "Bushenge", "Cyato", "Gihombo", "Kagano"],
-                "Kagano": ["Bushekeri", "Bushenge", "Cyato", "Gihombo", "Kagano"],
-                "Kanjongo": ["Bushekeri", "Bushenge", "Cyato", "Gihombo", "Kagano"],
-                "Karambi": ["Bushekeri", "Bushenge", "Cyato", "Gihombo", "Kagano"],
-                "Karengera": ["Bushekeri", "Bushenge", "Cyato", "Gihombo", "Kagano"],
-                "Kirimbi": ["Bushekeri", "Bushenge", "Cyato", "Gihombo", "Kagano"],
-                "Macuba": ["Bushekeri", "Bushenge", "Cyato", "Gihombo", "Kagano"],
-                "Mahembe": ["Bushekeri", "Bushenge", "Cyato", "Gihombo", "Kagano"],
-                "Rangiro": ["Bushekeri", "Bushenge", "Cyato", "Gihombo", "Kagano"],
-                "Ruharambuga": ["Bushekeri", "Bushenge", "Cyato", "Gihombo", "Kagano"],
-                "Shangi": ["Bushekeri", "Bushenge", "Cyato", "Gihombo", "Kagano"]
-            },
-            "Rubavu": {
-                "Bugeshi": ["Bugeshi", "Busasamana", "Cyanzarwe", "Gisenyi", "Kanama"],
-                "Busasamana": ["Bugeshi", "Busasamana", "Cyanzarwe", "Gisenyi", "Kanama"],
-                "Cyanzarwe": ["Bugeshi", "Busasamana", "Cyanzarwe", "Gisenyi", "Kanama"],
-                "Gisenyi": ["Bugeshi", "Busasamana", "Cyanzarwe", "Gisenyi", "Kanama"],
-                "Kanama": ["Bugeshi", "Busasamana", "Cyanzarwe", "Gisenyi", "Kanama"],
-                "Kanzenze": ["Bugeshi", "Busasamana", "Cyanzarwe", "Gisenyi", "Kanama"],
-                "Mudende": ["Bugeshi", "Busasamana", "Cyanzarwe", "Gisenyi", "Kanama"],
-                "Nyakiliba": ["Bugeshi", "Busasamana", "Cyanzarwe", "Gisenyi", "Kanama"],
-                "Nyamyumba": ["Bugeshi", "Busasamana", "Cyanzarwe", "Gisenyi", "Kanama"],
-                "Nyundo": ["Bugeshi", "Busasamana", "Cyanzarwe", "Gisenyi", "Kanama"],
-                "Rubavu": ["Bugeshi", "Busasamana", "Cyanzarwe", "Gisenyi", "Kanama"],
-                "Rugerero": ["Bugeshi", "Busasamana", "Cyanzarwe", "Gisenyi", "Kanama"]
-            },
-            "Rusizi": {
-                "Bugarama": ["Bugarama", "Butare", "Gashonga", "Giheke", "Gihundwe"],
-                "Butare": ["Bugarama", "Butare", "Gashonga", "Giheke", "Gihundwe"],
-                "Gashonga": ["Bugarama", "Butare", "Gashonga", "Giheke", "Gihundwe"],
-                "Giheke": ["Bugarama", "Butare", "Gashonga", "Giheke", "Gihundwe"],
-                "Gihundwe": ["Bugarama", "Butare", "Gashonga", "Giheke", "Gihundwe"],
-                "Gitambi": ["Bugarama", "Butare", "Gashonga", "Giheke", "Gihundwe"],
-                "Muganza": ["Bugarama", "Butare", "Gashonga", "Giheke", "Gihundwe"],
-                "Mururu": ["Bugarama", "Butare", "Gashonga", "Giheke", "Gihundwe"],
-                "Nkanka": ["Bugarama", "Butare", "Gashonga", "Giheke", "Gihundwe"],
-                "Nkombo": ["Bugarama", "Butare", "Gashonga", "Giheke", "Gihundwe"],
-                "Nkungu": ["Bugarama", "Butare", "Gashonga", "Giheke", "Gihundwe"],
-                "Nyakabuye": ["Bugarama", "Butare", "Gashonga", "Giheke", "Gihundwe"],
-                "Nyakarenzo": ["Bugarama", "Butare", "Gashonga", "Giheke", "Gihundwe"],
-                "Nzahaha": ["Bugarama", "Butare", "Gashonga", "Giheke", "Gihundwe"],
-                "Rwimbogo": ["Bugarama", "Butare", "Gashonga", "Giheke", "Gihundwe"]
-            },
-            "Rutsiro": {
-                "Boneza": ["Boneza", "Gihango", "Kigeyo", "Kivumu", "Manihira"],
-                "Gihango": ["Boneza", "Gihango", "Kigeyo", "Kivumu", "Manihira"],
-                "Kigeyo": ["Boneza", "Gihango", "Kigeyo", "Kivumu", "Manihira"],
-                "Kivumu": ["Boneza", "Gihango", "Kigeyo", "Kivumu", "Manihira"],
-                "Manihira": ["Boneza", "Gihango", "Kigeyo", "Kivumu", "Manihira"],
-                "Mukura": ["Boneza", "Gihango", "Kigeyo", "Kivumu", "Manihira"],
-                "Murunda": ["Boneza", "Gihango", "Kigeyo", "Kivumu", "Manihira"],
-                "Musasa": ["Boneza", "Gihango", "Kigeyo", "Kivumu", "Manihira"],
-                "Mushonyi": ["Boneza", "Gihango", "Kigeyo", "Kivumu", "Manihira"],
-                "Mushubati": ["Boneza", "Gihango", "Kigeyo", "Kivumu", "Manihira"],
-                "Nyabirasi": ["Boneza", "Gihango", "Kigeyo", "Kivumu", "Manihira"],
-                "Ruhango": ["Boneza", "Gihango", "Kigeyo", "Kivumu", "Manihira"],
-                "Rwankuba": ["Boneza", "Gihango", "Kigeyo", "Kivumu", "Manihira"]
-            }
+            
         }
     }
 
@@ -1202,64 +722,7 @@ if (isset($_POST["submit"])) {
             
               
             </script>
-        </div> 
-        
-        <style>
-            .form-group {
-                margin-bottom: 15px; /* Space between form groups */
-            }
-        
-            .form-control,
-            .form-control-file,
-            textarea {
-                border: 1px solid #ccc; /* Add a border to inputs and textareas */
-                border-radius: 4px; /* Rounded corners for inputs */
-                padding: 10px; /* Padding inside inputs */
-                width: 100%; /* Full width */
-                box-sizing: border-box; /* Include padding and border in width */
-            }
-         
-        
-            .flexy {
-                display: flex; /* Use flexbox for layout */
-                flex-wrap: wrap; /* Allow wrapping */
-            }
-        
-            .flexy .form-group {
-                 flex: 1;/* Allow form groups to grow */
-                min-width: 200px; /* Minimum width for each form group */
-                margin-right: 10px; /* Space between form groups */
-            }
-        
-            .flexy .form-group:last-child {
-                margin-right: 0; /* Remove right margin for the last item */
-            }
-        
-            .drop-zone {
-                border: 2px dashed #ddd;
-                border-radius: 8px; /* Rounded corners */
-                padding: 20px;
-                text-align: center;
-                cursor: pointer;
-                background-color: #f9f9f9; /* Light background for contrast */
-                transition: border-color 0.3s, background-color 0.3s;
-            }
-        
-            .drop-zone.drag-over {
-                border-color: #333;
-                background-color: #e9e9e9; /* Slightly darker background on drag over */
-            }
-        
-            .drop-zone:hover {
-                background-color: #f1f1f1; /* Light hover effect */
-            }
-        
-            .form-navigation {
-                display: flex; /* Use flexbox for navigation buttons */
-                gap: 20px;
-                margin-top: 20px; /* Space above navigation buttons */
-            }
-        </style>
+        </div>     
         
         <script>
           document.getElementById('browseButton').addEventListener('click', function () {
@@ -1311,109 +774,6 @@ function displayFileNames(files) {
         </script>
         
      </section>
-     
-     
-    
-
- <style>
-
-    .backgroundz{
-        background-color: rgba(176, 176, 176, 0.212);
-    }
-    .content{
-        width: 100%; 
-        margin-top: -50px;
-        display: flex;
-        padding: 50px; 
-    }
-    .sidenav{
-        width: 25%;  
-        border-right: solid 1px rgba(128, 128, 128, 0.393);
-        display: flex;
-        flex-direction: column;
-        padding: 30px 0px 0px 30px;
-        gap: 10px;  
-    } 
-
-    .sidenav button {   
-        border: none;
-        cursor: pointer;
-        transition: transform 0.2s, border 0.2s;
-        position: relative;
-        text-align: left ;
-        padding: 3px 10px 3px 25px;
-        font-weight: 560; 
-        border-radius: 0px;
-    }
-
-    .sidenav button:hover {
-      transform: translateX(5px);
-    }
-
-    .sidenav a.active {
-       border-left: 3.5px solid #1F3365;  
-    }
-    .maincontent{
-        width: 75%; 
-        padding-left: 35px;
-        padding-right: 35px; 
-    }
-    .step {
-            display: none;
-        }
-
-        .step.active {
-            display: block;
-        }
-        .form-control { 
-            padding: 10px; 
-            border-radius: 4px;  
-            display: flex;
-            flex-direction: column;
-        } 
-        .flexy{
-            display:flex;
-            gap: 10px;
-        }
-        .stepheader {
-          display: flex;
-          justify-content: space-between; /* Space between items */
-          align-items: center; /* Center items vertically */
-          margin-bottom: 15px; /* Optional: space below the header */
-        }
-        .titlez{
-            font-weight: 650;
-            text-decoration: underline;
-            font-size: medium;
-            margin-bottom: 10px;
-        }  
-        @media (max-width: 1024px) {
-            .sidenav {
-                /* display: none; */
-                font-size: 12px;
-            }
- 
-        } 
-        @media (max-width: 767px) {
-            .sidenav {
-                display: none;
-                /* font-size: 12px; */
-            }
-
-            .content {
-                padding: 5px;
-                width: 100%; 
-                justify-content: center;
-            }
-            .maincontent{ 
-        padding-left: 1px;
-        padding-right: 1px; 
-    }
-        }
- </style>
-
-
-
 
     <!-- Combine fetch calls and scroll to top -->
     <script>
@@ -1435,13 +795,10 @@ function displayFileNames(files) {
             });
         });
     </script>
-
     <!-- sample -->
     <script>
         let numberofresults = 4;
-    </script>
-
-
+    </script> 
     <!-- Toggle functionality -->
     <script>
         $(document).ready(function () {
