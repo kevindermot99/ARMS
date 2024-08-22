@@ -614,7 +614,7 @@
                 </script>
             <script>
                 tinymce.init({
-                    selector: 'textarea',
+                    // selector: 'textarea',
                       // Apply TinyMCE to all textareas
                     menubar: false,
                     plugins: 'link image code',
