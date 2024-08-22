@@ -300,7 +300,7 @@
         
         
         <div class="maincontent">
-        <form id="multiStepForm" action="auth/addprocess.php" method="post" enctype="multipart/form-data">
+            <form id="multiStepForm" action="auth/addprocess.php" method="post" enctype="multipart/form-data">
                 <!-- Step 1: Basic Information -->
                 <div class="step active" id="basic-info">
 
@@ -346,12 +346,19 @@
                 <div class="step" id="forensic">
                     <h3 class="titlez">Forensic</h3>
                     <div class="form-group">
-                        <label for="mediaUpload">Upload media</label> 
-                        <input type="file" class="form-control-file" id="mediaUpload" name="forensicmedia[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
+                    
+                        <label for="forensic">Upload Forensic Media:</label>
+                        <input type="file" name="forensic[]" multiple><br>
+
+                        <!-- <label for="mediaUpload">Upload media</label> 
+                        <input type="file" class="form-control-file" id="mediaUpload" 
+                        name="forensicmedia" 
+                        accept="image/*,video/*,audio/*" multiple style="display: none;">
                         <div class="drop-zone" id="dropZone">
                             Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
                         </div>
-                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
+                        <div id="fileNames" class="mt-2"></div>  -->
+                        <!-- Added div to display file names -->
                     </div>
                     
                     <div class="form-group mt-4">
@@ -427,13 +434,17 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="mediaUpload">Upload media</label>
+                            <div class="form-group"> 
+                        <label for="testimonials">Upload Testimonials:</label>
+                        <input type="file" name="testimonials[]" multiple><br>
+
+                                <!-- <label for="mediaUpload">Upload media</label>
                                 <input type="file" class="form-control-file" id="mediaUpload" name="individual_media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
                                 <div class="drop-zone" id="dropZone">
                                     Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
                                 </div>
-                                <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
+                                <div id="fileNames" class="mt-2"></div>  -->
+                                <!-- Added div to display file names -->
                             </div>
                 
                             <div class="form-group">
@@ -443,7 +454,9 @@
                         </div>
                     </div>
                 </div>
-                 
+                
+                
+        
                 <!-- Step 4: Damage Report -->
                 <div class="step" id="Damage">
                     <h3 class="titlez">Damage report</h3>
@@ -457,13 +470,18 @@
                         <input type="number" placeholder="0" class="form-control" id="dead" name="dead">
                     </div>
                     </div> 
-                    <div class="form-group">
-                        <label for="mediaUpload">Upload media</label>
+                    <div class="form-group"> 
+                    
+                        <label for="damage_report">Upload Damage Report:</label>
+                        <input type="file" name="damage_report[]" multiple><br>
+
+                        <!-- <label for="mediaUpload">Upload media</label>
                         <input type="file" class="form-control-file" id="mediaUpload" name="Damage_media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
                         <div class="drop-zone" id="dropZone">
                             Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
                         </div>
-                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
+                        <div id="fileNames" class="mt-2"></div> -->
+                         <!-- Added div to display file names -->
                     </div>
                     <div class="form-group">
                         <label for="propertyDamage">Damaged report</label> 
@@ -475,12 +493,17 @@
                 <div class="step" id="Officers">
                     <h3 class="titlez">officers report</h3>
                     <div class="form-group">
-                        <label for="mediaUpload">Upload media</label>
+                        
+                    
+                        <label for="officers_pov">Upload Officers' P.O.V.:</label>
+                        <input type="file" name="officers_pov[]" multiple><br>
+                        <!-- <label for="mediaUpload">Upload media</label>
                         <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
                         <div class="drop-zone" id="dropZone">
                             Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
                         </div>
-                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
+                        <div id="fileNames" class="mt-2"></div> -->
+                         <!-- Added div to display file names -->
                     </div>
                     <div class="form-group">
                         <label for="officerDescription">Officer Description</label>
@@ -492,12 +515,16 @@
                 <div class="step" id="Extra">
                     <h3 class="titlez">extra-info</h3>
                     <div class="form-group">
-                        <label for="mediaUpload">Upload media</label>
+                        
+                        <label for="extra_info">Upload Extra Info:</label>
+                        <input type="file" name="extra_info[]" multiple><br>
+                        <!-- <label for="mediaUpload">Upload media</label>
                         <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
                         <div class="drop-zone" id="dropZone">
                             Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
                         </div>
-                        <div id="fileNames" class="mt-2"></div> <!-- Added div to display file names -->
+                        <div id="fileNames" class="mt-2"></div>  -->
+                        <!-- Added div to display file names -->
                     </div>
                     <div class="form-group">
                         <label for="officerDescription">Officer Description</label>
