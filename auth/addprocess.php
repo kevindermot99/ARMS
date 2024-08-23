@@ -107,6 +107,7 @@ foreach ($individualNames as $index => $name) {
 }
 
 echo "Data submitted successfully";
+header('location:../explore.html');
 
 $stmt->close();
 $conn->close();

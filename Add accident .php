@@ -605,7 +605,7 @@
                 
                                 <div class="form-group">
                                     <label for="propertyDamage">Description</label>
-                                    <textarea class="form-control" name="property_damage_desc[]"></textarea>
+                                    <textarea class="form-control" name="indiviaul_desc[]"></textarea>
                                 </div>
                             </div>`;
                             $('#testimonial-section').append(testimonialHTML);
