@@ -433,6 +433,15 @@
                                         <option value="drunk">Drunk</option>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="alcoholTest">accident category</label>
+                                    <select class="form-control" name="cause[]">
+                                        <option value="">Select categoy</option>
+                                        <option value="Natural Desaster">Natural Desaster</option>
+                                        <option value="Car Problem">Car Problem</option>
+                                        <option value="Unknown Reason">Unknown Reason</option> 
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group"> 
                         <label for="testimonials">Upload Testimonials:</label>
@@ -491,27 +500,35 @@
         
                 <!-- Step 5: Officers' P.O.V. -->
                 <div class="step" id="Officers">
-                    <h3 class="titlez">officers report</h3>
+                    <h3 class="titlez">Officers Report</h3>
                     <div class="form-group">
-                        
-                    
                         <label for="officers_pov">Upload Officers' P.O.V.:</label>
                         <input type="file" name="officers_pov[]" multiple><br>
-                        <!-- <label for="mediaUpload">Upload media</label>
-                        <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
-                        <div class="drop-zone" id="dropZone">
-                            Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
+                    </div>
+                    <div class="flexy">
+                        <div class="form-group">
+                            <label for="caseStatus">Case Status</label>
+                            <select class="form-control" name="case_status">
+                                <option value="ongoing">Ongoing</option>
+                                <option value="closed">Closed</option>
+                            </select>
                         </div>
-                        <div id="fileNames" class="mt-2"></div> -->
-                         <!-- Added div to display file names -->
+                        <div class="form-group">
+                            <label for="accidentType">Type of Accident</label>
+                            <select class="form-control" name="accident_type">
+                                <option value="on-road">On-road</option>
+                                <option value="off-road">Off-road</option>
+                                <option value="side-road">Side-road</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="officerDescription">Officer Description</label>
                         <textarea class="form-control" id="officerDescription" name="officer_description"></textarea>
-                    </div>
+                    </div>  
                 </div>
         
-                <!-- Step 6: Officers' P.O.V. -->
+                <!-- Step 6: extra info. -->
                 <div class="step" id="Extra">
                     <h3 class="titlez">extra-info</h3>
                     <div class="form-group">
@@ -597,6 +614,15 @@
                                             <option value="drunk">Drunk</option>
                                         </select>
                                     </div>
+                                     <div class="form-group">
+                                    <label for="alcoholTest">accident category</label>
+                                    <select class="form-control" name="cause[]">
+                                        <option value="">Select categoy</option>
+                                        <option value="Natural Desaster">Natural Desaster</option>
+                                        <option value="Car Problem">Car Problem</option>
+                                        <option value="Unknown Reason">Unknown Reason</option> 
+                                    </select>
+                                   </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="mediaUpload">Upload media</label>

@@ -71,11 +71,15 @@ $officerDescription = $_POST['officer_description'];
 $extraInfoImages = uploadFiles('extra_info', $uploadDirs['extra_info']);
 $extraInfo = $_POST['extra_info'];
 
-$sql = "INSERT INTO accident (accident_title, accident_date_time, province, district, sector, basicinfo_desc, forensic_images, forensic_desc, damage_images, damage_desc, officers_images, officer_description, extra_info_images, extra_info)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+// New fields
+$caseStatus = $_POST['case_status'];
+$accidentType = $_POST['accident_type'];
+
+$sql = "INSERT INTO accident (accident_title, accident_date_time, province, district, sector, basicinfo_desc, forensic_images, forensic_desc, damage_images, damage_desc, officers_images, officer_description, extra_info_images, extra_info, case_status, accident_type)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param('ssssssssssssss', $accidentTitle, $accidentDateTime, $province, $district, $sector, $basicinfoDesc, $forensicImages, $forensicDesc, $damageImages, $damageDesc, $officersImages, $officerDescription, $extraInfoImages, $extraInfo);
+$stmt->bind_param('ssssssssssssssss', $accidentTitle, $accidentDateTime, $province, $district, $sector, $basicinfoDesc, $forensicImages, $forensicDesc, $damageImages, $damageDesc, $officersImages, $officerDescription, $extraInfoImages, $extraInfo, $caseStatus, $accidentType);
 
 if ($stmt->execute()) {
     $accidentId = $stmt->insert_id; // Get the ID of the newly inserted accident record
@@ -92,14 +96,17 @@ $licenseStatuses = $_POST['license_status'];
 $insurances = $_POST['insurance'];
 $alcoholTests = $_POST['alcohol_test'];
 $testimonialDescriptions = $_POST['indiviaul_desc'];
+$causeArray = isset($_POST['cause']) ? $_POST['cause'] : []; // New cause array
 $testimonialImages = uploadFiles('testimonials', $uploadDirs['testimonials']);
 
 foreach ($individualNames as $index => $name) {
-    $sql = "INSERT INTO testimonial (accident_id, individual_name, individual_id, vehicle, vehicle_plate, license_status, insurance, alcohol_test, testimonial_images, testimonial_desc)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $cause = isset($causeArray[$index]) ? $causeArray[$index] : null; // Get cause for each testimonial
+
+    $sql = "INSERT INTO testimonial (accident_id, individual_name, individual_id, vehicle, vehicle_plate, license_status, insurance, alcohol_test, testimonial_images, testimonial_desc, cause)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('isssssssss', $accidentId, $name, $individualIds[$index], $vehicles[$index], $vehiclePlates[$index], $licenseStatuses[$index], $insurances[$index], $alcoholTests[$index], $testimonialImages, $testimonialDescriptions[$index]);
+    $stmt->bind_param('issssssssss', $accidentId, $name, $individualIds[$index], $vehicles[$index], $vehiclePlates[$index], $licenseStatuses[$index], $insurances[$index], $alcoholTests[$index], $testimonialImages, $testimonialDescriptions[$index], $cause);
 
     if (!$stmt->execute()) {
         die("Error: " . $stmt->error);
@@ -107,7 +114,7 @@ foreach ($individualNames as $index => $name) {
 }
 
 echo "Data submitted successfully";
-header('location:../explore.html');
+header('location:../explore.php');
 
 $stmt->close();
 $conn->close();
