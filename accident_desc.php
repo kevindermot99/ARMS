@@ -366,245 +366,302 @@
 
         <!-- result -->
         <div class="flex-1 h-full flex flex-col gap-4 relative">
-    <!-- Results -->
-    <div class="columnflex">
-        <?php
-        // Database connection parameters
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "armz";
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        // Retrieve accident ID from URL
-        $accidentId = isset($_GET['id']) ? intval($_GET['id']) : 0;
-
-        // Prepare SQL statement to fetch accident details
-        $accidentSql = "SELECT basicinfo_desc, forensic_desc, forensic_images, damage_desc, damage_images, officer_description, officers_images, extra_info, extra_info_images FROM accident WHERE id = ?";
-        $stmt = $conn->prepare($accidentSql);
-        $stmt->bind_param("i", $accidentId);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $accidentRow = $result->fetch_assoc();
-
-        // Prepare SQL statement to fetch testimonials
-        $testimonialSql = "SELECT individual_name, individual_id, vehicle, vehicle_plate, license_status, insurance, alcohol_test, cause, testimonial_images FROM testimonial WHERE accident_id = ?";
-        $stmt = $conn->prepare($testimonialSql);
-        $stmt->bind_param("i", $accidentId);
-        $stmt->execute();
-        $testimonialResult = $stmt->get_result();
-        $testimonials = $testimonialResult->fetch_all(MYSQLI_ASSOC);
-
-        // Close the statement and connection
-        $stmt->close();
-        $conn->close();
-        ?>
-
-        <div class="px-5 max-md:px-0 py-3 w-fit scroll-m-14" id="basic-info">
-            <h1 class="text-md font-semibold">Basic Information</h1>
-            <?php if ($accidentRow): ?>
-                <p class="text-base leading-5 font-small py-2"><?php echo htmlspecialchars($accidentRow["basicinfo_desc"]); ?></p>
-            <?php else: ?>
-                <p class="text-base leading-5 font-small py-2">No accident information available.</p>
-            <?php endif; ?>
-        </div>
-
-        <div class="px-5 max-md:px-0 py-3 w-fit scroll-m-14" id="forensic-report">
-            <h1 class="text-md font-semibold">Forensic Report</h1>
-            <?php if ($accidentRow): ?>
-                <p class="text-base leading-5 font-small py-2"><?php echo htmlspecialchars($accidentRow["forensic_desc"]); ?></p>
-                <div class="faq-content">
-                    <div class="faq-question">
-                        <input id="q1" type="checkbox" class="panel">
-                        <div class="plus">+</div>
-                        <label for="q1" class="panel-title">Forensic Media</label>
-                        <div class="panel-content">
-                            <div class="swiper mySwiper2 w-full h-full">
-                                <div class="swiper-wrapper max-w-[800px]">
-                                    <?php 
-                                    if (isset($accidentRow["forensic_images"]) && !empty($accidentRow["forensic_images"])) {
-                                        $images = explode(',', $accidentRow["forensic_images"]);
-                                        foreach ($images as $image): ?>
-                                            <div class="swiper-slide w-full">
-                                                <img src="<?php echo htmlspecialchars(trim($image)); ?>"
-                                                     alt="Forensic Image" class="myImg max-w-[300px] w-full h-full object-cover">
-                                            </div>
-                                        <?php endforeach; 
-                                    } else {
-                                        echo '<div class="swiper-slide w-full">No forensic images available.</div>';
-                                    }
-                                    ?>
-                                </div>
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Results -->
+            <div class="columnflex">
+                <div class="px-5 max-md:px-0 py-3 w-fit scroll-m-14" id="basic-info">
+                    <h1 class="text-md font-semibold">Basic Information</h1>
+                    <p class="text-base leading-5 font-small py-2">On August 5, 2023, a multi-vehicle collision occurred
+                        on Highway 45 involving four cars. The accident happened at 3:45 PM and resulted in two
+                        fatalities and multiple injuries. The involved vehicles were severely damaged, and the highway
+                        was closed for five hours for investigation and clearing operations.</p>
                 </div>
-            <?php else: ?>
-                <p class="text-base leading-5 font-small py-2">No forensic report available.</p>
-            <?php endif; ?>
-        </div>
-
-        <div class="px-5 max-md:px-0 py-3 w-fit scroll-m-14" id="testimonials">
-            <h1 class="text-md font-semibold">Testimonials</h1>
-            <?php if ($testimonials): ?>
-                <?php foreach ($testimonials as $testimonial): ?>
-                    <div class="py-2">
-                        <h2 class="font-semibold"><?php echo htmlspecialchars($testimonial["individual_name"]); ?></h2>
-                        <ul>
-                            <li>ID: <?php echo htmlspecialchars($testimonial["individual_id"]); ?></li>
-                            <li>Vehicle: <?php echo htmlspecialchars($testimonial["vehicle"]); ?></li>
-                            <li>Vehicle Plate: <?php echo htmlspecialchars($testimonial["vehicle_plate"]); ?></li>
-                            <li>License Status: <?php echo htmlspecialchars($testimonial["license_status"]); ?></li>
-                            <li>Insurance: <?php echo htmlspecialchars($testimonial["insurance"]); ?></li>
-                            <li>Drunk Test: <?php echo htmlspecialchars($testimonial["alcohol_test"]); ?></li>
-                            <li>Where He Was Going: <?php echo htmlspecialchars($testimonial["cause"]); ?></li>
-                        </ul>
-                        <div class="faq-content">
-                            <div class="faq-question">
-                                <input id="q<?php echo $testimonial['individual_id']; ?>" type="checkbox" class="panel">
-                                <div class="plus">+</div>
-                                <label for="q<?php echo $testimonial['individual_id']; ?>" class="panel-title">Testimonial Media</label>
-                                <div class="panel-content">
-                                    <div class="swiper mySwiper2 w-full h-full">
-                                        <div class="swiper-wrapper max-w-[800px]">
-                                            <?php 
-                                            if (isset($testimonial["testimonial_images"]) && !empty($testimonial["testimonial_images"])) {
-                                                $testimonialImages = explode(',', $testimonial["testimonial_images"]);
-                                                foreach ($testimonialImages as $image): ?>
-                                                    <div class="swiper-slide w-full">
-                                                        <img src="<?php echo htmlspecialchars(trim($image)); ?>"
-                                                             alt="Testimonial Image" class="myImg max-w-[300px] w-full h-full object-cover">
-                                                    </div>
-                                                <?php endforeach; 
-                                            } else {
-                                                echo '<div class="swiper-slide w-full">No testimonial images available.</div>';
-                                            }
-                                            ?>
+                <div class="px-5 max-md:px-0 py-3 w-fit scroll-m-14" id="forensic-report">
+                    <h1 class="text-md font-semibold">Forensic Report</h1>
+                    <p class="text-base leading-5 font-small py-2">The forensic analysis indicated that the collision
+                        was caused by a combination of speeding and wet road conditions. Vehicle 2 was identified as the
+                        initial point of collision after hydroplaning and losing control. The forensic team found traces
+                        of alcohol in the driver's blood, exceeding the legal limit.</p>
+                    <div class="faq-content">
+                        <div class="faq-question">
+                            <input id="q1" type="checkbox" class="panel">
+                            <div class="plus">+</div>
+                            <label for="q1" class="panel-title">Forensic Media</label>
+                            <div class="panel-content">
+                                <div class="swiper mySwiper2 w-full h-full">
+                                    <div class="swiper-wrapper max-w-[800px]">
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
                                         </div>
-                                        <div class="swiper-button-next"></div>
-                                        <div class="swiper-button-prev"></div>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="swiper-button-next top-[46%] right-[20px] max-md:right-[10px] cursor-pointer bg-white/90 w-12 h-12 rounded-full aspect-square">
+                                    </div>
+                                    <div
+                                        class="swiper-button-prev top-[46%] left-[20px] max-md:left-[10px] cursor-pointer bg-white/90 w-12 h-12 rounded-full aspect-square">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>No testimonials available.</p>
-            <?php endif; ?>
-        </div>
-
-        <div class="px-5 max-md:px-0 py-3 w-fit scroll-m-14" id="damage-report">
-            <h1 class="text-md font-semibold">Damage Report</h1>
-            <p class="text-base leading-5 font-small py-2"><?php echo htmlspecialchars($accidentRow["damage_desc"] ?? 'No damage description available.'); ?></p>
-            <div class="faq-content">
-                <div class="faq-question">
-                    <input id="q3" type="checkbox" class="panel">
-                    <div class="plus">+</div>
-                    <label for="q3" class="panel-title">Damage Media</label>
-                    <div class="panel-content">
-                        <div class="swiper mySwiper2 w-full h-full">
-                            <div class="swiper-wrapper max-w-[800px]">
-                                <?php 
-                                if (isset($accidentRow["damage_images"]) && !empty($accidentRow["damage_images"])) {
-                                    $damageImages = explode(',', $accidentRow["damage_images"]);
-                                    foreach ($damageImages as $image): ?>
+                </div>
+                <div class="px-5 max-md:px-0 py-3 w-fit scroll-m-14" id="testimonials">
+                    <h1 class="text-md font-semibold">Testimonials</h1>
+                    <div class="py-2">
+                        <h2 class="font-semibold">Testimonial 1</h2>
+                        <ul>
+                            <li>Name: John Doe</li>
+                            <li>ID: 123456</li>
+                            <li>Drunk Test: Positive</li>
+                            <li>Where He Was Going: Home from work</li>
+                            <li>What Happened: John witnessed the accident from his vehicle, which was three cars behind
+                                the initial collision. He confirmed the roads were slippery and visibility was low.</li>
+                        </ul>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-question">
+                            <input id="q7" type="checkbox" class="panel">
+                            <div class="plus">+</div>
+                            <label for="q7" class="panel-title">Testimonial 1 Media</label>
+                            <div class="panel-content">
+                                <div class="swiper mySwiper2 w-full h-full">
+                                    <div class="swiper-wrapper max-w-[800px]">
+                                        <!-- 1 item -->
                                         <div class="swiper-slide w-full">
-                                            <img src="<?php echo htmlspecialchars(trim($image)); ?>"
-                                                 alt="Damage Image" class="myImg max-w-[300px] w-full h-full object-cover">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
                                         </div>
-                                    <?php endforeach; 
-                                } else {
-                                    echo '<div class="swiper-slide w-full">No damage images available.</div>';
-                                }
-                                ?>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="swiper-button-next top-[46%] right-[20px] max-md:right-[10px] cursor-pointer bg-white/90 w-12 h-12 rounded-full aspect-square">
+                                    </div>
+                                    <div
+                                        class="swiper-button-prev top-[46%] left-[20px] max-md:left-[10px] cursor-pointer bg-white/90 w-12 h-12 rounded-full aspect-square">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
+                        </div>
+                    </div>
+                    <div class="py-2">
+                        <h2 class="font-semibold">Testimonial 2</h2>
+                        <ul>
+                            <li>Name: Jane Smith</li>
+                            <li>ID: 789012</li>
+                            <li>Drunk Test: Negative</li>
+                            <li>Where She Was Going: To a friend's house</li>
+                            <li>What Happened: Jane was directly involved in the accident. Her car was hit from behind
+                                and pushed into the car in front of her. She sustained minor injuries and was treated at
+                                the scene.</li>
+                        </ul>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-question">
+                            <input id="q6" type="checkbox" class="panel">
+                            <div class="plus">+</div>
+                            <label for="q6" class="panel-title">Testimonial 2 Media</label>
+                            <div class="panel-content">
+                                <div class="swiper mySwiper2 w-full h-full">
+                                    <div class="swiper-wrapper max-w-[800px]">
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="swiper-button-next top-[46%] right-[20px] max-md:right-[10px] cursor-pointer bg-white/90 w-12 h-12 rounded-full aspect-square">
+                                    </div>
+                                    <div
+                                        class="swiper-button-prev top-[46%] left-[20px] max-md:left-[10px] cursor-pointer bg-white/90 w-12 h-12 rounded-full aspect-square">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="px-5 max-md:px-0 py-3 w-fit scroll-m-14" id="officers-report">
-            <h1 class="text-md font-semibold">Officers' Report</h1>
-            <p class="text-base leading-5 font-small py-2"><?php echo htmlspecialchars($accidentRow["officer_description"] ?? 'No officer description available.'); ?></p>
-            <div class="faq-content">
-                <div class="faq-question">
-                    <input id="q4" type="checkbox" class="panel">
-                    <div class="plus">+</div>
-                    <label for="q4" class="panel-title">Officers Media</label>
-                    <div class="panel-content">
-                        <div class="swiper mySwiper2 w-full h-full">
-                            <div class="swiper-wrapper max-w-[800px]">
-                                <?php 
-                                if (isset($accidentRow["officers_images"]) && !empty($accidentRow["officers_images"])) {
-                                    $officerImages = explode(',', $accidentRow["officers_images"]);
-                                    foreach ($officerImages as $image): ?>
+                <div class="px-5 max-md:px-0 py-3 w-fit scroll-m-14" id="damage-report">
+                    <h1 class="text-md font-semibold">Damage Report</h1>
+                    <p class="text-base leading-5 font-small py-2">All four vehicles involved in the accident were
+                        significantly damaged. Vehicle 1 and Vehicle 2 were declared total losses, while Vehicle 3 and
+                        Vehicle 4 sustained major front and rear-end damage. The total estimated cost of the damage is
+                        approximately $150,000.</p>
+                    <div class="faq-content">
+                        <div class="faq-question">
+                            <input id="q3" type="checkbox" class="panel">
+                            <div class="plus">+</div>
+                            <label for="q3" class="panel-title">Damage Media</label>
+                            <div class="panel-content">
+                                <div class="swiper mySwiper2 w-full h-full">
+                                    <div class="swiper-wrapper max-w-[800px]">
+                                        <!-- 1 item -->
                                         <div class="swiper-slide w-full">
-                                            <img src="<?php echo htmlspecialchars(trim($image)); ?>"
-                                                 alt="Officer Image" class="myImg max-w-[300px] w-full h-full object-cover">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
                                         </div>
-                                    <?php endforeach; 
-                                } else {
-                                    echo '<div class="swiper-slide w-full">No officer images available.</div>';
-                                }
-                                ?>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="swiper-button-next top-[46%] right-[20px] max-md:right-[10px] cursor-pointer bg-white/90 w-12 h-12 rounded-full aspect-square">
+                                    </div>
+                                    <div
+                                        class="swiper-button-prev top-[46%] left-[20px] max-md:left-[10px] cursor-pointer bg-white/90 w-12 h-12 rounded-full aspect-square">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="px-5 max-md:px-0 py-3 w-fit scroll-m-14" id="extra-info">
-            <h1 class="text-md font-semibold">Extra Info</h1>
-            <p class="text-base leading-5 font-small py-2"><?php echo htmlspecialchars($accidentRow["extra_info"] ?? 'No extra info available.'); ?></p>
-            <div class="faq-content">
-                <div class="faq-question">
-                    <input id="q5" type="checkbox" class="panel">
-                    <div class="plus">+</div>
-                    <label for="q5" class="panel-title">Extra Media</label>
-                    <div class="panel-content">
-                        <div class="swiper mySwiper2 w-full h-full">
-                            <div class="swiper-wrapper max-w-[800px]">
-                                <?php 
-                                if (isset($accidentRow["extra_info_images"]) && !empty($accidentRow["extra_info_images"])) {
-                                    $extraImages = explode(',', $accidentRow["extra_info_images"]);
-                                    foreach ($extraImages as $image): ?>
+                <div class="px-5 max-md:px-0 py-3 w-fit scroll-m-14" id="officers-report">
+                    <h1 class="text-md font-semibold">Officers' Report</h1>
+                    <p class="text-base leading-5 font-small py-2">Officer Brian Thompson reported that upon arrival at
+                        the scene, emergency services were already attending to the injured. The road was closed off
+                        immediately, and traffic was redirected. Officer Thompson noted the presence of alcohol in the
+                        driver of Vehicle 2 and emphasized the adverse weather conditions contributing to the crash.</p>
+                    <div class="faq-content">
+                        <div class="faq-question">
+                            <input id="q4" type="checkbox" class="panel">
+                            <div class="plus">+</div>
+                            <label for="q4" class="panel-title">Officers Media</label>
+                            <div class="panel-content">
+                                <div class="swiper mySwiper2 w-full h-full">
+                                    <div class="swiper-wrapper max-w-[800px]">
+                                        <!-- 1 item -->
                                         <div class="swiper-slide w-full">
-                                            <img src="<?php echo htmlspecialchars(trim($image)); ?>"
-                                                 alt="Extra Info Image" class="myImg max-w-[500px] w-full h-full object-cover">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
                                         </div>
-                                    <?php endforeach; 
-                                } else {
-                                    echo '<div class="swiper-slide w-full">No extra images available.</div>';
-                                }
-                                ?>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="swiper-button-next top-[46%] right-[20px] max-md:right-[10px] cursor-pointer bg-white/90 w-12 h-12 rounded-full aspect-square">
+                                    </div>
+                                    <div
+                                        class="swiper-button-prev top-[46%] left-[20px] max-md:left-[10px] cursor-pointer bg-white/90 w-12 h-12 rounded-full aspect-square">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
+                <div class="px-5 max-md:px-0 py-3 w-fit scroll-m-14" id="extra-info">
+                    <h1 class="text-md font-semibold">Extra Info</h1>
+                    <p class="text-base leading-5 font-small py-2">Additional details include the response time of
+                        emergency services, which was under ten minutes. The highway was fully reopened at approximately
+                        9:00 PM. Further investigations are ongoing to determine any other contributing factors.</p>
+                    <div class="faq-content">
+                        <div class="faq-question">
+                            <input id="q5" type="checkbox" class="panel">
+                            <div class="plus">+</div>
+                            <label for="q5" class="panel-title">Extra Media</label>
+                            <div class="panel-content">
+                                <div class="swiper mySwiper2 w-full h-full">
+                                    <div class="swiper-wrapper max-w-[800px]">
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                        <!-- 1 item -->
+                                        <div class="swiper-slide w-full">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
+                                                alt="" class="myImg max-w-[300px] w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="swiper-button-next top-[46%] right-[20px] max-md:right-[10px] cursor-pointer bg-white/90 w-12 h-12 rounded-full aspect-square">
+                                    </div>
+                                    <div
+                                        class="swiper-button-prev top-[46%] left-[20px] max-md:left-[10px] cursor-pointer bg-white/90 w-12 h-12 rounded-full aspect-square">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -614,7 +671,7 @@
     <section class="w-full flex flex-col items-start py-5 px-10 max-md:px-4 h-fit">
     <div class="flex items-center justify-between w-full">
         <p class="font-bold text-2xl pt-10 pb-3">Recent Accidents</p>
-        <a href="Explore.php" class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize">view more</a>
+        <a href="Explore.html" class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize">view more</a>
     </div>
     <div class="swiper mySwiper2 w-full h-full">
         <div class="swiper-wrapper mx-auto">
