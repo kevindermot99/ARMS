@@ -114,7 +114,7 @@ foreach ($individualNames as $index => $name) {
 }
 
 echo "Data submitted successfully";
-header('location:../explore.php');
+header('location:explore.php');
 
 $stmt->close();
 $conn->close();
