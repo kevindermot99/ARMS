@@ -31,11 +31,11 @@
 
     <div class="w-full sticky top-0 z-20 hidden max-md:flex flex-col">
         <div class="h-fit w-full bg-white flex items-center justify-between px-3 py-3 border-b-[1px] border-primary-color/10 sticky top-0 z-20 ">
-            <div class=" flex items-center justify-start w-fit gap-2">
+            <div class="flex items-center justify-start w-fit gap-2">
                 <button onclick="handleMobileNav()" class="text-3xl cursor-pointer text-primary-color flex items-center justify-center h-full transition active:scale-75">
                     <i class='bx bx-menu'></i>
                 </button>
-                <div class=" h-fit w-fit flex flex-col justify-center items-start text-primary-color">
+                <div class="h-fit w-fit flex flex-col justify-center items-start text-primary-color">
                     <span class="text-xl font-extrabold tracking-tight">A.R.M.S</span>
                 </div>
             </div>
@@ -52,7 +52,7 @@
             </div>
         </div>
 
-        <nav id="mobile-nav" class=" flex transition-all duration-300 ease-in-out hide-mobile-nav bg-white backdrop-blur-md overflow-hidden w-full z-10  flex-col items-start justify-start">
+        <nav id="mobile-nav" class="flex transition-all duration-300 ease-in-out hide-mobile-nav bg-white backdrop-blur-md overflow-hidden w-full z-10 flex-col items-start justify-start">
             <div class="flex h-fit w-full items-start justify-start flex-col gap-2 min-w-fit ">
                 <a href="index.html" class="text-sm font-normal whitespace-nowrap w-full h-fit flex items-center justify-start bg-stone-100 py-2 px-6 border-l-[3px] hover:opacity-85 border-transparent">Home</a>
                 <a href="Explore.html" class="text-sm font-normal whitespace-nowrap w-full h-fit flex items-center justify-start bg-stone-100 py-2 px-6 border-l-[3px] hover:opacity-85 border-primary-color/90">Explore</a>
@@ -63,7 +63,7 @@
     </div>
 
     <nav class="h-[60px] flex px-10 max-lg:px-4 bg-white/80 backdrop-blur-md border-b-[1px] border-text-color/10 sticky top-0 z-20 max-md:hidden">
-        <div class=" h-full w-full flex flex-col justify-center items-start text-primary-color">
+        <div class="h-full w-full flex flex-col justify-center items-start text-primary-color">
             <span class="text-3xl font-extrabold leading-7 tracking-tight">A.R.M.S</span>
             <span class="text-[6px] pr-1">Accident Report Management System</span>
         </div>
@@ -87,7 +87,7 @@
 
     <section class="backgroundz w-full h-fit flex items-center justify-center flex-col py-16 max-md:py-8 gap-4 px-10 max-md:px-4">
         <h1 class="text-3xl font-extrabold leading-7 tracking-normal uppercase">Search</h1>
-        <form class="w-[95%] max-w-[600px] flex bg-white gap-3 p-3 rounded-md max-md:flex-col max-md:gap-5 " method="POST" action="">
+        <form class="w-[95%] max-w-[600px] flex bg-white gap-3 p-3 rounded-md max-md:flex-col max-md:gap-5" method="POST" action="">
             <div class="w-2/5 max-md:w-full flex flex-col relative">
                 <h1 class="text-xs font-medium caption-top absolute bg-white px-1 top-[-9px] left-3">Keyword</h1>
                 <input type="text" name="keyword" placeholder="Ikamyo.." class="h-[40px] rounded-md p-3 text-sm ring-1 ring-primary-color/20">
@@ -185,27 +185,24 @@
                 $sql .= " AND district LIKE '%$district%'";
             }
 
-            // Limit to the most recent 20 results
-            $sql .= " ORDER BY accident_date_time DESC LIMIT 20";
-
+            // Get all results from the accident table
             $result = $conn->query($sql);
             $totalResults = $result->num_rows;
 
             echo "<div class='w-full flex items-center justify-between'><h1>$totalResults Results</h1></div>";
 
             while ($row = $result->fetch_assoc()) {
-                // Assuming 'forensic_images' is a column containing image paths
-                $damageImages = $row['damage_report']; // Adjust as needed
+                // Assuming 'damage_images' is a column containing image paths
+                $damageImages = $row['damage_images']; // Adjust as needed
 
-                // Fetch forensic media if needed
-                $mediaSql = "SELECT * FROM accident WHERE accident_id = ".$row['id'];
-                $damageImages = $conn->query($mediaSql);
+                // Check if the image path is valid
+                $imageSrc = !empty($damageImages) ? $damageImages : 'default-image-path.jpg'; // Use a default image if none exists
 
                 echo "
                 <a href='accident_desc.php?id={$row['id']}'>
                     <div class='flex flex-1 h-fit max-md:h-fit items-start mb-2 justify-start max-md:flex-col'>
                         <div class='h-[200px] w-[350px] max-md:h-fit max-md:w-full bg-stone-50 rounded-md flex items-center justify-center'>
-                            <img src='$damageImages' alt='accident image' class='rounded-sm w-full h-full object-cover object-center'>
+                            <img src='$imageSrc' alt='accident image' class='rounded-sm w-full h-full object-cover object-center'>
                         </div>
                         <div class='px-5 max-md:px-0 py-3 w-fit'>
                             <p class='text-xs font-medium text-text-color/70'>{$row['case_status']}</p>
@@ -239,10 +236,6 @@
                 loadComponent('./components/Footer.html', 'Footer')
             ]);
         });
-    </script>
-
-    <script>
-        let numberofresults = 4;
     </script>
 
     <script>
