@@ -492,7 +492,7 @@
                             <label for="q6" class="panel-title">Testimonial 2 Media</label>
                             <div class="panel-content">
                                 <div class="swiper mySwiper2 w-full h-full">
-                                    <div class="swiper-wrapper    max-w-[800px]">
+                                    <div class="swiper-wrapper max-w-[800px]">
                                         <!-- 1 item -->
                                         <div class="swiper-slide w-full">
                                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUjmh6B643bENHl_8h2B27kHQwoMiM5L4Q&s"
