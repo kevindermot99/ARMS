@@ -1,3 +1,17 @@
+<?php 
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "armz";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        } 
+        ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,15 +44,16 @@
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-
+<style>
+        .sidenavy {
+            position: sticky;
+            margin-top: 50px;
+        }
+    </style>
 <body class="text-text-color">
     <!-- header -->
     <div id="Header-Container"></div>
-
-
-
     <!-- Navbar -->
-
     <!-- Mobile nav -->
     <div class="w-full sticky top-0 z-20 hidden max-md:flex flex-col">
         <!--Logo & toggle  -->
@@ -281,11 +296,24 @@
         }
     </style>
     <!-- Slider -->
+     <?php
+     
+        // Retrieve accident ID from URL
+        $accidentId = isset($_GET['id']) ? intval($_GET['id']) : 0;
+
+        // Prepare SQL statement to fetch accident details
+        $accidentSql = "SELECT * FROM accident WHERE id = ?";
+        $stmt = $conn->prepare($accidentSql);
+        $stmt->bind_param("i", $accidentId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $accidentRow = $result->fetch_assoc();
+
+     ?>
     <section
         class="backgroundd w-full h-fit flex items-center justify-center flex-col py-12 max-md:py-8 gap-4 px-10 max-md:px-4">
         <center>
-            <h1 class="text-3xl font-extrabold leading-7 tracking-normal uppercase textify">gisozi impanuka yabanyonzi
-                babiri nigikamyo cya HOHO </h1>
+            <h1 class="text-3xl font-extrabold leading-7 tracking-normal uppercase textify"> <?php echo htmlspecialchars($accidentRow["accident_title"]); ?></h1>
         </center>
     </section>
     <section class="w-full flex items-center justify-center py-5 px-10 max-md:px-4 h-[450px]">
@@ -326,12 +354,7 @@
         </div>
         <!-- next -->
     </section>
-    <style>
-        .sidenavy {
-            position: sticky;
-            margin-top: 50px;
-        }
-    </style>
+    
 
     <section class="h-full w-full flex items-start justify-between py-5 px-10 max-md:px-4 gap-7 relative">
         <!-- filter -->
@@ -369,30 +392,6 @@
     <!-- Results -->
     <div class="columnflex">
         <?php
-        // Database connection parameters
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "armz";
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        // Retrieve accident ID from URL
-        $accidentId = isset($_GET['id']) ? intval($_GET['id']) : 0;
-
-        // Prepare SQL statement to fetch accident details
-        $accidentSql = "SELECT basicinfo_desc, forensic_desc, forensic_images, damage_desc, damage_images, officer_description, officers_images, extra_info, extra_info_images FROM accident WHERE id = ?";
-        $stmt = $conn->prepare($accidentSql);
-        $stmt->bind_param("i", $accidentId);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $accidentRow = $result->fetch_assoc();
 
         // Prepare SQL statement to fetch testimonials
         $testimonialSql = "SELECT individual_name, individual_id, vehicle, vehicle_plate, license_status, insurance, alcohol_test, cause, testimonial_images FROM testimonial WHERE accident_id = ?";
@@ -427,7 +426,7 @@
                         <label for="q1" class="panel-title">Forensic Media</label>
                         <div class="panel-content">
                             <div class="swiper mySwiper2 w-full h-full">
-                                <div class="swiper-wrapper max-w-[800px]">
+                                <div class="swiper-wrapper  min-w-[780px] max-w-[800px]">
                                     <?php 
                                     if (isset($accidentRow["forensic_images"]) && !empty($accidentRow["forensic_images"])) {
                                         $images = explode(',', $accidentRow["forensic_images"]);
@@ -475,7 +474,7 @@
                                 <label for="q<?php echo $testimonial['individual_id']; ?>" class="panel-title">Testimonial Media</label>
                                 <div class="panel-content">
                                     <div class="swiper mySwiper2 w-full h-full">
-                                        <div class="swiper-wrapper max-w-[800px]">
+                                        <div class="swiper-wrapper min-w-[780px]  min-w-[780px] max-w-[800px]">
                                             <?php 
                                             if (isset($testimonial["testimonial_images"]) && !empty($testimonial["testimonial_images"])) {
                                                 $testimonialImages = explode(',', $testimonial["testimonial_images"]);
@@ -513,14 +512,14 @@
                     <label for="q3" class="panel-title">Damage Media</label>
                     <div class="panel-content">
                         <div class="swiper mySwiper2 w-full h-full">
-                            <div class="swiper-wrapper max-w-[800px]">
+                            <div class="swiper-wrapper  min-w-[780px] max-w-[800px]">
                                 <?php 
                                 if (isset($accidentRow["damage_images"]) && !empty($accidentRow["damage_images"])) {
                                     $damageImages = explode(',', $accidentRow["damage_images"]);
                                     foreach ($damageImages as $image): ?>
                                         <div class="swiper-slide w-full">
                                             <img src="<?php echo htmlspecialchars(trim($image)); ?>"
-                                                 alt="Damage Image" class="myImg max-w-[300px] w-full h-full object-cover">
+                                                 alt="Damage Image" class="myImg max-w-[800px] w-full h-full object-cover">
                                         </div>
                                     <?php endforeach; 
                                 } else {
@@ -546,7 +545,7 @@
                     <label for="q4" class="panel-title">Officers Media</label>
                     <div class="panel-content">
                         <div class="swiper mySwiper2 w-full h-full">
-                            <div class="swiper-wrapper max-w-[800px]">
+                            <div class="swiper-wrapper  min-w-[780px] max-w-[800px]">
                                 <?php 
                                 if (isset($accidentRow["officers_images"]) && !empty($accidentRow["officers_images"])) {
                                     $officerImages = explode(',', $accidentRow["officers_images"]);
@@ -579,7 +578,7 @@
                     <label for="q5" class="panel-title">Extra Media</label>
                     <div class="panel-content">
                         <div class="swiper mySwiper2 w-full h-full">
-                            <div class="swiper-wrapper max-w-[800px]">
+                            <div class="swiper-wrapper  min-w-[780px] max-w-[800px]">
                                 <?php 
                                 if (isset($accidentRow["extra_info_images"]) && !empty($accidentRow["extra_info_images"])) {
                                     $extraImages = explode(',', $accidentRow["extra_info_images"]);
