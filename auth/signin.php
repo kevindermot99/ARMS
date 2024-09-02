@@ -56,7 +56,20 @@
             <input type="email" id="email-input" name="email" placeholder="Email"/> 
             <input type="password" name="password" placeholder="Password" /><br> 
             <button name="emaillogin" type="submit">Sign In</button>
-            <a href="forgotpsw.php">Forgot your password?</a>
+			<div class="linkz">
+			<p>Dont have an account?<a href="signup.php"> <B>signup</B></a></p>   
+            <a href="forgotpsw.php">Forgot your password?</a> 
+			</div>
+			<style>
+				.linkz{
+					display:flex;
+					flex-direction:column;
+					margin-top:10px;
+				}
+				.linkz{
+					padding-bottom:25px;
+				}
+			</style>
         </form>
     </div>
     <div class="overlay-container">
@@ -117,8 +130,7 @@ body {
 }  
 .feature{
     margin-top: 15px;
-}
-
+} 
 
 p {
 	font-size: 14px;
@@ -133,9 +145,9 @@ a {
 	color: #333;
 	font-size: 14px;
 	text-decoration: none;
-	margin: 15px 0;
+	/* margin: 15px 0; */
 }
-
+ 
 button {
 	border-radius: 24px;
 	background-color: #1F3365;
@@ -170,9 +182,9 @@ form {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: 0 50px;
+	padding: 50px 50px;
 	height: 100%;
-	text-align: center;
+	text-align: center; 
 }
 
 input {

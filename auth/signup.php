@@ -31,7 +31,12 @@
 		<input type="text" name="username" id="username-input" placeholder="Username" required />
 		<input type="password" name="password" placeholder="Password" required /><br>
 		<button name="signup" type="submit">Sign Up</button>
-		<a href="forgotpsw.html">Forgot your password?</a>
+        <p>already have an account<a href="signin.php"> <B>Login</B></a></p> 
+        <style>
+            a{
+                color:blue;
+            }
+        </style>
 	</form>
   </div>
   <div class="overlay-container">

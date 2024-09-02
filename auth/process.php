@@ -1,6 +1,6 @@
 <?php
 session_start();  
-$conn = new mysqli("localhost", "root", "", "arms"); 
+$conn = new mysqli("localhost", "root", "", "armz"); 
 // Check the connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

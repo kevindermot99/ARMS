@@ -56,7 +56,20 @@
             <input type="text" name="username" placeholder="username"/> 
             <input type="password" name="password" placeholder="Password" /><br> 
             <button name="usernamelogin" type="submit">Sign In</button>
-            <a href="forgotpsw.php">Forgot your password?</a>
+            <div class="linkz">
+			<p>Dont have an account?<a href="signup.php"> <B>signup</B></a></p>  
+            <a href="forgotpsw.php">Forgot your password?</a> 
+			</div>
+			<style>
+				.linkz{
+					display:flex;
+					flex-direction:column;
+					margin-top:10px;
+				}
+				.linkz{
+					padding-bottom:25px;
+				}
+			</style>
         </form>
     </div>
     <div class="overlay-container">

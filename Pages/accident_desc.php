@@ -636,11 +636,11 @@
             if ($recentAccidentsResult->num_rows > 0) {
                 while ($accident = $recentAccidentsResult->fetch_assoc()) {
                     // Get the cover image path
-                    $coverImage = !empty($accident['cover_image']) ? 'uploads/' . htmlspecialchars($accident['cover_image']) : 'path/to/default/image.jpg';
-                    ?>
+                    $coverImage = !empty($accident['cover_image']) ? 'uploads/damage' . htmlspecialchars($accident['cover_image']) : 'path/to/default/image.jpg';
+?>
                     <div class="swiper-slide">
                         <div class="h-[280px] bg-stone-50 rounded-md flex items-center justify-center">
-                            <img src="<?= $coverImage ?>" alt="accident image" class="w-full h-full object-cover object-center">
+                            <img src="<?=$coverImage ?>" alt="accident image" class="w-full h-full object-cover object-center">
                         </div>
                         <div class="py-5 w-fit">
                             <p class="text-xs font-medium text-text-color/70">case closed</p>
