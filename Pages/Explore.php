@@ -24,6 +24,14 @@
     </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Add any additional custom styles here */
+        @media (max-width: 768px) {
+            #filters {
+                display: block; /* Always show filters on mobile */
+            }
+        }
+    </style>
 </head>
 
 <body class="text-text-color">
@@ -41,25 +49,16 @@
             </div>
 
             <div class="h-full w-full flex items-center justify-end gap-0 relative">
-                <a href="Add accident.html">
+                <a href="Add-accident.php">
                     <button class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
                         <i class='bx bx-image-add'></i>
                     </button>
                 </a>
-                <a href="Notifications.html" class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
+                <a href="Notifications.php" class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
                     <i class='bx bx-bell'></i>
                 </a>
             </div>
         </div>
-
-        <nav id="mobile-nav" class="flex transition-all duration-300 ease-in-out hide-mobile-nav bg-white backdrop-blur-md overflow-hidden w-full z-10 flex-col items-start justify-start">
-            <div class="flex h-fit w-full items-start justify-start flex-col gap-2 min-w-fit ">
-                <a href="index.html" class="text-sm font-normal whitespace-nowrap w-full h-fit flex items-center justify-start bg-stone-100 py-2 px-6 border-l-[3px] hover:opacity-85 border-transparent">Home</a>
-                <a href="Explore.html" class="text-sm font-normal whitespace-nowrap w-full h-fit flex items-center justify-start bg-stone-100 py-2 px-6 border-l-[3px] hover:opacity-85 border-primary-color/90">Explore</a>
-                <a href="Report.html" class="text-sm font-normal whitespace-nowrap w-full h-fit flex items-center justify-start bg-stone-100 py-2 px-6 border-l-[3px] hover:opacity-85 border-transparent">Report</a>
-                <a href="Officer.html" class="text-sm font-normal whitespace-nowrap w-full h-fit flex items-center justify-start bg-stone-100 py-2 px-6 border-l-[3px] hover:opacity-85 border-transparent">Officers</a>
-            </div>
-        </nav>
     </div>
 
     <nav class="h-[60px] flex px-10 max-lg:px-4 bg-white/80 backdrop-blur-md border-b-[1px] border-text-color/10 sticky top-0 z-20 max-md:hidden">
@@ -68,18 +67,18 @@
             <span class="text-[6px] pr-1">Accident Report Management System</span>
         </div>
         <div class="flex h-full w-full items-center justify-center gap-0 min-w-fit ">
-            <a href="index.html" class="text-sm font-normal whitespace-nowrap w-fit h-full flex items-center justify-center py-2 px-6 border-b-[3px] hover:opacity-85 border-transparent">Home</a>
-            <a href="Explore.html" class="text-sm font-normal whitespace-nowrap w-fit h-full flex items-center justify-center py-2 px-6 border-b-[3px] hover:opacity-85 border-primary-color/90">Explore</a>
-            <a href="Report.html" class="text-sm font-normal whitespace-nowrap w-fit h-full flex items-center justify-center py-2 px-6 border-b-[3px] hover:opacity-85 border-transparent">Report</a>
-            <a href="Officer.html" class="text-sm font-normal whitespace-nowrap w-fit h-full flex items-center justify-center py-2 px-6 border-b-[3px] hover:opacity-85 border-transparent">Officers</a>
+            <a href="index.php" class="text-sm font-normal whitespace-nowrap w-fit h-full flex items-center justify-center py-2 px-6 border-b-[3px] hover:opacity-85 border-transparent">Home</a>
+            <a href="Explore.php" class="text-sm font-normal whitespace-nowrap w-fit h-full flex items-center justify-center py-2 px-6 border-b-[3px] hover:opacity-85 border-primary-color/90">Explore</a>
+            <a href="Report.php" class="text-sm font-normal whitespace-nowrap w-fit h-full flex items-center justify-center py-2 px-6 border-b-[3px] hover:opacity-85 border-transparent">Report</a>
+            <a href="Officer.php" class="text-sm font-normal whitespace-nowrap w-fit h-full flex items-center justify-center py-2 px-6 border-b-[3px] hover:opacity-85 border-transparent">Officers</a>
         </div>
         <div class="h-full w-full flex items-center justify-end gap-0 relative">
-            <a href="Add accident.html">
+            <a href="Add accident.php">
                 <button class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
                     <i class='bx bx-image-add'></i>
                 </button>
             </a>
-            <a href="Notifications.html" class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
+            <a href="Notifications.php" class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
                 <i class='bx bx-bell'></i>
             </a>
         </div>
@@ -109,19 +108,19 @@
                 <h1 class="text-sm font-semibold">Category</h1>
                 <div class="w-full h-fit flex flex-col gap-2 max-md:flex-row max-md:flex-wrap">
                     <label class="flex items-center gap-1 cursor-pointer w-fit">
-                        <input type="checkbox" name="filter[]" value="All" class="accent-primary-color">
+                        <input type="checkbox" name="filter[]" value="All" class="accent-primary-color" <?= (isset($_POST['filter']) && in_array('All', $_POST['filter'])) ? 'checked' : '' ?>>
                         <p class="text-xs">All</p>
                     </label>
                     <label class="flex items-center gap-1 cursor-pointer w-fit">
-                        <input type="checkbox" name="filter[]" value="No Death" class="accent-primary-color">
+                        <input type="checkbox" name="filter[]" value="No Death" class="accent-primary-color" <?= (isset($_POST['filter']) && in_array('No Death', $_POST['filter'])) ? 'checked' : '' ?>>
                         <p class="text-xs">No Death</p>
                     </label>
                     <label class="flex items-center gap-1 cursor-pointer w-fit">
-                        <input type="checkbox" name="filter[]" value="No Injured" class="accent-primary-color">
+                        <input type="checkbox" name="filter[]" value="No Injured" class="accent-primary-color" <?= (isset($_POST['filter']) && in_array('No Injured', $_POST['filter'])) ? 'checked' : '' ?>>
                         <p class="text-xs">No Injured</p>
                     </label>
                     <label class="flex items-center gap-1 cursor-pointer w-fit">
-                        <input type="checkbox" name="filter[]" value="No Damaged Property" class="accent-primary-color">
+                        <input type="checkbox" name="filter[]" value="No Damaged Property" class="accent-primary-color" <?= (isset($_POST['filter']) && in_array('No Damaged Property', $_POST['filter'])) ? 'checked' : '' ?>>
                         <p class="text-xs">No Damaged Property</p>
                     </label>
                 </div>
@@ -129,11 +128,11 @@
                 <h1 class="text-sm font-semibold">Case Status</h1>
                 <div class="w-full h-fit flex flex-col gap-2 max-md:flex-row max-md:flex-wrap">
                     <label class="flex items-center gap-1 cursor-pointer w-fit">
-                        <input type="checkbox" name="filter[]" value="Ongoing" class="accent-primary-color">
+                        <input type="checkbox" name="filter[]" value="Ongoing" class="accent-primary-color" <?= (isset($_POST['filter']) && in_array('Ongoing', $_POST['filter'])) ? 'checked' : '' ?>>
                         <p class="text-xs">Ongoing</p>
                     </label>
                     <label class="flex items-center gap-1 cursor-pointer w-fit">
-                        <input type="checkbox" name="filter[]" value="Closed" class="accent-primary-color">
+                        <input type="checkbox" name="filter[]" value="Closed" class="accent-primary-color" <?= (isset($_POST['filter']) && in_array('Closed', $_POST['filter'])) ? 'checked' : '' ?>>
                         <p class="text-xs">Closed</p>
                     </label>
                 </div>
@@ -141,11 +140,11 @@
                 <h1 class="text-sm font-semibold">Type</h1>
                 <div class="w-full h-fit flex flex-col gap-2 max-md:flex-row max-md:flex-wrap">
                     <label class="flex items-center gap-1 cursor-pointer w-fit">
-                        <input type="checkbox" name="filter[]" value="On-road" class="accent-primary-color">
+                        <input type="checkbox" name="filter[]" value="On-road" class="accent-primary-color" <?= (isset($_POST['filter']) && in_array('On-road', $_POST['filter'])) ? 'checked' : '' ?>>
                         <p class="text-xs">On-road</p>
                     </label>
                     <label class="flex items-center gap-1 cursor-pointer w-fit">
-                        <input type="checkbox" name="filter[]" value="Off-road" class="accent-primary-color">
+                        <input type="checkbox" name="filter[]" value="Off-road" class="accent-primary-color" <?= (isset($_POST['filter']) && in_array('Off-road', $_POST['filter'])) ? 'checked' : '' ?>>
                         <p class="text-xs">Off-road</p>
                     </label>
                 </div>
@@ -157,7 +156,6 @@
         </div>
 
         <div class="flex-1 h-full flex flex-col gap-4 relative">
-
             <?php
             // Database connection
             $servername = "localhost";
@@ -170,6 +168,11 @@
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
+
+            // Pagination settings
+            $resultsPerPage = 20; // Number of results per page
+            $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1; // Current page
+            $offset = ($currentPage - 1) * $resultsPerPage; // Calculate offset
 
             // Fetch accidents based on search criteria
             $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : '';
@@ -185,9 +188,29 @@
                 $sql .= " AND district LIKE '%$district%'";
             }
 
+            // Apply filters if any
+            if (!empty($filters)) {
+                foreach ($filters as $filter) {
+                    if ($filter === 'Ongoing') {
+                        $sql .= " AND case_status = 'Ongoing'";
+                    } elseif ($filter === 'Closed') {
+                        $sql .= " AND case_status = 'Closed'";
+                    } elseif ($filter === 'No Death') {
+                        $sql .= " AND case_status != 'Death'";
+                    } elseif ($filter === 'No Injured') {
+                        $sql .= " AND case_status != 'Injured'";
+                    } elseif ($filter === 'No Damaged Property') {
+                        $sql .= " AND case_status != 'Damaged'";
+                    }
+                }
+            }
+
+            // Order by accident_date_time in descending order
+            $sql .= " ORDER BY accident_date_time DESC LIMIT $offset, $resultsPerPage";
+
             // Get all results from the accident table
             $result = $conn->query($sql);
-            $totalResults = $result->num_rows;
+            $totalResults = $conn->query("SELECT COUNT(*) AS count FROM accident WHERE 1=1" . ($keyword ? " AND accident_title LIKE '%$keyword%'" : "") . ($district ? " AND district LIKE '%$district%'" : ""))->fetch_assoc()['count'];
 
             echo "<div class='w-full flex items-center justify-between'><h1>$totalResults Results</h1></div>";
 
@@ -215,6 +238,14 @@
                 </a>";
             }
 
+            // Pagination controls
+            $totalPages = ceil($totalResults / $resultsPerPage);
+            echo "<div class='flex justify-center mt-4'>";
+            for ($i = 1; $i <= $totalPages; $i++) {
+                echo "<a href='?page=$i' class='mx-2 px-3 py-1 border rounded " . ($i === $currentPage ? 'bg-primary-color text-white' : 'bg-gray-200') . "'>$i</a>";
+            }
+            echo "</div>";
+
             $conn->close();
             ?>
         </div>
@@ -223,22 +254,13 @@
     <div id="Footer"></div>
 
     <script>
-        function loadComponent(url, containerId) {
-            return fetch(url)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById(containerId).innerHTML = data;
-                });
-        }
-
         window.addEventListener('load', function () {
             Promise.all([
                 loadComponent('./components/Header.html', 'Header-Container'),
-                loadComponent('./components/Footer.html', 'Footer')
+                loadComponent('./components/Footer.html', 'Footer'),
             ]);
-        }):
+        });
     </script>
-
 </body>
+
 </html>
-       
