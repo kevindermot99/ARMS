@@ -6,8 +6,7 @@ $password = "";
 $dbname = "armz";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
+ 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -22,13 +21,25 @@ function uploadFiles($fileInputName, $uploadDir) {
     }
     
     if (isset($_FILES[$fileInputName])) {
+        if (empty($_FILES[$fileInputName]['name'][0])) {
+            die("No file selected for upload.");
+        }
+
         foreach ($_FILES[$fileInputName]['name'] as $key => $name) {
             $tmpName = $_FILES[$fileInputName]['tmp_name'][$key];
             $filePath = $uploadDir . basename($name);
             
             // Check for upload errors
             if ($_FILES[$fileInputName]['error'][$key] !== UPLOAD_ERR_OK) {
-                die("File upload error: " . $_FILES[$fileInputName]['error'][$key]);
+                switch ($_FILES[$fileInputName]['error'][$key]) {
+                    case UPLOAD_ERR_NO_FILE:
+                        die("No file was uploaded.");
+                    case UPLOAD_ERR_INI_SIZE:
+                        die("Uploaded file exceeds the upload_max_filesize directive in php.ini.");
+                    // Handle other errors as needed
+                    default:
+                        die("Unknown upload error.");
+                }
             }
             
             // Attempt to move the uploaded file
