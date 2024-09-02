@@ -743,31 +743,176 @@
             
                     // Initialize the form to show the first step
                     showStep(currentStep);
-                });
+                });// "Gasabo": {
+            //     "Bumbogo": ["Kibenga", "Kinyaga", "Kinyana", "Ngara", "Rubungo"],
+            //     "Gatsata": ["Bweramvura", "Kadobogo", "Kabuye", "Nyamugari", "Rwesero"],
+            //     "Gikomero": ["Bukoro", "Gahengeri", "Kabuye", "Nyagasozi", "Rugarama"],
+            //     "Gisozi": ["Kangondo", "Kibiraro", "Nyabisindu", "Nyamabuye", "Rukingu"],
+            //     "Jabana": ["Gashenyi", "Jabana", "Murama", "Taba", "Yanza"],
+            //     "Jali": ["Gasabo", "Kagugu", "Kamatamu", "Kinyaga", "Rudakabukirwa"],
+            //     "Kacyiru": ["Kamatamu", "Kamukina", "Nyarutarama", "Rugando", "Rugunga"],
+            //     "Kimihurura": ["Kimihurura", "Kinyinya", "Nyakabanda", "Remera", "Rukingu"],
+            //     "Kimironko": ["Bibare", "Kibagabaga", "Nyagatovu", "Nyarutarama", "Rwabushenyi"],
+            //     "Kinyinya": ["Gasharu", "Murama", "Nyagatovu", "Nyarutarama", "Tunga"],
+            //     "Nduba": ["Bweramvura", "Gasagara", "Kabuye", "Kigabiro", "Murambi"],
+            //     "Ndera": ["Bushyogo", "Bweramvura", "Gihogwe", "Murama", "Rutunga"],
+            //     "Remera": ["Gikondo", "Kabuga", "Kinyinya", "Nyabisindu", "Rugando"],
+            //     "Rusororo": ["Kabuga", "Mwulire", "Nyagahinga", "Nyarugenge", "Rugarama"],
+            //     "Rutunga": ["Bumbogo", "Gatsata", "Jabana", "Murambi", "Nyabikenke"]
+            // },
              
     // Populate provinces and other location fields
     const locationData = {
-        "Kigali": {
-            "Gasabo": {
-                "Bumbogo": ["Kibenga", "Kinyaga", "Kinyana", "Ngara", "Rubungo"],
-                "Gatsata": ["Bweramvura", "Kadobogo", "Kabuye", "Nyamugari", "Rwesero"],
-                "Gikomero": ["Bukoro", "Gahengeri", "Kabuye", "Nyagasozi", "Rugarama"],
-                "Gisozi": ["Kangondo", "Kibiraro", "Nyabisindu", "Nyamabuye", "Rukingu"],
-                "Jabana": ["Gashenyi", "Jabana", "Murama", "Taba", "Yanza"],
-                "Jali": ["Gasabo", "Kagugu", "Kamatamu", "Kinyaga", "Rudakabukirwa"],
-                "Kacyiru": ["Kamatamu", "Kamukina", "Nyarutarama", "Rugando", "Rugunga"],
-                "Kimihurura": ["Kimihurura", "Kinyinya", "Nyakabanda", "Remera", "Rukingu"],
-                "Kimironko": ["Bibare", "Kibagabaga", "Nyagatovu", "Nyarutarama", "Rwabushenyi"],
-                "Kinyinya": ["Gasharu", "Murama", "Nyagatovu", "Nyarutarama", "Tunga"],
-                "Nduba": ["Bweramvura", "Gasagara", "Kabuye", "Kigabiro", "Murambi"],
-                "Ndera": ["Bushyogo", "Bweramvura", "Gihogwe", "Murama", "Rutunga"],
-                "Remera": ["Gikondo", "Kabuga", "Kinyinya", "Nyabisindu", "Rugando"],
-                "Rusororo": ["Kabuga", "Mwulire", "Nyagahinga", "Nyarugenge", "Rugarama"],
-                "Rutunga": ["Bumbogo", "Gatsata", "Jabana", "Murambi", "Nyabikenke"]
-            },
-            
+    "Kigali": {
+        "Gasabo": {
+            "Bumbogo": [" "],
+            "Gatsata": [""],
+            "Gikomero": [""],
+            "Gisozi": [""],
+            "Jabana": [""],
+            "Jali": [""],
+            "Kacyiru": [""], 
+        },
+        "Kicukiro": {
+            "Gikondo": [""],
+            "Kagarama": [""],
+            "Kicukiro": [""],
+            "Nyarugunga": [""],
+            "Rwampanga": [""]
+        },
+        "Nyarugenge": {
+            "Gitega": [""],
+            "Kimisagara": [""],
+            "Kiyovu": [""],
+            "Muganza": [""],
+            "Nyarugenge": [""],
+            "Rugunga": [""]
+        }
+    },
+    "Eastern Province": {
+        "Bugesera": {
+            "Ngeruka": [""],
+            "Nyamata": [""],
+            "Mwogo": [""],
+            "Gashora": [""]
+        },
+        "Gatsibo": {
+            "Kabarore": [""],
+            "Kigabiro": [""],
+            "Kiziguro": [""],
+            "Murambi": [""]
+        },
+        "Kayonza": {
+            "Kayonza": [""],
+            "Murundi": [""],
+            "Rukara": [""],
+            "Gahini": [""]
+        },
+        "Ngoma": {
+            "Ngoma": [""],
+            "Kazo": [""],
+            "Rugando": [""],
+            "Nyakariro": [""]
+        },
+        "Rwamagana": {
+            "Rwamagana": [""],
+            "Muniga": [""],
+            "Nyakabanda": [""],
+            "Kigabiro": [""]
+        }
+    },
+    "Western Province": {
+        "Karongi": {
+            "Gishyita": [""],
+            "Kibuye": [""],
+            "Rubengera": [""],
+            "Murambi": [""]
+        },
+        "Ngororero": {
+            "Ngororero": [""],
+            "Kageyo": [""],
+            "Kibingo": [""],
+            "Bwira": [""]
+        },
+        "Nyamasheke": {
+            "Nyamasheke": [""],
+            "Kanjongo": [""],
+            "Kivumu": [""],
+            "Shangi": [""]
+        },
+        "Rusizi": {
+            "Cyangugu": [""],
+            "Gihundwe": [""],
+            "Mpungu": [""],
+            "Nzahaha": [""]
+        },
+        "Rubavu": {
+            "Rubavu": [""],
+            "Gisenyi": [""],
+            "Nyundo": [""],
+            "Kanama": [""]
+        }
+    },
+    "Northern Province": {
+        "Burera": {
+            "Butaro": [""],
+            "Cyeru": [""],
+            "Nemba": [""],
+            "Kivuye": [""]
+        },
+        "Gakenke": {
+            "Kageyo": [""],
+            "Muzo": [""],
+            "Nemba": [""],
+            "Shingiro": [""]
+        },
+        "Musanze": {
+            "Musanze": [""],
+            "Kinigi": [""],
+            "Nyange": [""],
+            "Gataraga": [""]
+        },
+        "Rulindo": {
+            "Byumba": [""],
+            "Mugunga": [""],
+            "Ntarama": [""],
+            "Rulindo": [""]
+        }
+    },
+    "Southern Province": {
+        "Huye": {
+            "Huye": [""],
+            "Ngoma": [""],
+            "Maraba": [""],
+            "Rusatira": [""]
+        },
+        "Kamonyi": {
+            "Kamonyi": [""],
+            "Gacurabwenge": [""],
+            "Runda": [""],
+            "Mugina": [""]
+        },
+        "Muhanga": {
+            "Muhanga": [""],
+            "Nyamabuye": [""],
+            "Shyogwe": [""],
+            "Cyeza": [""]
+        },
+        "Nyanza": {
+            "Nyanza": [""],
+            "Kibilizi": [""],
+            "Muganza": [""],
+            "Muganza": [""]
+        },
+        "Ruhango": {
+            "Ruhango": [""],
+            "Bweramana": [""],
+            "Cyanika": [""],
+            "Mbuye": [""]
         }
     }
+};
+
 
                 // Populate provinces dropdown
                 for (let province in locationData) {
