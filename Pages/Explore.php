@@ -78,9 +78,68 @@
                     <i class='bx bx-image-add'></i>
                 </button>
             </a>
-            <a href="Notifications.php" class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
+            <a href="Notifications.html"
+                class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
                 <i class='bx bx-bell'></i>
             </a>
+            <button id="toggleButton"
+                class="flex items-center justify-start hover:bg-text-color/10 rounded-full ml-3 pr-2 transition active:bg-text-color/20">
+                <div
+                    class="h-[35px] w-auto aspect-square text-lg rounded-full bg-primary-color ring-4 ring-white text-white/90 flex items-center justify-center">
+                    <i class='bx bx-user'></i>
+                </div>
+                <p class="pl-2 capitalize text-sm whitespace-nowrap truncate text-ellipsis max-w-[120px]">Officer John
+                </p>
+                <i class='ml-[2px] bx bx-chevron-down text-base'></i>
+            </button>
+
+            <!-- Prifle Dropdown -->
+            <div class="navBarOverlay hidden fixed top-0 left-0 w-full h-[100vh] bg-transparent z-20"></div>
+            <div id="toggleContent"
+                class="navBar absolute top-[90%] right-0 bg-white p-2 h-fit w-[230px] z-50 shadow-xl rounded-sm ring-1 ring-text-color/10 hidden flex-col items-start justify-start">
+                <div class="flex items-center p-[6px]">
+                    <div
+                        class="h-[30px] w-auto aspect-square text-lg rounded-full bg-primary-color ring-4 ring-white text-white/90 flex items-center justify-center">
+                        <i class='bx bx-user'></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <p
+                            class="pl-2 capitalize text-sm whitespace-nowrap truncate text-ellipsis max-w-[120px] font-medium">
+                            Officer John
+                        <p
+                            class="pl-2 capitalize text-xs whitespace-nowrap truncate text-ellipsis max-w-[120px] font-medium opacity-65">
+                            B-ID: 2148D3
+
+                    </div>
+                    </p>
+                </div>
+                <span class="h-[1px] w-[90%] mx-auto bg-text-color/10 my-2"></span>
+                <!-- 1 link -->
+                <a href="profile.html"
+                    class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
+                    <i class='bx bx-user text-xl opacity-60'></i>
+                    <p class="text-sm">My Profile</p>
+                </a>
+                <!-- 1 link -->
+                <a href="#"
+                    class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
+                    <i class='bx bx-history text-xl opacity-60'></i>
+                    <p class="text-sm">Activity</p>
+                </a>
+                <!-- 1 link -->
+                <a href="supportcenter.html"
+                    class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
+                    <i class='bx bx-help-circle text-xl opacity-60'></i>
+                    <p class="text-sm">Support Center</p>
+                </a>
+                <span class="h-[1px] w-[90%] mx-auto bg-text-color/10 my-2"></span>
+                <!-- 1 link -->
+                <a href="auth/signin.html"
+                    class="w-full flex items-center py-1 px-3 gap-2 hover:bg-text-color/5 active:bg-text-color/10 rounded-sm ">
+                    <i class='bx bx-log-out-circle text-xl text-red-500'></i>
+                    <p class="text-sm">Sign Out</p>
+                </a>
+            </div>
         </div>
     </nav>
 
