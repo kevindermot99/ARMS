@@ -73,7 +73,7 @@
             <a href="Officer.php" class="text-sm font-normal whitespace-nowrap w-fit h-full flex items-center justify-center py-2 px-6 border-b-[3px] hover:opacity-85 border-transparent">Officers</a>
         </div>
         <div class="h-full w-full flex items-center justify-end gap-0 relative">
-            <a href="Add accident.php">
+            <a href="Add-accident.php">
                 <button class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
                     <i class='bx bx-image-add'></i>
                 </button>
