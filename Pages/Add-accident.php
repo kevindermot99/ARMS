@@ -292,9 +292,9 @@
         <div class="sidenav">
             <a href="#basic-info" data-step="0" class="nav-link active"><button>Basic Info</button></a>
             <a href="#forensic" data-step="1"><button>Forensic</button></a>
-            <a href="#testimonials" data-step="2"><button>Testimonials</button></a>
+            <a href="#testimonials" data-step="2"><button>witness statement</button></a>
             <a href="#damage" data-step="3"><button>Damage Report</button></a>
-            <a href="#officers" data-step="4"><button>Officers' P.O.V.</button></a>
+            <a href="#officers" data-step="4"><button>Officers'verdict</button></a>
             <a href="#extra" data-step="5"><button>Extra Info</button></a>
         </div>
         
@@ -371,11 +371,11 @@
                 <div class="step" id="Testimonials">
                     
                     <div class="lower">
-                    <h3 class="titlez">Testimonial</h3>  
+                    <h3 class="titlez">Witness Statement</h3>  
                     </div>
                     <h3> <button type="button"
                         class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize float-right"
-                        id="add-testimonial">Add Testimonial</button>
+                        id="add-testimonial">Add statement</button>
                     </h3><br><br>
                 
                     <div id="testimonial-section">
@@ -392,10 +392,21 @@
                             </div>
                 
                             <div class="flexy">
+                            <div class="form-group">
+                                    <label for="vehicle">Road user</label>
+                                    <select class="form-control" name="road_user[]">
+                                        <option value="">Select user</option>
+                                        <option value="Motorist">Motorist</option> 
+                                        <option value="Cyclist">Cyclist</option>
+                                        <option value="Pedestrian">Pedestrian</option>
+                                    </select>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="vehicle">Vehicle</label>
                                     <select class="form-control" name="vehicle[]">
                                         <option value="">Select Vehicle</option>
+                                        <option value="none">none</option>
                                         <option value="suv">SUV</option>
                                         <option value="pickup">Pickup</option>
                                         <option value="sedan">Sedan</option>
@@ -403,6 +414,7 @@
                                         <option value="bike">Bike</option>
                                     </select>
                                 </div>
+                                
                 
                                 <div class="form-group">
                                     <label for="vehiclePlate">Vehicle Plate</label>
@@ -433,7 +445,7 @@
                                         <option value="drunk">Drunk</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="alcoholTest">accident category</label>
                                     <select class="form-control" name="cause[]">
                                         <option value="">Select categoy</option>
@@ -441,6 +453,10 @@
                                         <option value="Car Problem">Car Problem</option>
                                         <option value="Unknown Reason">Unknown Reason</option> 
                                     </select>
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="vehiclePlate">phone number</label>
+                                    <input type="text" class="form-control" name="phone_number[]">
                                 </div>
                             </div>
                             <div class="form-group"> 
@@ -477,6 +493,9 @@
                     <div class="form-group">
                         <label for="dead">Individuals passed away</label>
                         <input type="number" placeholder="0" class="form-control" id="dead" name="dead">
+                    </div><div class="form-group">
+                        <label for="dead">Property Damaged</label>
+                        <input type="number" placeholder="0" class="form-control" id="dead" name="PropertyDamaged">
                     </div>
                     </div> 
                     <div class="form-group"> 
@@ -522,6 +541,29 @@
                             </select>
                         </div>
                     </div>
+                    <div class="flexy">
+                    <div class="form-group">
+                            <label for="district">suspected  cause of accident</label>
+                            <select class="form-control" id="verdict" name="verdict">
+                            <option value="">Reckless driving : N° 25/01 ryo ku wa 25/02/2015 (Article One: National driving License)</option>
+                            <option value="">Over speeding : N° 25/01 ryo ku wa 25/02/2015 (Article 2: Speed limitation for public and commercial vehicles)</option>
+                            <option value="">Auto defects : N° 25/01 ryo ku wa 25/02/2015 (Article 3: Steering apparatus, reversing gear 
+                            system and security accessories)</option>
+                            <option value="">Drunk driving : N° 25/01 ryo ku wa 25/02/2015 (Article 7: Repealing provision)</option>
+                            <option value="">Road conditions:</option>
+                            <option value="">Drunk driving : N° 25/01 ryo ku wa 25/02/2015 (Article 7: Repealing provision)</option>
+                            <option value="">Distracted driving:</option>
+                            <option value="">Fatigue : N° 25/01 ryo ku wa 25/02/2015 (Article One: National driving License)</option>
+                            <option value="">Running red lights: N° 25/01 ryo ku wa 25/02/2015 (Article 2: Speed limitation for public and commercial vehicles)</option>
+                            <option value="">Traffic signals : N° 25/01 ryo ku wa 25/02/2015 (Article 3: Steering apparatus, reversing gear 
+                            system and security accessories)</option>
+                            <option value="">Improper turns: N° 25/01 ryo ku wa 25/02/2015 (Article 7: Repealing provision)</option>
+                            <option value="">Road maintenance:</option>
+                            <option value="">Drugs : N° 25/01 ryo ku wa 25/02/2015 (Article 7: Repealing provision)</option>
+                            <option value="">Night driving:</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="officerDescription">Officer Description</label>
                         <textarea class="form-control" id="officerDescription" name="officer_description"></textarea>
@@ -563,7 +605,8 @@
                         $('#add-testimonial').click(function () {
                             let testimonialHTML = `
                             <div class="testimonial " style="border-top: 5px solid blue; padding-top: 10px; margin-top: 10px;">
-                                <div class="form-group">
+                            <div class="flexy">    
+                            <div class="form-group">
                                     <label for="individualName">Individual Name</label>
                                     <input type="text" class="form-control" name="individual_name[]">
                                 </div>
@@ -571,7 +614,7 @@
                                     <label for="individualId">Individual ID Number</label>
                                     <input type="text" class="form-control" name="individual_id[]">
                                 </div>
-                
+                            </div>
                                 <div class="flexy">
                                     <div class="form-group">
                                         <label for="vehicle">Vehicle</label>

@@ -81,7 +81,7 @@
                 <div class="logo-im">
                 </div>
                 <img src="../images/RNP_LOGO.png" alt="" width="100px">
-                <h4>Service - Protection - Innovation</h4>
+                <h4>Service - Protection - Integrity</h4>
 				<div class="featurezz">
                     <div class="feature">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layers-half" viewBox="0 0 16 16">
