@@ -352,15 +352,41 @@
             <button type="submit" class="w-fit h-[35px] px-5 bg-primary-color text-white flex items-center justify-center text-sm rounded-md">Filter</button>
         </div>
         <div class="w-full mt-7">
-            <table class="w-full border-1 border-stone-400" border="1">
-                <th class="text-left h-[35px] px-3">Id</th>
-                <th class="text-left h-[35px] px-3">Id</th>
-                <th class="text-left h-[35px] px-3">Id</th>
-                <th class="text-left h-[35px] px-3">Id</th>
-                <th class="text-left h-[35px] px-3">Id</th>
-                <th class="text-left h-[35px] px-3">Id</th>
-                <th class="text-left h-[35px] px-3">Id</th>
+            <table class="w-full border border-stone-400" border="1">
+                <thead>
+                    <tr class="border-b border-stone-400">
+                        <th class="text-left h-[35px] px-3 border-r border-stone-400">Id</th>
+                        <th class="text-left h-[35px] px-3 border-r border-stone-400">Accident</th>
+                        <th class="text-left h-[35px] px-3 border-r border-stone-400">Witness Statements</th>
+                        <th class="text-left h-[35px] px-3 border-r border-stone-400">Officers Verdict</th>
+                        <th class="text-left h-[35px] px-3">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b border-stone-400">
+                        <td class="h-[35px] px-3 border-r border-stone-400">1</td>
+                        <td class="h-[35px] px-3 border-r border-stone-400">Car collision at Main St</td>
+                        <td class="h-[35px] px-3 border-r border-stone-400">"Driver was speeding"</td>
+                        <td class="h-[35px] px-3 border-r border-stone-400">Fault determined: Driver A</td>
+                        <td class="h-[35px] px-3">Closed</td>
+                    </tr>
+                    <tr class="border-b border-stone-400">
+                        <td class="h-[35px] px-3 border-r border-stone-400">2</td>
+                        <td class="h-[35px] px-3 border-r border-stone-400">Pedestrian hit at 5th Ave</td>
+                        <td class="h-[35px] px-3 border-r border-stone-400">"Pedestrian crossed suddenly"</td>
+                        <td class="h-[35px] px-3 border-r border-stone-400">No fault assigned</td>
+                        <td class="h-[35px] px-3">Under Investigation</td>
+                    </tr>
+                    <tr>
+                        <td class="h-[35px] px-3 border-r border-stone-400">3</td>
+                        <td class="h-[35px] px-3 border-r border-stone-400">Minor fender bender on 8th St</td>
+                        <td class="h-[35px] px-3 border-r border-stone-400">"No injuries reported"</td>
+                        <td class="h-[35px] px-3 border-r border-stone-400">Fault determined: Driver B</td>
+                        <td class="h-[35px] px-3">Closed</td>
+                    </tr>
+                </tbody>
             </table>
+            
         </div>
 
     </div>
