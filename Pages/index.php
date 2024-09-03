@@ -33,7 +33,23 @@
 
 <body class="text-text-color">
     <!-- header -->
-    <div id="Header-Container"></div>
+    <div id="Header-Container">
+        <header class="bg-primary-color text-white">
+            <div class="flex items-center justify-between px-10 max-md:px-4 py-4">
+                <div>
+                    <img src="../images/coat.png" alt="Logo" class="h-auto w-[65px] ">
+                </div>
+                <div class="flex flex-col items-center justify-center gap-1 max-md:gap-0">
+                    <h1 class="font-extrabold text-center text-2xl leading-4 max-md:text-sm max-sm:text-xs ">RWANDA
+                        NATIONAL POLICE</h1>
+                    <p class="text-sm pt-1 text-center max-sm:text-xs">Service - Protection - Integrity</p>
+                </div>
+                <div>
+                    <img src="../images/RNP_LOGO.png" class="h-auto w-[65px] ">
+                </div>
+            </div>
+        </header>
+    </div>
 
 
 
@@ -64,11 +80,11 @@
                 <p class="text-sm whitespace-nowrap">Record</p>
             </button>--->
                 <a href="Add accident.html">
-                <button
-                    class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
-                    <i class='bx bx-image-add'></i>
-                </button>
-            </a>
+                    <button
+                        class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
+                        <i class='bx bx-image-add'></i>
+                    </button>
+                </a>
                 <a href="Notifications.html"
                     class="h-[40px] w-auto aspect-square text-[22px] rounded-full hover:bg-text-color/10 transition active:bg-text-color/20 flex items-center justify-center">
                     <i class='bx bx-bell'></i>
@@ -278,18 +294,24 @@
         <div class="swiper mySwiper w-full h-full">
             <div class="swiper-wrapper mx-auto">
                 <div class="relative swiper-slide h-full bg-stone-50 rounded-md flex items-center justify-center">
-                    <img src="https://inyarwanda.com/app/webroot/img/201509/logos/1442841514_img_20150921_114059.jpg" alt="accident image" class="w-full h-full object-cover object-center  ">
-                    <div class="max-w-[450px] w-[95%] absolute bottom-3 left-3 h-fit flex flex-col gap-[2px] bg-white py-3 px-4 rounded-sm">
-                        <h1 class="line-clamp-1 font-medium text-base">Igare nimodoka ihetse ibitoki byagoganye umunyonzi ahasiga ubuzima</h1>
+                    <img src="https://inyarwanda.com/app/webroot/img/201509/logos/1442841514_img_20150921_114059.jpg"
+                        alt="accident image" class="w-full h-full object-cover object-center  ">
+                    <div
+                        class="max-w-[450px] w-[95%] absolute bottom-3 left-3 h-fit flex flex-col gap-[2px] bg-white py-3 px-4 rounded-sm">
+                        <h1 class="line-clamp-1 font-medium text-base">Igare nimodoka ihetse ibitoki byagoganye
+                            umunyonzi ahasiga ubuzima</h1>
                         <p class="line-clamp-1 font-normal text-sm">
                             <i class='bx bx-map text-xs'></i>Gisozi - Saturday, Feb 02 2024 - 08:39 PM
                         </p>
                     </div>
                 </div>
                 <div class="relative swiper-slide h-full bg-stone-50 rounded-md flex items-center justify-center">
-                    <img src="https://www.kigalitoday.com/IMG/jpg/impanuka_3.jpg" alt="accident image" class="w-full h-full object-cover object-center  ">
-                    <div class="max-w-[450px] w-[95%] absolute bottom-3 left-3 h-fit flex flex-col gap-[2px] bg-white py-3 px-4 rounded-sm">
-                        <h1 class="line-clamp-1 font-medium text-base">Igare nimodoka ihetse ibitoki byagoganye umunyonzi ahasiga ubuzima</h1>
+                    <img src="https://www.kigalitoday.com/IMG/jpg/impanuka_3.jpg" alt="accident image"
+                        class="w-full h-full object-cover object-center  ">
+                    <div
+                        class="max-w-[450px] w-[95%] absolute bottom-3 left-3 h-fit flex flex-col gap-[2px] bg-white py-3 px-4 rounded-sm">
+                        <h1 class="line-clamp-1 font-medium text-base">Igare nimodoka ihetse ibitoki byagoganye
+                            umunyonzi ahasiga ubuzima</h1>
                         <p class="line-clamp-1 font-normal text-sm">
                             <i class='bx bx-map text-xs'></i>Gisozi - Saturday, Feb 02 2024 - 08:39 PM
                         </p>
@@ -330,69 +352,79 @@
         <div class="py-2 grid grid-cols-2 gap-5 max-md:grid-cols-1">
             <!-- 1 result -->
             <a href="accident desc.html">
-            <div class="flex flex-1 h-[220px] max-md:h-fit items-center justify-start max-md:flex-col">
-                <div class="h-full max-md:min-h-[250px] w-full bg-stone-50 rounded-md flex items-center justify-center">
-                    <img src="https://www.byoseonline.rw/wp-content/uploads/2022/03/Impanuka.jpg" alt="accident image" class="w-full h-full object-cover object-center">
+                <div class="flex flex-1 h-[220px] max-md:h-fit items-center justify-start max-md:flex-col">
+                    <div
+                        class="h-full max-md:min-h-[250px] w-full bg-stone-50 rounded-md flex items-center justify-center">
+                        <img src="https://www.byoseonline.rw/wp-content/uploads/2022/03/Impanuka.jpg"
+                            alt="accident image" class="w-full h-full object-cover object-center">
+                    </div>
+                    <div class="p-5 w-fit">
+                        <p class="text-xs font-medium text-text-color/70">case closed</p>
+                        <h1 class="text-base leading-6 font-medium py-2">gisozi impanuka yabanyonzi babiri nigikamyo cya
+                            HOHO</h1>
+                        <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                        <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                    </div>
                 </div>
-                <div class="p-5 w-fit">
-                    <p class="text-xs font-medium text-text-color/70">case closed</p>
-                    <h1 class="text-base leading-6 font-medium py-2">gisozi impanuka yabanyonzi babiri nigikamyo cya
-                        HOHO</h1>
-                    <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
-                            class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
-                    <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
-                            class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
-                </div>
-            </div>
             </a>
             <!-- 1 result -->
             <a href="accident desc.html">
-            <div class="flex flex-1 h-[220px] max-md:h-fit items-center justify-start max-md:flex-col">
-                <div class="h-full max-md:min-h-[250px] w-full bg-stone-50 rounded-md flex items-center justify-center">
-                    <img src="https://i0.wp.com/radiotv10.rw/wp-content/uploads/2022/10/whatsapp_image_2022-10-23_at_8.42_44_am-c0905.jpg?resize=812%2C637&ssl=1" alt="accident image" class="w-full h-full object-cover object-center">
+                <div class="flex flex-1 h-[220px] max-md:h-fit items-center justify-start max-md:flex-col">
+                    <div
+                        class="h-full max-md:min-h-[250px] w-full bg-stone-50 rounded-md flex items-center justify-center">
+                        <img src="https://i0.wp.com/radiotv10.rw/wp-content/uploads/2022/10/whatsapp_image_2022-10-23_at_8.42_44_am-c0905.jpg?resize=812%2C637&ssl=1"
+                            alt="accident image" class="w-full h-full object-cover object-center">
+                    </div>
+                    <div class="p-5 w-fit">
+                        <p class="text-xs font-medium text-text-color/70">case closed</p>
+                        <h1 class="text-base leading-6 font-medium py-2">kamonyi impanuka ya busi nigicamyo</h1>
+                        <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                        <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                    </div>
                 </div>
-                <div class="p-5 w-fit">
-                    <p class="text-xs font-medium text-text-color/70">case closed</p>
-                    <h1 class="text-base leading-6 font-medium py-2">kamonyi impanuka ya busi nigicamyo</h1>
-                    <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
-                            class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
-                    <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
-                            class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
-                </div>
-            </div>
             </a>
             <!-- 1 result -->
             <a href="accident desc.html">
-            <div class="flex flex-1 h-[220px] max-md:h-fit items-center justify-start max-md:flex-col">
-                <div class="h-full max-md:min-h-[250px] w-full bg-stone-50 rounded-md flex items-center justify-center">
-                    <img src="https://cdn.rba.co.rw/admin/media_data/cover_photo/PSX203b970.jpg" alt="accident image" class="w-full h-full object-cover object-center">
+                <div class="flex flex-1 h-[220px] max-md:h-fit items-center justify-start max-md:flex-col">
+                    <div
+                        class="h-full max-md:min-h-[250px] w-full bg-stone-50 rounded-md flex items-center justify-center">
+                        <img src="https://cdn.rba.co.rw/admin/media_data/cover_photo/PSX203b970.jpg"
+                            alt="accident image" class="w-full h-full object-cover object-center">
+                    </div>
+                    <div class="p-5 w-fit">
+                        <p class="text-xs font-medium text-text-color/70">case closed</p>
+                        <h1 class="text-base leading-6 font-medium py-2">kinyinya impanuka yi gikamyo na Rav4 i hoho
+                            kumudende</h1>
+                        <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                        <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                    </div>
                 </div>
-                <div class="p-5 w-fit">
-                    <p class="text-xs font-medium text-text-color/70">case closed</p>
-                    <h1 class="text-base leading-6 font-medium py-2">kinyinya impanuka yi gikamyo na Rav4 i hoho kumudende</h1>
-                    <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
-                            class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
-                    <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
-                            class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
-                </div>
-            </div>
 
             </a>
             <!-- 1 result -->
             <a href="accident desc.html">
-            <div class="flex flex-1 h-[220px] max-md:h-fit items-center justify-start max-md:flex-col">
-                <div class="h-full max-md:min-h-[250px] w-full bg-stone-50 rounded-md flex items-center justify-center">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5OfAyFdxbxaBKNQiWPi7R4mvzL8vNLO0GdgQCFpypMsamRPn-hLvi5tj6VSzrOg8KVs8&usqp=CAU" alt="accident image" class="w-full h-full object-cover object-center">
+                <div class="flex flex-1 h-[220px] max-md:h-fit items-center justify-start max-md:flex-col">
+                    <div
+                        class="h-full max-md:min-h-[250px] w-full bg-stone-50 rounded-md flex items-center justify-center">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5OfAyFdxbxaBKNQiWPi7R4mvzL8vNLO0GdgQCFpypMsamRPn-hLvi5tj6VSzrOg8KVs8&usqp=CAU"
+                            alt="accident image" class="w-full h-full object-cover object-center">
+                    </div>
+                    <div class="p-5 w-fit">
+                        <p class="text-xs font-medium text-text-color/70">case closed</p>
+                        <h1 class="text-base leading-6 font-medium py-2">muhanga impanuka ya bisi ya shwanyaguje fuso
+                        </h1>
+                        <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                        <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                                class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                    </div>
                 </div>
-                <div class="p-5 w-fit">
-                    <p class="text-xs font-medium text-text-color/70">case closed</p>
-                    <h1 class="text-base leading-6 font-medium py-2">muhanga impanuka ya bisi ya shwanyaguje fuso</h1>
-                    <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
-                            class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
-                    <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
-                            class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
-                </div>
-            </div>
             </a>
 
 
@@ -404,101 +436,112 @@
     <section class="w-full flex flex-col items-start py-5 px-10 max-md:px-4 h-fit">
         <div class="flex items-center justify-between w-full">
             <p class="font-bold text-2xl pt-10 pb-3">Recent Accident</p>
-            <a href="Explore.html" class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize">view more</a>
+            <a href="Explore.html" class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize">view
+                more</a>
         </div>
         <div class="swiper mySwiper2 w-full h-full">
             <div class="swiper-wrapper mx-auto">
                 <!-- 1 item -->
-                
+
                 <div class="swiper-slide">
                     <a href="accident desc.html">
-                    <div class=" h-[280px] bg-stone-50 rounded-md flex items-center justify-center">
-                        <img src="https://i.ytimg.com/vi/65MUGsfHrgA/maxresdefault.jpg" alt="accident image" class="w-full h-full object-cover object-center">
-                    </div>
-                    <div class="py-5 w-fit">
-                        <p class="text-xs font-medium text-text-color/70">case closed</p>
-                        <h1 class="text-base leading-6 font-medium py-2">kicukiro impanuka yakamodoka kumutuku na truck</h1>
-                        <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
-                                class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
-                        <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
-                                class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
-                    </div>
-                </a>
-                </div>
-                
-                <!-- 1 item -->
-                
-                <div class="swiper-slide">
-                    <a href="accident desc.html">
-                    <div class=" h-[280px] bg-stone-50 rounded-md flex items-center justify-center">
-                        <img src="https://kglnews.com/wp-content/uploads/2024/01/Screenshot_20240124-100923_1.jpg" alt="accident image" class="w-full h-full object-cover object-center">
-                    </div>
-                    <div class="py-5 w-fit">
-                        <p class="text-xs font-medium text-text-color/70">case closed</p>
-                        <h1 class="text-base leading-6 font-medium py-2">impanuka yi mudoka yumukara ya teruye ipoto mwijoro.</h1>
-                        <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
-                                class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
-                        <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
-                                class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
-                    </div>
-                </a>
+                        <div class=" h-[280px] bg-stone-50 rounded-md flex items-center justify-center">
+                            <img src="https://i.ytimg.com/vi/65MUGsfHrgA/maxresdefault.jpg" alt="accident image"
+                                class="w-full h-full object-cover object-center">
+                        </div>
+                        <div class="py-5 w-fit">
+                            <p class="text-xs font-medium text-text-color/70">case closed</p>
+                            <h1 class="text-base leading-6 font-medium py-2">kicukiro impanuka yakamodoka kumutuku na
+                                truck</h1>
+                            <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                                    class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                            <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                                    class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                        </div>
+                    </a>
                 </div>
 
-                
                 <!-- 1 item -->
-                
+
+                <div class="swiper-slide">
+                    <a href="accident desc.html">
+                        <div class=" h-[280px] bg-stone-50 rounded-md flex items-center justify-center">
+                            <img src="https://kglnews.com/wp-content/uploads/2024/01/Screenshot_20240124-100923_1.jpg"
+                                alt="accident image" class="w-full h-full object-cover object-center">
+                        </div>
+                        <div class="py-5 w-fit">
+                            <p class="text-xs font-medium text-text-color/70">case closed</p>
+                            <h1 class="text-base leading-6 font-medium py-2">impanuka yi mudoka yumukara ya teruye ipoto
+                                mwijoro.</h1>
+                            <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                                    class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                            <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                                    class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                        </div>
+                    </a>
+                </div>
+
+
+                <!-- 1 item -->
+
                 <div class="swiper-slide"><a href="accident desc.html">
-                    <div class=" h-[280px] bg-stone-50 rounded-md flex items-center justify-center">
-                        <img src="https://www.kigalitoday.com/IMG/jpg/accident_1-4.jpg" alt="accident image" class="w-full h-full object-cover object-center">
-                    </div>
-                    <div class="py-5 w-fit">
-                        <p class="text-xs font-medium text-text-color/70">case closed</p>
-                        <h1 class="text-base leading-6 font-medium py-2">Kamonyi sofiya barayiteruye daaa, umuvuduko mwinshi</h1>
-                        <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
-                                class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
-                        <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
-                                class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
-                    </div>
-                  </a>
+                        <div class=" h-[280px] bg-stone-50 rounded-md flex items-center justify-center">
+                            <img src="https://www.kigalitoday.com/IMG/jpg/accident_1-4.jpg" alt="accident image"
+                                class="w-full h-full object-cover object-center">
+                        </div>
+                        <div class="py-5 w-fit">
+                            <p class="text-xs font-medium text-text-color/70">case closed</p>
+                            <h1 class="text-base leading-6 font-medium py-2">Kamonyi sofiya barayiteruye daaa, umuvuduko
+                                mwinshi</h1>
+                            <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                                    class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                            <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                                    class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- 1 item -->
-                
+
                 <div class="swiper-slide">
                     <a href="accident desc.html">
-                    <div class=" h-[280px] bg-stone-50 rounded-md flex items-center justify-center">
-                        <img src="https://www.kigalitoday.com/IMG/jpg/impanuka-_-gatsata-_-kigali-_-rwanda-2.jpg" alt="accident image" class="w-full h-full object-cover object-center">
-                    </div>
-                    <div class="py-5 w-fit">
-                        <p class="text-xs font-medium text-text-color/70">case closed</p>
-                        <h1 class="text-base leading-6 font-medium py-2">Rav4 yarenze umukingo kicukiro impanuka ikomeye</h1>
-                        <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
-                                class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
-                        <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
-                                class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
-                    </div>
-                 </a>
-                </div>
-                
-                <!-- 1 item -->
-                
-                <div class="swiper-slide">
-                    <a href="accident desc.html">
-                    <div class=" h-[280px] bg-stone-50 rounded-md flex items-center justify-center">
-                        <img src="https://www.intyoza.com/wp-content/uploads/2016/06/Impanuka-Kicukiro.jpg" alt="accident image" class="w-full h-full object-cover object-center">
-                    </div>
-                    <div class="py-5 w-fit">
-                        <p class="text-xs font-medium text-text-color/70">case closed</p>
-                        <h1 class="text-base leading-6 font-medium py-2">imodoka yashwanyaguje moto ebyiri ,driver and cyclist fine</h1>
-                        <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
-                                class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
-                        <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
-                                class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
-                    </div>
-                </a>
+                        <div class=" h-[280px] bg-stone-50 rounded-md flex items-center justify-center">
+                            <img src="https://www.kigalitoday.com/IMG/jpg/impanuka-_-gatsata-_-kigali-_-rwanda-2.jpg"
+                                alt="accident image" class="w-full h-full object-cover object-center">
+                        </div>
+                        <div class="py-5 w-fit">
+                            <p class="text-xs font-medium text-text-color/70">case closed</p>
+                            <h1 class="text-base leading-6 font-medium py-2">Rav4 yarenze umukingo kicukiro impanuka
+                                ikomeye</h1>
+                            <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                                    class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                            <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                                    class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                        </div>
+                    </a>
                 </div>
 
-                
+                <!-- 1 item -->
+
+                <div class="swiper-slide">
+                    <a href="accident desc.html">
+                        <div class=" h-[280px] bg-stone-50 rounded-md flex items-center justify-center">
+                            <img src="https://www.intyoza.com/wp-content/uploads/2016/06/Impanuka-Kicukiro.jpg"
+                                alt="accident image" class="w-full h-full object-cover object-center">
+                        </div>
+                        <div class="py-5 w-fit">
+                            <p class="text-xs font-medium text-text-color/70">case closed</p>
+                            <h1 class="text-base leading-6 font-medium py-2">imodoka yashwanyaguje moto ebyiri ,driver
+                                and cyclist fine</h1>
+                            <p class="text-xs font-medium text-text-color/70 flex items-center gap-1"><i
+                                    class='bx bx-calendar-alt text-base'></i> Saturday, Feb 02 2024 - 08:39 PM</p>
+                            <p class="text-xs font-medium pt-[1px] text-text-color/70 flex items-center gap-1"><i
+                                    class='bx bx-map text-lg'></i>Kigali, Gisozi</p>
+                        </div>
+                    </a>
+                </div>
+
+
 
 
 
@@ -515,7 +558,16 @@
 
 
     <!-- footer -->
-    <div id="Footer"></div>
+    <div id="Footer">
+        <footer class="bg-stone-50/50 p-6 text-text-color/70">
+            <div class="text-xs flex items-center justify-center flex-wrap gap-5">
+                <p class="px-3">© Copyright A.R.M.S 2024 All rights reserved</p>
+                <P class="px-3 cursor-pointer hover:text-primary-color">Support center</P>
+                <p class="px-3 cursor-pointer hover:text-primary-color">Terms of Use</p>
+                <p class="px-3 cursor-pointer hover:text-primary-color">System Status</p>
+            </div>
+        </footer>
+    </div>
 
 
     <!-- Swiper JS -->
@@ -578,17 +630,17 @@
     <!-- Combine fetch calls and scroll to top -->
     <script>
         function loadComponent(url, containerId) {
-            return fetch(url)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById(containerId).innerHTML = data;
-                });
+            // return fetch(url)
+            //     .then(response => response.text())
+            //     .then(data => {
+            //         document.getElementById(containerId).innerHTML = data;
+            //     });
         }
 
         window.addEventListener('load', function () {
             Promise.all([
-                loadComponent('./components/Header.html', 'Header-Container'),
-                loadComponent('./components/Footer.html', 'Footer')
+                // loadComponent('./components/Header.html', 'Header-Container'),
+                // loadComponent('./components/Footer.html', 'Footer')
             ]).then(() => {
                 // window.scrollTo(0, 0);
             });
@@ -645,8 +697,9 @@
     </script>
 </body>
 <style>
-    img{
+    img {
         border-radius: 8px;
     }
 </style>
+
 </html>
