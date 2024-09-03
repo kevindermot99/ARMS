@@ -33,7 +33,23 @@
 
 <body class="text-text-color">
     <!-- header -->
-    <!-- <div id="Header-Container"></div> -->
+    <div id="Header-Container">
+    <header class="bg-primary-color text-white">
+            <div class="flex items-center justify-between px-10 max-md:px-4 py-4">
+                <div>
+                    <img src="../images/coat.png" alt="Logo" class="h-auto w-[65px] ">
+                </div>
+                <div class="flex flex-col items-center justify-center gap-1 max-md:gap-0">
+                    <h1 class="font-extrabold text-center text-2xl leading-4 max-md:text-sm max-sm:text-xs ">RWANDA
+                        NATIONAL POLICE</h1>
+                    <p class="text-sm pt-1 text-center max-sm:text-xs">Service - Protection - Integrity</p>
+                </div>
+                <div>
+                    <img src="../images/RNP_LOGO.png" class="h-auto w-[65px] ">
+                </div>
+            </div>
+        </header>
+    </div>
 
     <!-- Navbar -->
 
