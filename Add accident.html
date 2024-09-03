@@ -301,7 +301,7 @@
         
         
         <div class="maincontent">
-            <form id="multiStepForm" action="auth/addprocess.php" method="post" enctype="multipart/form-data">
+            <form id="multiStepForm" action="addprocess.php" method="post" enctype="multipart/form-data">
                 <!-- Step 1: Basic Information -->
                 <div class="step active" id="basic-info">
 
@@ -372,11 +372,11 @@
                 <div class="step" id="Testimonials">
                     
                     <div class="lower">
-                    <h3 class="titlez">Testimonial</h3>  
+                    <h3 class="titlez">Witness Statement</h3>  
                     </div>
                     <h3> <button type="button"
                         class="bg-text-color/10 text-sm font-medium py-2 px-4 rounded-md capitalize float-right"
-                        id="add-testimonial">Add Testimonial</button>
+                        id="add-testimonial">Add statement</button>
                     </h3><br><br>
                 
                     <div id="testimonial-section">
@@ -393,10 +393,21 @@
                             </div>
                 
                             <div class="flexy">
+                            <div class="form-group">
+                                    <label for="vehicle">Road user</label>
+                                    <select class="form-control" name="road_user[]">
+                                        <option value="">Select user</option>
+                                        <option value="Motorist">Motorist</option> 
+                                        <option value="Cyclist">Cyclist</option>
+                                        <option value="Pedestrian">Pedestrian</option>
+                                    </select>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="vehicle">Vehicle</label>
                                     <select class="form-control" name="vehicle[]">
                                         <option value="">Select Vehicle</option>
+                                        <option value="none">none</option>
                                         <option value="suv">SUV</option>
                                         <option value="pickup">Pickup</option>
                                         <option value="sedan">Sedan</option>
@@ -404,6 +415,7 @@
                                         <option value="bike">Bike</option>
                                     </select>
                                 </div>
+                                
                 
                                 <div class="form-group">
                                     <label for="vehiclePlate">Vehicle Plate</label>
@@ -433,6 +445,19 @@
                                         <option value="not drunk">Not Drunk</option>
                                         <option value="drunk">Drunk</option>
                                     </select>
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label for="alcoholTest">accident category</label>
+                                    <select class="form-control" name="cause[]">
+                                        <option value="">Select categoy</option>
+                                        <option value="Natural Desaster">Natural Desaster</option>
+                                        <option value="Car Problem">Car Problem</option>
+                                        <option value="Unknown Reason">Unknown Reason</option> 
+                                    </select>
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="vehiclePlate">phone number</label>
+                                    <input type="text" class="form-control" name="phone_number[]">
                                 </div>
                             </div>
                             <div class="form-group"> 
@@ -469,6 +494,9 @@
                     <div class="form-group">
                         <label for="dead">Individuals passed away</label>
                         <input type="number" placeholder="0" class="form-control" id="dead" name="dead">
+                    </div><div class="form-group">
+                        <label for="dead">Property Damaged</label>
+                        <input type="number" placeholder="0" class="form-control" id="dead" name="PropertyDamaged">
                     </div>
                     </div> 
                     <div class="form-group"> 
@@ -492,27 +520,58 @@
         
                 <!-- Step 5: Officers' P.O.V. -->
                 <div class="step" id="Officers">
-                    <h3 class="titlez">officers report</h3>
+                    <h3 class="titlez">Officers Report</h3>
                     <div class="form-group">
-                        
-                    
                         <label for="officers_pov">Upload Officers' P.O.V.:</label>
                         <input type="file" name="officers_pov[]" multiple><br>
-                        <!-- <label for="mediaUpload">Upload media</label>
-                        <input type="file" class="form-control-file" id="mediaUpload" name="media[]" accept="image/*,video/*,audio/*" multiple style="display: none;">
-                        <div class="drop-zone" id="dropZone">
-                            Drag & Drop Images Here or <button type="button" id="browseButton">Browse</button>
+                    </div>
+                    <div class="flexy">
+                        <div class="form-group">
+                            <label for="caseStatus">Case Status</label>
+                            <select class="form-control" name="case_status">
+                                <option value="ongoing">Ongoing</option>
+                                <option value="closed">Closed</option>
+                            </select>
                         </div>
-                        <div id="fileNames" class="mt-2"></div> -->
-                         <!-- Added div to display file names -->
+                        <div class="form-group">
+                            <label for="accidentType">Type of Accident</label>
+                            <select class="form-control" name="accident_type">
+                                <option value="on-road">On-road</option>
+                                <option value="off-road">Off-road</option>
+                                <option value="side-road">Side-road</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flexy">
+                    <div class="form-group">
+                            <label for="district">suspected  cause of accident</label>
+                            <select class="form-control" id="verdict" name="verdict">
+                            <option value="">Reckless driving : N° 25/01 ryo ku wa 25/02/2015 (Article One: National driving License)</option>
+                            <option value="">Over speeding : N° 25/01 ryo ku wa 25/02/2015 (Article 2: Speed limitation for public and commercial vehicles)</option>
+                            <option value="">Auto defects : N° 25/01 ryo ku wa 25/02/2015 (Article 3: Steering apparatus, reversing gear 
+                            system and security accessories)</option>
+                            <option value="">Drunk driving : N° 25/01 ryo ku wa 25/02/2015 (Article 7: Repealing provision)</option>
+                            <option value="">Road conditions:</option>
+                            <option value="">Drunk driving : N° 25/01 ryo ku wa 25/02/2015 (Article 7: Repealing provision)</option>
+                            <option value="">Distracted driving:</option>
+                            <option value="">Fatigue : N° 25/01 ryo ku wa 25/02/2015 (Article One: National driving License)</option>
+                            <option value="">Running red lights: N° 25/01 ryo ku wa 25/02/2015 (Article 2: Speed limitation for public and commercial vehicles)</option>
+                            <option value="">Traffic signals : N° 25/01 ryo ku wa 25/02/2015 (Article 3: Steering apparatus, reversing gear 
+                            system and security accessories)</option>
+                            <option value="">Improper turns: N° 25/01 ryo ku wa 25/02/2015 (Article 7: Repealing provision)</option>
+                            <option value="">Road maintenance:</option>
+                            <option value="">Drugs : N° 25/01 ryo ku wa 25/02/2015 (Article 7: Repealing provision)</option>
+                            <option value="">Night driving:</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="officerDescription">Officer Description</label>
                         <textarea class="form-control" id="officerDescription" name="officer_description"></textarea>
-                    </div>
+                    </div>  
                 </div>
         
-                <!-- Step 6: Officers' P.O.V. -->
+                <!-- Step 6: extra info. -->
                 <div class="step" id="Extra">
                     <h3 class="titlez">extra-info</h3>
                     <div class="form-group">
