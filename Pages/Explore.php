@@ -35,7 +35,23 @@
 </head>
 
 <body class="text-text-color">
-    <div id="Header-Container"></div>
+    <div id="Header-Container">
+    <header class="bg-primary-color text-white">
+            <div class="flex items-center justify-between px-10 max-md:px-4 py-4">
+                <div>
+                    <img src="../images/coat.png" alt="Logo" class="h-auto w-[65px] ">
+                </div>
+                <div class="flex flex-col items-center justify-center gap-1 max-md:gap-0">
+                    <h1 class="font-extrabold text-center text-2xl leading-4 max-md:text-sm max-sm:text-xs ">RWANDA
+                        NATIONAL POLICE</h1>
+                    <p class="text-sm pt-1 text-center max-sm:text-xs">Service - Protection - Integrity</p>
+                </div>
+                <div>
+                    <img src="../images/RNP_LOGO.png" class="h-auto w-[65px] ">
+                </div>
+            </div>
+        </header>
+    </div>
 
     <div class="w-full sticky top-0 z-20 hidden max-md:flex flex-col">
         <div class="h-fit w-full bg-white flex items-center justify-between px-3 py-3 border-b-[1px] border-primary-color/10 sticky top-0 z-20 ">
@@ -310,14 +326,23 @@
         </div>
     </section>
 
-    <div id="Footer"></div>
+    <div id="Footer">
+    <footer class="bg-stone-50/50 p-6 text-text-color/70">
+            <div class="text-xs flex items-center justify-center flex-wrap gap-5">
+                <p class="px-3">© Copyright A.R.M.S 2024 All rights reserved</p>
+                <P class="px-3 cursor-pointer hover:text-primary-color">Support center</P>
+                <p class="px-3 cursor-pointer hover:text-primary-color">Terms of Use</p>
+                <p class="px-3 cursor-pointer hover:text-primary-color">System Status</p>
+            </div>
+        </footer>
+    </div>
 
     <script>
         window.addEventListener('load', function () {
-            Promise.all([
-                loadComponent('./components/Header.html', 'Header-Container'),
-                loadComponent('./components/Footer.html', 'Footer'),
-            ]);
+            // Promise.all([
+            //     loadComponent('./components/Header.html', 'Header-Container'),
+            //     loadComponent('./components/Footer.html', 'Footer'),
+            // ]);
         });
     </script>
 </body>
