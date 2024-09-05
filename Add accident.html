@@ -281,7 +281,7 @@
     <!-- Navbar -->
 
     <section class="backgroundz w-full flex items-center justify-center py-5 px-10 h-[200px]">
-        <span class="text-3xl font-extrabold leading-7 tracking-tight">ADD ACCIDENT</span>
+        <span class="text-3xl font-extrabold leading-7 tracking-tight">ADD INCIDENT</span>
     </section><br><br>
 <style>
                         .lower{
@@ -295,8 +295,8 @@
             <a href="#forensic" data-step="1"><button>Forensic</button></a>
             <a href="#testimonials" data-step="2"><button>Witness Statement</button></a>
             <a href="#damage" data-step="3"><button>Damage Report</button></a>
-            <a href="#officers" data-step="4"><button>Officers' Verdict</button></a>
-            <a href="#extra" data-step="5"><button>Extra Info</button></a>
+            <!-- <a href="#officers" data-step="4"><button>Officers' Verdict</button></a> -->
+            <a href="#extra" data-step="4"><button>Extra Info</button></a>
         </div>
         
         
@@ -391,59 +391,36 @@
                                 <input type="text" class="form-control" name="individual_id[]">
                             </div>
                             </div>
+                            <div class="flexy">
+                                <div class="form-group">
+                                    <label for="vehiclePlate">Phone number</label>
+                                    <input type="text" class="form-control" name="vehicle_plate[]">
+                                </div> 
+                                <div class="form-group">
+                                    <label for="vehiclePlate">Email</label>
+                                    <input type="text" class="form-control" name="email[]">
+                                </div> 
+                            </div>
                 
                             <div class="flexy">
-                            <div class="form-group">
-                                    <label for="vehicle">Road user</label>
+                                <div class="form-group">
+                                    <label for="vehicle">Involved parties</label>
                                     <select class="form-control" name="road_user[]">
-                                        <option value="">Select user</option>
-                                        <option value="Motorist">Motorist</option> 
-                                        <option value="Cyclist">Cyclist</option>
-                                        <option value="Pedestrian">Pedestrian</option>
+                                        <option value="">Select party</option>
+                                        <option value="Motorist">property owner</option> 
+                                        <option value="Motorist">Residential</option>
+                                        <option value="Cyclist">neighbour</option>
+                                        <option value="Pedestrian">by-stander</option>
                                     </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="vehicle">Vehicle</label>
-                                    <select class="form-control" name="vehicle[]">
-                                        <option value="">Select Vehicle</option>
-                                        <option value="none">none</option>
-                                        <option value="suv">SUV</option>
-                                        <option value="pickup">Pickup</option>
-                                        <option value="sedan">Sedan</option>
-                                        <option value="truck">Truck</option>
-                                        <option value="bike">Bike</option>
-                                    </select>
-                                </div>
-                                
-                
-                                <div class="form-group">
-                                    <label for="vehiclePlate">Vehicle Plate</label>
-                                    <input type="text" class="form-control" name="vehicle_plate[]">
-                                </div>
-                                <div class="form-group">
-                                    <label for="licenseStatus">License Status</label>
-                                    <select class="form-control" name="license_status[]">
-                                        <option value="active">Active</option>
-                                        <option value="deactivated">Deactivated</option>
-                                    </select>
-                                </div>
+                                </div> 
                                 <div class="form-group">
                                     <label for="insurance">Insurance</label>
                                     <select class="form-control" name="insurance[]">
-                                        <option value="">Select Insurance</option>
+                                        <option value="N/A">Select Insurance</option>
                                         <option value="sanlam">Sanlam</option>
                                         <option value="radiant">Radiant</option>
                                         <option value="prime">Prime</option>
                                         <option value="mua">MUA</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="alcoholTest">Alcohol Test</label>
-                                    <select class="form-control" name="alcohol_test[]">
-                                        <option value="">Select Alcohol Results</option>
-                                        <option value="not drunk">Not Drunk</option>
-                                        <option value="drunk">Drunk</option>
                                     </select>
                                 </div>
                                 <!-- <div class="form-group">
@@ -455,13 +432,13 @@
                                         <option value="Unknown Reason">Unknown Reason</option> 
                                     </select>
                                 </div> -->
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="vehiclePlate">phone number</label>
                                     <input type="text" class="form-control" name="phone_number[]">
-                                </div>
-                            </div>
+                                </div>  -->
+                            </div> 
                             <div class="form-group"> 
-                        <label for="testimonials">Upload Testimonials:</label>
+                        <label for="testimonials">Upload statements media:</label>
                         <input type="file" name="testimonials[]" multiple><br>
 
                                 <!-- <label for="mediaUpload">Upload media</label>
@@ -519,7 +496,7 @@
                 </div>
         
                 <!-- Step 5: Officers' P.O.V. -->
-                <div class="step" id="Officers">
+                <!-- <div class="step" id="Officers">
                     <h3 class="titlez">Officers verdict</h3>
                     <div class="form-group">
                         <label for="officers_pov">Upload Officers' P.O.V.:</label>
@@ -569,7 +546,7 @@
                         <label for="officerDescription">Officer Description</label>
                         <textarea class="form-control" id="officerDescription" name="officer_description"></textarea>
                     </div>  
-                </div>
+                </div> -->
         
                 <!-- Step 6: extra info. -->
                 <div class="step" id="Extra">
